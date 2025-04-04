@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ISMTelemetryExcelExport</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+/// <summary>
+/// Telemetry for Excel exports 
+/// </summary>
+public class ISMTelemetryExcelExport extends ISMTelemetryBase
+{
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>construct</Name>
+				<Source><![CDATA[
+    public static ISMTelemetryExcelExport construct()
+    {
+        return new ISMTelemetryExcelExport();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>new</Name>
+				<Source><![CDATA[
+    [SuppressBPWarningAttribute('CARBPMethodNotReferenced','')]
+    protected void new()
+    {
+        super();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>shouldLogEvent</Name>
+				<Source><![CDATA[
+    [SuppressBPWarningAttribute('CARBPMethodNotReferenced','')]
+    protected boolean shouldLogEvent()
+    {
+        return true;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>postPopulateProperties</Name>
+				<Source><![CDATA[
+    [SuppressBPWarningAttribute('CARBPMethodNotReferenced','')]
+    protected void postPopulateProperties()
+    {
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

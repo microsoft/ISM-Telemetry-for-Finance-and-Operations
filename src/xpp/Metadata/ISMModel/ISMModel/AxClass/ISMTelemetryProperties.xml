@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ISMTelemetryProperties</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+/// <summary>
+/// The <c>ISMApplicationInsightsEventProperties</c> class contains all available event properties that can be used in the Application Insights telemetry.
+/// </summary>
+/// <remarks>
+/// The names must be unique.
+/// Please keep the list sorted alphabetically in ascending order.
+/// </remarks>
+public static final class ISMTelemetryProperties
+{
+    public static const str AOS = 'AOS';
+    public static const str BatchCaption = 'BatchCaption';
+    public static const str BatchJobId = 'BatchJobId';
+    public static const str BatchJobName = 'BatchJobName';
+    public static const str BatchJobTaskId = 'BatchJobTaskId';
+    public static const str CallStack = 'CallStack';
+    public static const str ChildBatchJobId = 'ChildBatchJobId';
+    public static const str ClassName = 'ClassName';
+    public static const str Company = 'company';
+    public static const str CreatedBy = 'CreatedBy';
+    public static const str CreatePackage = 'createPackage';
+    public static const str CurrentUserId = 'CurrentUserId';
+    public static const str DataAreaId = 'DataAreaId';
+    public static const str DefinitionGroupId = 'definitionGroupId';
+    public static const str ElapsedMilliseconds = 'ElapsedMilliseconds';
+    public static const str EndDateTime = 'EndDateTime';
+    public static const str Entity = '_entity';
+    public static const str EntityName = 'entityName';
+    public static const str Error = 'Error';
+    public static const str ErrorMessage = 'errorMessage';
+    public static const str Execute = 'execute';
+    public static const str ExecutingBy = 'ExecutingBy';
+    public static const str Export = '_export';
+    public static const str ExportRowLimit = 'ExportRowLimit';
+    public static const str ExportRowLimitReached = 'ExportRowLimitReached';
+    public static const str FailOnError = 'failOnError';
+    public static const str Finalizing = 'Finalizing';
+    public static const str ImportBatchGroupId = 'importBatchGroupId';
+    public static const str InternalCall = 'internalCall';
+    public static const str IsCompare = 'isCompare';
+    public static const str LegalEntityId = 'legalEntityId';
+    public static const str Message = 'Message';
+    public static const str MessageId = '_messageId';
+    public static const str NewStatus = 'NewStatus';
+    public static const str OrderType = 'OrderType';
+    public static const str OrigStatus = 'OrigStatus';
+    public static const str Overwrite = 'overwrite';
+    public static const str PackageFileId = 'packageFileId';
+    public static const str PackageName = 'packageName';
+    public static const str PackageUrl = 'packageUrl';
+    public static const str PreviewCount = '_previewCount';
+    public static const str ProcessIntegrationBridgeData = 'processIntegrationBridgeData';
+    public static const str RecordData = 'RecordData';
+    public static const str RecordsProcessed = 'RecordsProcessed';
+    public static const str Reccurence = 'Reccurence';
+    public static const str ReExecute = 'reExecute';
+    public static const str RetryCount = 'RetryCount';
+    public static const str RunAsyncWithoutBatch = '_runAsyncWithoutBatch';
+    public static const str RuntimeTask = 'RuntimeTask';
+    public static const str SchedulingPriority = 'SchedulingPriority';
+    public static const str Severity = 'Severity';
+    public static const str SourceDefinitionGroupId = 'sourceDefinitionGroupId';
+    public static const str SourceExecutionId = 'sourceExecutionId';
+    public static const str SourceFormat = '_sourceFormat';
+    public static const str SourceOrTarget = 'sourceOrTarget';
+    public static const str StagingColumnName = 'stagingColumnName';
+    public static const str StagingRecId = 'stagingRecId';
+    public static const str StagingRecord = 'stagingRecord';
+    public static const str StartDateTime = 'StartDateTime';
+    public static const str ThresholdToRunInBatch = 'thresholdToRunInBatch';
+
+
+
+    
+
+}
+]]></Declaration>
+		<Methods />
+	</SourceCode>
+</AxClass>

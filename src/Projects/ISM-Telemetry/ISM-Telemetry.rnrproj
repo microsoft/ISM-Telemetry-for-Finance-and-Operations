@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <BuildTasksDirectory Condition=" '$(BuildTasksDirectory)' == ''">$(MSBuildProgramFiles32)\MSBuild\Microsoft\Dynamics\AX</BuildTasksDirectory>
+    <Model>ISMModel</Model>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <OutputPath>bin</OutputPath>
+    <SchemaVersion>2.0</SchemaVersion>
+    <GenerateCrossReferences>True</GenerateCrossReferences>
+    <RunAppCheckerRules>False</RunAppCheckerRules>
+    <LogAppcheckerDiagsAsErrors>False</LogAppcheckerDiagsAsErrors>
+    <DeployOnline>False</DeployOnline>
+    <ProjectGuid>{c2cf8a7f-7d33-4ce7-817b-a564b0abc1cd}</ProjectGuid>
+    <Name>ISM-Telemetry</Name>
+    <RootNamespace>ISM-Telemetry</RootNamespace>
+    <StartupType>Class</StartupType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <Configuration>Debug</Configuration>
+    <DBSyncInBuild>False</DBSyncInBuild>
+    <GenerateFormAdaptors>False</GenerateFormAdaptors>
+    <Company>
+    </Company>
+    <Partition>initial</Partition>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DataEntityExpandParentChildRelations>False</DataEntityExpandParentChildRelations>
+    <DataEntityUseLabelTextAsFieldName>False</DataEntityUseLabelTextAsFieldName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="AxClass\ISMBatchJob_Extension">
+      <SubType>Content</SubType>
+      <Name>ISMBatchJob_Extension</Name>
+      <Link>Batch Telemetry\ISMBatchJob_Extension</Link>
+    </Content>
+    <Content Include="AxClass\ISMBatch_Extension">
+      <SubType>Content</SubType>
+      <Name>ISMBatch_Extension</Name>
+      <Link>Batch Telemetry\ISMBatch_Extension</Link>
+    </Content>
+    <Content Include="AxClass\ISMDMFPackageExporter_Extension">
+      <SubType>Content</SubType>
+      <Name>ISMDMFPackageExporter_Extension</Name>
+      <Link>DMF Telemetry\ISMDMFPackageExporter_Extension</Link>
+    </Content>
+    <Content Include="AxClass\ISMDMFPackageImporter_Extension">
+      <SubType>Content</SubType>
+      <Name>ISMDMFPackageImporter_Extension</Name>
+      <Link>DMF Telemetry\ISMDMFPackageImporter_Extension</Link>
+    </Content>
+    <Content Include="AxClass\ISMDMFStagingLog_Extension">
+      <SubType>Content</SubType>
+      <Name>ISMDMFStagingLog_Extension</Name>
+      <Link>DMF Telemetry\ISMDMFStagingLog_Extension</Link>
+    </Content>
+    <Content Include="AxClass\ISMDMFStagingValidationLog_Extension">
+      <SubType>Content</SubType>
+      <Name>ISMDMFStagingValidationLog_Extension</Name>
+      <Link>DMF Telemetry\ISMDMFStagingValidationLog_Extension</Link>
+    </Content>
+    <Content Include="AxClass\ISMDMFStagingWriter_Extension">
+      <SubType>Content</SubType>
+      <Name>ISMDMFStagingWriter_Extension</Name>
+      <Link>DMF Telemetry\ISMDMFStagingWriter_Extension</Link>
+    </Content>
+    <Content Include="AxClass\ISMDualWriteSyncOutbound_Extension">
+      <SubType>Content</SubType>
+      <Name>ISMDualWriteSyncOutbound_Extension</Name>
+      <Link>DualWrite\ISMDualWriteSyncOutbound_Extension</Link>
+    </Content>
+    <Content Include="AxClass\ISMExportToExcelBox_Extension">
+      <SubType>Content</SubType>
+      <Name>ISMExportToExcelBox_Extension</Name>
+      <Link>Excel export telemetry\ISMExportToExcelBox_Extension</Link>
+    </Content>
+    <Content Include="AxClass\ISMJsonSerializer">
+      <SubType>Content</SubType>
+      <Name>ISMJsonSerializer</Name>
+      <Link>JsonSerializer\ISMJsonSerializer</Link>
+    </Content>
+    <Content Include="AxClass\ISMRedirect">
+      <SubType>Content</SubType>
+      <Name>ISMRedirect</Name>
+      <Link>Base objects\ISMRedirect</Link>
+    </Content>
+    <Content Include="AxClass\ISMTelemetryBase">
+      <SubType>Content</SubType>
+      <Name>ISMTelemetryBase</Name>
+      <Link>Base objects\ISMTelemetryBase</Link>
+    </Content>
+    <Content Include="AxClass\ISMTelemetryBatch">
+      <SubType>Content</SubType>
+      <Name>ISMTelemetryBatch</Name>
+      <Link>Batch Telemetry\ISMTelemetryBatch</Link>
+    </Content>
+    <Content Include="AxClass\ISMTelemetryBatchEventHandler">
+      <SubType>Content</SubType>
+      <Name>ISMTelemetryBatchEventHandler</Name>
+      <Link>Batch Telemetry\ISMTelemetryBatchEventHandler</Link>
+    </Content>
+    <Content Include="AxClass\ISMTelemetryDMF">
+      <SubType>Content</SubType>
+      <Name>ISMTelemetryDMF</Name>
+      <Link>DMF Telemetry\ISMTelemetryDMF</Link>
+    </Content>
+    <Content Include="AxClass\ISMTelemetryDualWrite">
+      <SubType>Content</SubType>
+      <Name>ISMTelemetryDualWrite</Name>
+      <Link>DualWrite\ISMTelemetryDualWrite</Link>
+    </Content>
+    <Content Include="AxClass\ISMTelemetryEventHandler">
+      <SubType>Content</SubType>
+      <Name>ISMTelemetryEventHandler</Name>
+      <Link>Base objects\ISMTelemetryEventHandler</Link>
+    </Content>
+    <Content Include="AxClass\ISMTelemetryEventIds">
+      <SubType>Content</SubType>
+      <Name>ISMTelemetryEventIds</Name>
+      <Link>Base objects\ISMTelemetryEventIds</Link>
+    </Content>
+    <Content Include="AxClass\ISMTelemetryEventNames">
+      <SubType>Content</SubType>
+      <Name>ISMTelemetryEventNames</Name>
+      <Link>Base objects\ISMTelemetryEventNames</Link>
+    </Content>
+    <Content Include="AxClass\ISMTelemetryExcelExport">
+      <SubType>Content</SubType>
+      <Name>ISMTelemetryExcelExport</Name>
+      <Link>Excel export telemetry\ISMTelemetryExcelExport</Link>
+    </Content>
+    <Content Include="AxClass\ISMTelemetryGeneric">
+      <SubType>Content</SubType>
+      <Name>ISMTelemetryGeneric</Name>
+      <Link>Base objects\ISMTelemetryGeneric</Link>
+    </Content>
+    <Content Include="AxClass\ISMTelemetryProperties">
+      <SubType>Content</SubType>
+      <Name>ISMTelemetryProperties</Name>
+      <Link>Base objects\ISMTelemetryProperties</Link>
+    </Content>
+    <Content Include="AxClass\ISMTelemetryProperty">
+      <SubType>Content</SubType>
+      <Name>ISMTelemetryProperty</Name>
+      <Link>Base objects\ISMTelemetryProperty</Link>
+    </Content>
+    <Content Include="AxEdt\ISMIsEnabled">
+      <SubType>Content</SubType>
+      <Name>ISMIsEnabled</Name>
+      <Link>Base objects\ISMIsEnabled</Link>
+    </Content>
+    <Content Include="AxEdt\ISMTelemetryClass">
+      <SubType>Content</SubType>
+      <Name>ISMTelemetryClass</Name>
+      <Link>Base objects\ISMTelemetryClass</Link>
+    </Content>
+    <Content Include="AxEnum\ISMTelemetrySeverityLevel">
+      <SubType>Content</SubType>
+      <Name>ISMTelemetrySeverityLevel</Name>
+      <Link>Base objects\ISMTelemetrySeverityLevel</Link>
+    </Content>
+    <Content Include="AxFormExtension\SysIntParameters.ISM">
+      <SubType>Content</SubType>
+      <Name>SysIntParameters.ISM</Name>
+      <Link>Base objects\SysIntParameters.ISM</Link>
+    </Content>
+    <Content Include="AxLabelFile\ISM_en-US">
+      <SubType>Content</SubType>
+      <Name>ISM_en-US</Name>
+      <Link>Base objects\ISM_en-US</Link>
+    </Content>
+    <Content Include="AxTable\ISMTelemetryParameters">
+      <SubType>Content</SubType>
+      <Name>ISMTelemetryParameters</Name>
+      <Link>Base objects\ISMTelemetryParameters</Link>
+    </Content>
+    <Content Include="ISM.en-US.label.txt">
+      <SubType>Content</SubType>
+      <Name>ISM.en-US.label.txt</Name>
+      <DependentUpon>AxLabelFile\ISM_en-US</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Base objects" />
+    <Folder Include="Batch Telemetry" />
+    <Folder Include="DMF Telemetry" />
+    <Folder Include="Excel export telemetry" />
+    <Folder Include="DualWrite" />
+    <Folder Include="JsonSerializer" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
+  <Import Project="$(BuildTasksDirectory)\Microsoft.Dynamics.Framework.Tools.BuildTasks.17.0.targets" />
+</Project>

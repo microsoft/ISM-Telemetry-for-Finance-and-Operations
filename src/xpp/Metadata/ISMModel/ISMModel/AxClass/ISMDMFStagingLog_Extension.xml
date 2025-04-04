@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ISMDMFStagingLog_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+/// <summary>
+/// DMF Telemetry for Staging Log
+/// </summary>
+[ExtensionOf(tableStr(DMFStagingLog))]
+public final class ISMDMFStagingLog_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>insertLogs</Name>
+				<Source><![CDATA[
+    public static client server RecId insertLogs(DMFExecutionId         _dMFExecutionId,
+                                                 DMFSourceTarget        _sourceOrTarget,
+                                                 int                    _infologStartIndex,
+                                                 RecId                  _stagingLogRecId,
+                                                 DMFEntityName          _entityName,
+                                                 RefRecId               _batchId,
+                                                 DMFDefinitionGroupName _defGroupName)
+    {
+
+        ISMTelemetryDMF telemetry = ISMTelemetryDMF::construct();
+
+        //need to retrieve the logs before next call as there it will be cleared
+        InfologData infologData = infolog.copy(_infologStartIndex, infologLine());
+
+        RecId ret = next insertLogs(_dMFExecutionId, _sourceOrTarget, _infologStartIndex, _stagingLogRecId, _entityName, _batchId, _defGroupName);
+        try
+        {
+            str messageStr; 
+            MessageSeverity messageSeverity;
+            //Log the error
+            if (infologData)
+            {
+                for( int i = 1; i <= conlen(infologData); i++)
+                {
+                    container message =   conpeek(infologData, i);
+                    if (message)
+                    {
+                        if (conpeek(message, 2))//insert only if message not empty or null
+                        {
+ 
+                          
+                            messageSeverity = conpeek(message, 1);
+                            messageStr  += conpeek(message, 2);
+                            
+                        }
+                    }
+                }
+            }
+
+            telemetry.addRuntimeProperty(ISMTelemetryProperties::Message, messageStr);
+            telemetry.addRuntimeProperty(ISMTelemetryProperties::Severity, enum2Str(messageSeverity));
+
+
+            if(messageStr != '')
+                telemetry.processEvent(ISMTelemetryEventNames::DMFStagingLogMessage);
+        }
+        catch
+        {
+
+        }
+
+       
+
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

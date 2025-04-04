@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ISMExportToExcelBox_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+/// <summary>
+/// Extension to track excel exports
+/// </summary>
+[ExtensionOf(classStr(ExportToExcelBox))]
+public final class ISMExportToExcelBox_Extension
+{
+    private ISMTelemetryExcelExport telemetry;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>startExport</Name>
+				<Source><![CDATA[
+    [SuppressBPWarningAttribute('CARBPMethodNotReferenced','')]
+    public void startExport()
+    {
+        telemetry = ISMTelemetryExcelExport::construct();
+        telemetry.processEvent(ISMTelemetryEventNames::ExcelExportStarted);
+        next startExport();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>displayProgress</Name>
+				<Source><![CDATA[
+    public boolean displayProgress(int64 recordsProcessed, int finalizing)
+    {
+        boolean ret = next displayProgress(recordsProcessed, finalizing);
+
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::RecordsProcessed, int642Str(recordsProcessed));
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::Finalizing, int642Str(finalizing));
+        telemetry.processEvent(ISMTelemetryEventNames::ExcelExportProgress);
+
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>closeForm</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Performs actions at the end of the export
+    /// </summary>
+    public void closeForm(int64 rowsExported, int64 exportRowLimit, boolean exportRowLimitReached)
+    {
+        
+
+        next closeForm(rowsExported, exportRowLimit, exportRowLimitReached);
+
+        //process telemetry
+
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::RecordsProcessed, int642Str(rowsExported));
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::ExportRowLimit, int642Str(exportRowLimit));
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::ExportRowLimitReached, any2str(exportRowLimitReached));
+        telemetry.processEvent(ISMTelemetryEventNames::ExcelExportEnded);
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

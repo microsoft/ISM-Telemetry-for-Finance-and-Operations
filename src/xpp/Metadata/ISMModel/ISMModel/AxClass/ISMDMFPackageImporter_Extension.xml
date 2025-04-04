@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ISMDMFPackageImporter_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+/// <summary>
+/// This class will extentend on the DMFPackageimporter to track telemetry 
+/// 
+/// </summary>
+[ExtensionOf(classStr(DMFPackageImporter))]
+public final class ISMDMFPackageImporter_Extension
+{
+
+  
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>importFromPackageV2</Name>
+				<Source><![CDATA[
+    public DMFExecutionId importFromPackageV2(SharedServiceUnitURL packageUrl,
+                                            DMFDefinitionGroupName sourceDefinitionGroupId,
+                                            DMFExecutionId sourceExecutionId,
+                                            boolean execute,
+                                            boolean overwrite,
+                                            DataAreaId legalEntityId,
+                                            BatchGroupId importBatchGroupId,
+                                            boolean failOnError,
+                                            SharedServiceUnitFileID packageFileId,
+                                            boolean _processIntegrationBridgeData,
+                                            boolean _export,
+                                            boolean internalCall,
+                                            boolean _runAsyncWithoutBatch,
+                                            int _thresholdToRunInBatch,
+                                            int  _previewCount,
+                                            str _messageId)
+    {
+        ISMTelemetryDMF telemetry = ISMTelemetryDMF::construct();
+
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::SourceDefinitionGroupId, sourceDefinitionGroupId);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::SourceExecutionId, sourceExecutionId);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::Execute, any2Str(execute));
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::Overwrite, any2Str(overwrite));
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::LegalEntityId, legalEntityId);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::ImportBatchGroupId, importBatchGroupId);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::FailOnError, any2Str(failOnError));
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::PackageFileId, packageFileId);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::ProcessIntegrationBridgeData, any2Str(_processIntegrationBridgeData));
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::Export, any2Str(_export));
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::InternalCall, any2Str(internalCall));
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::RunAsyncWithoutBatch, any2Str(_runAsyncWithoutBatch));
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::ThresholdToRunInBatch, any2Str(_thresholdToRunInBatch));
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::PreviewCount, any2Str(_previewCount));
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::MessageId, _messageId);
+
+
+        DMFExecutionId executionId = next importFromPackageV2(packageUrl, sourceDefinitionGroupId, sourceExecutionId, execute, overwrite, legalEntityId, importBatchGroupId, failOnError, packageFileId, _processIntegrationBridgeData, _export, internalCall, _runAsyncWithoutBatch, _thresholdToRunInBatch, _previewCount, _messageId);
+		
+        telemetry.processEvent(ISMTelemetryEventNames::DMFImport);
+        
+        
+
+        return executionId;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

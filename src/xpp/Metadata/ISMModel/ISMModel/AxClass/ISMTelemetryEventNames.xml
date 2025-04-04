@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ISMTelemetryEventNames</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+/// <summary>
+/// Defines Telemetry event names logged into AppInsights
+/// </summary>
+public final class ISMTelemetryEventNames
+{
+    public static const str ISMEventName                         = 'ISMEventName';
+    public static const str BatchJobStatusUpdate                = 'BatchJobStatusUpdate';
+    public static const str BatchJobCreated                     = 'BatchJobCreated';
+    public static const str BatchStatusUpdate                   = 'BatchStatusUpdate';
+    public static const str DMFExportPackage                = 'DMFExportPackage';
+    public static const str DMFExportFile                = 'DMFExportFile';
+    public static const str DMFImport                = 'DMFImport';
+    public static const str DMFStagingLogMessage                = 'DMFStagingLogMessage';
+    public static const str ExcelExportStarted                = 'ExcelExportStarted';
+    public static const str ExcelExportEnded                = 'ExcelExportEnded';
+    public static const str ExcelExportProgress                = 'ExcelExportProgress';
+
+}
+]]></Declaration>
+		<Methods />
+	</SourceCode>
+</AxClass>

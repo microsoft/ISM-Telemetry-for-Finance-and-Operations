@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35431.28
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FC65038C-1B2F-41E1-A629-BED71D161FFF}") = "ISM-Telemetry (USR) [Industry Solutions Monitoring]", "ISM-Telemetry\ISM-Telemetry.rnrproj", "{C2CF8A7F-7D33-4CE7-817B-A564B0ABC1CD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C2CF8A7F-7D33-4CE7-817B-A564B0ABC1CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2CF8A7F-7D33-4CE7-817B-A564B0ABC1CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {68319194-0E40-4C16-92CC-E5A3DE4D7A65}
+	EndGlobalSection
+	GlobalSection(CRMSolutionProperties) = preSolution
+		SolutionIsBoundToCRM = True
+	EndGlobalSection
+EndGlobal

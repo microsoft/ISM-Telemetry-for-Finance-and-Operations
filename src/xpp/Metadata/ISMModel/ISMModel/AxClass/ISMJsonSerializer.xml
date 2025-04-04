@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ISMJsonSerializer</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+/// <summary>
+/// Custom serliaziser for JSON serialization of tabular objects.
+/// </summary>
+using Newtonsoft.Json.Linq;
+using MetaModel = Microsoft.Dynamics.AX.Metadata.MetaModel;
+public class ISMJsonSerializer
+{
+    protected JsonSerializerSettings settings = null;
+    protected Map mapFields = new Map(Types::String, Types::AnyType);
+    protected Common common;
+    JObject jsonRoot;
+
+
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>new</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Creates a new instance of the <c>JsonSerializer</c> class given the designated parameters.
+    /// </summary>
+    /// <param name = "_settings">The parameters used to influence the serialization.</param>
+    internal void new(JsonSerializerSettings _settings, Common _common)
+    {
+        this.settings = _settings;
+        this.common = _common;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>SerializeJSON</Name>
+				<Source><![CDATA[
+    public static str SerializeJSON(Common _common)
+    {
+        str ret; 
+        JsonSerializerSettings settings = new JsonSerializerSettings();
+        
+        ISMJsonSerializer serializer = new ISMJsonSerializer(settings, _common);
+        ret = serializer.serialize();
+    
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>serialize</Name>
+				<Source><![CDATA[
+    private str serialize()
+    {
+        str ret; 
+
+        jsonRoot = new JObject();
+
+        DictTable tableMetadata = new DictTable(common.TableId);
+
+        this.serializeUserFields(tableMetadata);
+
+        ret = jsonRoot.ToString();
+        return ret;
+    
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>serializeUserFields</Name>
+				<Source><![CDATA[
+    private void serializeUserFields(DictTable _tableMetadata)
+    {
+        if (_tableMetadata.supportInheritance() && _tableMetadata.extends())
+        {
+            DictTable extendsTable = new DictTable(_tableMetadata.extends());
+            this.SerializeUserFields(extendsTable);
+        }
+
+        int fieldCount = _tableMetadata.fieldCnt();
+        for (int fieldNo = 1; fieldNo <= fieldCount; fieldNo++)
+        {
+            DictField field = _tableMetadata.fieldObject(_tableMetadata.fieldCnt2Id(fieldNo));
+
+        this.serializeField(field);
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>serializeField</Name>
+				<Source><![CDATA[
+    protected void serializeField(DictField _field)
+    {
+        JObject jsonField = new JObject();
+        str fieldName = _field.name();
+        var fieldId = fieldName2Id(common.TableId, fieldName);
+        
+        
+        //jsonField.set_Item('Name', fieldName);
+        //jsonField.set_Item('Id', fieldId);
+
+        System.Object jsonValue = null;
+
+        anytype fieldValue = common.(fieldId);
+
+        switch (this.basetype(_field))
+        {
+            // no container export
+            case Types::Container:
+                {
+                    container v = fieldValue;
+                    jsonValue = null;
+                }
+                break;
+
+            case Types::Date:
+                {
+
+                    jsonValue = new JValue(this.atomicValueToNetObject(fieldValue, Types::Date));
+                }
+                break;
+
+            case Types::Enum:
+                {
+                    var enum = enumId2Name(_field.enumId());
+                    if (enum == 'boolean')
+                    {
+                        System.Boolean b = fieldValue != 0;
+                        jsonValue =  new JValue(b);
+                    }
+                    else
+                    {
+                        jsonValue =  new JValue(this.atomicValueToNetObject(fieldValue, Types::Enum));
+                    }
+                }
+                break;
+
+            case Types::Guid:
+                {
+                    guid v = any2Guid(fieldValue);
+
+                    jsonValue = new JValue(this.atomicValueToNetObject(v, Types::Guid));
+                }
+                break;
+
+            case Types::Int64:
+                {
+                    int64 v = any2Int64(fieldValue);
+             
+                    jsonValue = new JValue(this.atomicValueToNetObject(v, Types::Int64));
+                }
+                break;
+
+            case Types::Integer:
+                {
+                    int v = any2Int(fieldValue);
+                    jsonValue = new JValue(this.atomicValueToNetObject(v, Types::Integer));
+                }
+                break;
+
+            case Types::Real:
+                {
+                    real v = any2Real(fieldValue);
+                    jsonValue =  new JValue(this.atomicValueToNetObject(v, Types::Real));
+                }
+                break;
+
+            case Types::String:
+            case Types::VarString:
+                {
+                    str v = any2Str(fieldValue);
+                    
+                    jsonValue =  new JValue(this.atomicValueToNetObject(v, Types::String));
+                }
+                break;
+           
+            case Types::Time:
+                {
+                    // There is no kernel function to produce a value of type Time.
+                    TimeOfDay v = fieldValue;
+
+                    jsonValue =  new JValue(this.atomicValueToNetObject(v, Types::Time));
+                }
+                break;
+            case Types::UtcDateTime:
+                {
+                    utcdatetime v = FieldValue;
+
+                    jsonValue =  new JValue(this.atomicValueToNetObject(v, Types::UtcDateTime));
+                }
+                ;
+                break;
+        }
+
+        jsonRoot.set_Item(fieldName, jsonValue);
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>basetype</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Calculates the base type of the field described in the designated metadata.
+    /// </summary>
+    /// <param name = "_field">The metadata describing the field.</param>
+    /// <returns>The Types instance describing the field type.</returns>
+    [Wrappable(false)]
+    protected Types basetype(DictField _field)
+    {
+        int id = _field.typeId();
+        if (id == 0)
+            return _field.type();
+        
+        DictType t = new DictType(id);
+        return t.baseType();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>atomicValueToNetObject</Name>
+				<Source><![CDATA[
+    ///// <summary>
+    ///// Creates the JSON array containing the elements in the given X++ container.
+    ///// The container will call itself recursively to handle nested containers.
+    ///// </summary>
+    ///// <param name = "_container">The container to serialize.</param>
+    ///// <returns>The array of serialized container values.</returns>
+    //[Wrappable(false)]
+    //protected JArray containerToJson(container _container)
+    //{
+    //    var result = new JArray();
+    //    if (conLen(_container) == 1 && typeOf(conPeek(_container, 1)) == Types::Blob)
+    //    {
+    //        var b = new BinData();
+    //        b.setData(_container);
+    //        str content = b.base64Encode();
+    //        result.Add(new JValue(content));
+    //    }
+    //    else
+    //    {
+    //        int elements = conLen(_container);
+    //        for (int i = 1; i <= elements; i++)
+    //        {
+    //            anytype v = conPeek(_container, i);
+    //            if (typeOf(v) == Types::Container)
+    //            {
+    //                // Call recursively to deal with containers within the container.
+    //                result.Add(this.containerToJson(v));
+    //            }
+    //            else
+    //            {
+    //                result.Add(new JValue(this.atomicValueToNetObject(v, typeOf(v))));
+    //            }
+    //        }
+    //    }
+
+    //    return result;
+    //}
+
+    /// <summary>
+    /// Gets the .NET type corresponding to the given X++ anytype value.
+    /// For instance if the method is passed an anytype value that represents
+    /// an int (i.e. an X++ int), the method will return a System.Int32.
+    /// </summary>
+    /// <param name = "_value">The anytype value for which a System.Object instance is returned.</param>
+    /// <param name = "_type">The type of the value passed.</param>
+    /// <returns>The .NET System.Object value representing the value.</returns>
+    [Wrappable(false)]
+    protected System.Object atomicValueToNetObject(anytype _value, Types _type)
+    {
+        switch(_type)
+        {
+            case Types::Date:
+                {
+                    Date d = any2Date(_value);
+                    System.DateTime value = new System.DateTime(year(d), mthOfYr(d), dayOfMth(d));
+                    return value;
+                }
+            case Types::Enum:
+                {
+                    int value = _value;
+                    return value;
+                }
+            case Types::Guid:
+                {
+                    System.Guid value = _value;
+                    return value;
+                }
+            case Types::Integer:
+                {
+                    int value = _value;
+                    return value;
+                }
+            case Types::Int64:
+                {
+                    System.Int64 value = _value;
+                    return value;
+                }
+            case Types::Real:
+                {
+                    System.Decimal value = any2Real(_value);
+                    return value;
+                }
+            case Types::String:
+            case Types::VarString:
+                {
+                    str value = any2Str(_value);
+                    return value;
+                }
+            case Types::Time:
+                {
+                    // Time is recorded in AX as the number of seconds since midnight.
+                    // We choose timespan as the representation of the time of day,
+                    // instead of a DateTime instance, that carries around a date
+                    // that is not meaningful in this context.
+                    System.TimeSpan value = System.TimeSpan::FromSeconds(any2Int(_value));
+                    return value;
+                }
+            case Types::UtcDateTime:
+                {
+                    utcdatetime value = _value;
+                    return new System.DateTime(
+                        DateTimeUtil::year(value), DateTimeUtil::month(value), DateTimeUtil::day(value),
+                        DateTimeUtil::hour(value), DateTimeUtil::minute(value), DateTimeUtil::second(value),
+                        System.DateTimeKind::Utc);
+                }
+
+        }
+        return null;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

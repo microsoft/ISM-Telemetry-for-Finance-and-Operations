@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ISMTelemetryEventHandler</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+/// <summary>
+/// Initalizes the telemetry parameters for all child classes of ISMTelemetryBase
+/// </summary>
+internal final class ISMTelemetryEventHandler
+{
+    
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>SysIntParameters_OnInitializing</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Initializes the telemetry parameters for all child classes of ISMTelemetryBase
+    /// </summary>
+    /// <param name="sender">sender</param>
+    /// <param name="e">event</param>
+    [FormEventHandler(formStr(SysIntParameters), FormEventType::Initializing)]
+    public static void SysIntParameters_OnInitializing(xFormRun sender, FormEventArgs e)
+    {
+
+        #define.ClassPath(@"\Classes\%1")
+
+        SysDictClass    dictClass;
+        List            extendedClassList;
+        ListEnumerator  listEnumerator;
+        ClassName       className;
+       // MethodName      methodName;
+        ClassId         childClass;
+        TreeNode        childClassNode;
+        ISMTelemetryParameters  param;
+
+        //set parent class and method you want to investigate
+        className           = classStr(ISMTelemetryBase);
+        //methodName          = "DefaultDimension";
+
+        dictClass           = new SysDictClass(className2Id(classname));
+        extendedClassList   = dictClass.extendedBy();
+
+        //loop through all child classes
+        if (extendedClassList.elements())
+        {
+            listEnumerator = extendedClassList.getEnumerator();
+
+            while (listEnumerator.moveNext())
+            {
+                childClass      = listEnumerator.current();
+                childClassNode  = TreeNode::findNode(strFmt(#ClassPath, classId2Name(childClass)));
+
+                //param = ISMTelemetryParameters::find(childClassNode.AOTname());
+                param = ISMTelemetryParameters::find(childClassNode.AOTname());
+
+                if(!param)
+                {
+                    ttsbegin;
+                    param.clear();
+                    param.TelemetryClass = childClassNode.AOTname();
+                    param.IsEnabled = NoYes::Yes;
+                    param.SeverityLevel = ISMTelemetrySeverityLevel::Information;
+                    param.insert();
+                    ttscommit;
+                }
+
+            }
+            
+        }
+        
+
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

@@ -1,0 +1,41 @@
+## F&O specific
+
+## Ignore everything
+/*
+!pipelines/
+## But keep custom package and models for Package "Git-Tst"
+## This will capture all models the descriptors for the package Git-Tst
+!src/
+
+
+## Model ISMModel
+src/xpp/metadata/ISMModel/*
+!src/xpp/metadata/ISMModel/ISMModel/
+!src/xpp/metadata/ISMModel/Descriptor/
+src/xpp/metadata/ISMModel/Reports/
+
+src/xpp/metadata/XppSource/
+
+##
+*.vsidx
+
+## VS related files 
+*copilot*
+v17
+
+
+## Also keep any binary package that may be in source control for binary package "Binary Company"
+## this will keep all files and folders with files in folder "Binary Company"
+!/Binary Company
+
+## keep VS Projects in PackagesLocalDirectory\Projects
+!/Projects
+
+## Also include the following files in root of PackagesLocalDirectory
+!.gitignore
+## YAML Pipeline for DevOps
+!azure-pipelines.yml
+## settings for NuGet for Pipeline
+!nuget.config
+## packages references for NuGet for use in Pipeline
+!packages.config

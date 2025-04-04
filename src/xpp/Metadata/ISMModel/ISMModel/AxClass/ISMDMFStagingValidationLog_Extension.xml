@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ISMDMFStagingValidationLog_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+/// <summary>
+/// Telemtrty for error / Staging logs
+/// </summary>
+[ExtensionOf(tableStr(DMFStagingValidationLog))]
+public final class ISMDMFStagingValidationLog_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>insert</Name>
+				<Source><![CDATA[
+    void insert()
+    {
+        DMFEntity entity;
+
+        next insert();
+
+
+
+        if(this.ErrorMessage != '')
+        {
+            ISMTelemetryDMF telemetry = ISMTelemetryDMF::construct();
+            telemetry.addRuntimeProperty(ISMTelemetryProperties::DefinitionGroupId, this.DefinitionGroupName);
+            telemetry.addRuntimeProperty(ISMTelemetryProperties::SourceExecutionId, this.ExecutionId);
+            telemetry.addRuntimeProperty(ISMTelemetryProperties::EntityName, this.EntityName);
+            telemetry.addRuntimeProperty(ISMTelemetryProperties::StagingRecId, int642Str(this.StagingRecId));
+            telemetry.addRuntimeProperty(ISMTelemetryProperties::StagingColumnName, this.StagingColumnName);
+            telemetry.addRuntimeProperty(ISMTelemetryProperties::Error, this.ErrorMessage);
+            telemetry.addRuntimeProperty(ISMTelemetryProperties::SourceOrTarget, enum2Str(this.SourceTarget));
+
+
+            //get the staging record. 
+            entity = DMFEntity::find(this.EntityName);
+            //SysDictTable dictTable = new   SysDictTable(tableName2Id(entity.EntityTable));
+            
+            DictTable dictTable = new DictTable(tableName2Id(entity.EntityTable));
+            Common c2 = dictTable.makeRecord();
+
+            select c2
+                where c2.RecId == this.StagingRecId;
+
+            telemetry.addRuntimeProperty(ISMTelemetryProperties::StagingRecord, ISMJsonSerializer::SerializeJSON(c2), true);
+          
+            telemetry.processEvent(ISMTelemetryEventNames::DMFStagingLogMessage);
+        }
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
