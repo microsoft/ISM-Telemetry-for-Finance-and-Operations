@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ISMTelemetryEventIds</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+/// <summary>
+/// Defines EventIds to reuse for telemetry purpose 
+/// </summary>
+public static final class ISMTelemetryEventIds
+{
+    public static const str ISMEvent                    = '1'; //ISM event 
+    public static const str ISMGenericEvent                   = '2'; //ISM event 2
+}
+]]></Declaration>
+		<Methods />
+	</SourceCode>
+</AxClass>

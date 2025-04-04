@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ISMRedirect</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+/// <summary>
+/// Prototype class to be able to open FinOps directly with a Link from e.g. Data explorer
+/// </summary>
+public class ISMRedirect
+{
+
+    str URL;
+    str reference;
+    str formName;
+    Map parameters;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>redirect</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Redirects to the specified URL.
+    /// </summary>
+    public void redirect()
+    {
+        URL = URLUtility::getUrl();
+
+        this.extractUrlParameters();
+        this.initValues();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>initValues</Name>
+				<Source><![CDATA[
+    private void initValues()
+    {
+        formName = parameters.lookup("Form");
+        reference = parameters.lookup("Reference");
+    
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>extractUrlParameters</Name>
+				<Source><![CDATA[
+    private Map extractUrlParameters()
+    {
+        parameters = new Map(Types::String, Types::String);
+        container urlParts;
+        int i;
+        str key, value;
+
+        // Split the URL to get the query string part
+        urlParts = str2con(url, '?');
+        if (conLen(urlParts) > 1)
+        {
+            str queryString = conPeek(urlParts, 2);
+            container queryParams = str2con(queryString, '&');
+
+            // Iterate through the query parameters
+            for (i = 1; i <= conLen(queryParams); i++)
+            {
+                container paramParts = str2con(conPeek(queryParams, i), '=');
+                if (conLen(paramParts) == 2)
+                {
+                    key = conPeek(paramParts, 1);
+                    value = conPeek(paramParts, 2);
+                    parameters.insert(key, value);
+                }
+            }
+        }
+
+        return parameters;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>openForm</Name>
+				<Source><![CDATA[
+    private void openForm()
+    {
+        //MenuFunction menuFunction;
+        //Args args;
+
+        //// Initialize the Args object with the SalesTable form name
+        //args = new Args();
+        //args.name(formStr(SalesTable));
+
+        //// Set the salesId as a parameter
+        //args.record(SalesTable::find(reference));
+
+        //// Initialize the MenuFunction object with the SalesTable form
+        //menuFunction = new MenuFunction(menuItemDisplayStr(SalesTable), MenuItemType::Display);
+
+        //// Run the form with the specified arguments
+        //menuFunction.run(args);
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

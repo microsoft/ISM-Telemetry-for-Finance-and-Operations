@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ISMDualWriteSyncOutbound_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+/// <summary>
+/// Telemetry for Dualwrite errors
+/// </summary>
+using Microsoft.Dynamics.ApplicationPlatform.Environment;
+using Microsoft.Dynamics.AX.Security.ADALClientAuthentication;
+using Microsoft.Dynamics.BusinessPlatform.SharedTypes;
+using Microsoft.Dynamics.DualWrite.Metadata;
+using Microsoft.Dynamics.DualWrite.Metadata.Util;
+using Microsoft.Dynamics.DualWrite.SyncProviders;
+using Microsoft.Dynamics.DualWrite.Metadata.Contracts;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+[ExtensionOf(classStr(DualWriteSyncOutbound))]
+public final class ISMDualWriteSyncOutbound_Extension
+{
+    public str errorMsg;
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>WriteEntityRecordToCDS</Name>
+				<Source><![CDATA[
+    [SuppressBPWarningAttribute('CARBPMethodNotReferenced','')]
+    protected void WriteEntityRecordToCDS(Common entityRecord, NoYes isDelete, boolean isBatchCommit)
+    {
+        try
+        {
+        
+        
+        next WriteEntityRecordToCDS(entityRecord, isDelete, isBatchCommit);
+
+        }
+        catch
+        {
+        
+            Info("Something failed");
+        }
+        ResponseContract response;
+        //CCBDualWriteSyncOutbound outbound = new CCBDualWriteSyncOutbound(null);
+        this.checkForModifications = false;
+
+
+        response = this.responseContract; 
+  
+
+        if(response.ExecutionStatus == ExecutionStatus::Failed)
+        {
+            errorMsg = response.GetFormattedResponseObject();
+            errorMsg += response.GetFormattedErrorMessage();
+        }
+
+
+        if(errorMsg != '')
+        {
+            ISMTelemetryDualWrite telemetry = ISMTelemetryDualWrite::construct();
+            telemetry.addRuntimeProperty(ISMTelemetryProperties::Error , errorMsg);
+            telemetry.addRuntimeProperty(ISMTelemetryProperties::EntityName, tableId2Name(entityRecord.TableId));
+            telemetry.addRuntimeProperty(ISMTelemetryProperties::RecordData, JsonSerializer::jsonSerialize(entityRecord));
+            telemetry.processEvent();
+        }
+        
+
+
+
+
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

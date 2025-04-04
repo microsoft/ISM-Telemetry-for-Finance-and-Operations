@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ISMTelemetryProperty</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+/// <summary>
+/// Generic Property class for Application Insights Telemetry
+/// </summary>
+public class ISMTelemetryProperty extends SysApplicationInsightsProperty
+{
+    private str key;
+    private SysApplicationInsightsComplianceDataType dataType;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>contruct</Name>
+				<Source><![CDATA[
+    // Constructor
+
+    /// <summary>
+    /// Contructs a new object for Telemetry property
+    /// </summary>
+    /// <param name = "_key">The key </param>
+    /// <param name = "_value">the value</param>
+    /// <param name = "_dataType">the data type</param>
+    /// <returns></returns>
+    public static ISMTelemetryProperty contruct(str _key, str _value, SysApplicationInsightsComplianceDataType _dataType)
+    {
+        return new ISMTelemetryProperty(_key, _value, _dataType);
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>new</Name>
+				<Source><![CDATA[
+    [SuppressBPWarningAttribute('CARBPMethodNotReferenced','')]
+    private void new(str _key, str _value, SysApplicationInsightsComplianceDataType _dataType)
+    {
+        key = _key;
+        dataType = _dataType;
+        super(_value);
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>initialize</Name>
+				<Source><![CDATA[
+    protected container initialize()
+    {
+        return [key, dataType];
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

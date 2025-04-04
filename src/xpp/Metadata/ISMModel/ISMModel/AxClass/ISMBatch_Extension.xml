@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ISMBatch_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+/// <summary>
+/// Extends the Batch table to send telemetry when the status of the batch is updated
+/// </summary>
+[ExtensionOf(tableStr(Batch))]
+public final class ISMBatch_Extension
+{
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>update</Name>
+				<Source><![CDATA[
+    public void update()
+    {
+
+        try
+        {
+            if(this.Status != this.orig().Status)
+            {
+                ISMTelemetryBatch batch = ISMTelemetryBatch::construct(this.orig(), this);
+                batch.processEvent(ISMTelemetryEventNames::BatchStatusUpdate);
+            }
+        }
+        catch
+        {
+            //Do nothing, telemetry should not stop the process
+        }
+
+
+
+        next update();
+
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

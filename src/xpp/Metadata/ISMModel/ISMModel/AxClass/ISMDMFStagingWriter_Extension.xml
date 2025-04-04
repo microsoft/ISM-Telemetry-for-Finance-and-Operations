@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ISMDMFStagingWriter_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+/// <summary>
+/// Tracks runtime of the staging writer 
+/// </summary>
+[ExtensionOf(classStr(DMFStagingWriter))]
+public final class ISMDMFStagingWriter_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>run</Name>
+				<Source><![CDATA[
+    public void run()
+    {
+
+        ISMTelemetryDMF telemetry = ISMTelemetryDMF::construct();
+
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::SourceExecutionId, executionId);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::EntityName, entityName);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::DataAreaId, selectableDataArea);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::IsCompare, any2Str(isCompare));
+
+
+
+        next run();
+
+        telemetry.processEvent(ISMTelemetryEventNames::DMFImport);
+
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
