@@ -56,6 +56,10 @@ public final class ISMDMFStagingLog_Extension
                 }
             }
 
+            telemetry.addRuntimeProperty(ISMTelemetryProperties::DefinitionGroupId, _defGroupName);
+            telemetry.addRuntimeProperty(ISMTelemetryProperties::EntityName, _entityName);
+            telemetry.addRuntimeProperty(ISMTelemetryProperties::ExecutionId, _dMFExecutionId);
+            telemetry.addRuntimeProperty(ISMTelemetryProperties::StagingRecId, int642Str(_stagingLogRecId));
             telemetry.addRuntimeProperty(ISMTelemetryProperties::Message, messageStr);
             telemetry.addRuntimeProperty(ISMTelemetryProperties::Severity, enum2Str(messageSeverity));
 

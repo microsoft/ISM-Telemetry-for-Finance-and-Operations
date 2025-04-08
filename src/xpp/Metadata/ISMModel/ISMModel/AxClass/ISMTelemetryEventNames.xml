@@ -18,9 +18,13 @@ public final class ISMTelemetryEventNames
     public static const str DMFExportFile                = 'DMFExportFile';
     public static const str DMFImport                = 'DMFImport';
     public static const str DMFStagingLogMessage                = 'DMFStagingLogMessage';
+    public static const str DMFStagingLogDetailMessage                = 'DMFStagingLogMessage';
     public static const str ExcelExportStarted                = 'ExcelExportStarted';
     public static const str ExcelExportEnded                = 'ExcelExportEnded';
     public static const str ExcelExportProgress                = 'ExcelExportProgress';
+    public static const str DualWriteMapStarted                = 'DualWriteMapStarted';
+    public static const str DualWriteMapStopped              = 'DualWriteMapStopped';
+    public static const str DualWriteMapPaused                = 'DualWriteMapPaused';
 
 }
 ]]></Declaration>

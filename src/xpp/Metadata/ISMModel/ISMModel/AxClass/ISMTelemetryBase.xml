@@ -124,8 +124,8 @@ abstract class ISMTelemetryBase
             {
                 callStackStr += conpeek(ISMCallStack, i);
             }
-
-            this.addRuntimeProperty(ISMTelemetryProperties::CallStack, callStackStr);
+            //make sure callstack is compressed
+            this.addRuntimeProperty(ISMTelemetryProperties::CallStack, callStackStr, true);
 
         }
         catch

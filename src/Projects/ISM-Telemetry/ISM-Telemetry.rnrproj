@@ -68,6 +68,11 @@
       <Name>ISMDMFStagingWriter_Extension</Name>
       <Link>DMF Telemetry\ISMDMFStagingWriter_Extension</Link>
     </Content>
+    <Content Include="AxClass\ISMDualWriteProjectConfiguration_Extension">
+      <SubType>Content</SubType>
+      <Name>ISMDualWriteProjectConfiguration_Extension</Name>
+      <Link>DualWrite\ISMDualWriteProjectConfiguration_Extension</Link>
+    </Content>
     <Content Include="AxClass\ISMDualWriteSyncOutbound_Extension">
       <SubType>Content</SubType>
       <Name>ISMDualWriteSyncOutbound_Extension</Name>

@@ -22,7 +22,7 @@ public final class ISMDMFStagingWriter_Extension
 
         ISMTelemetryDMF telemetry = ISMTelemetryDMF::construct();
 
-        telemetry.addRuntimeProperty(ISMTelemetryProperties::SourceExecutionId, executionId);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::ExecutionId, executionId);
         telemetry.addRuntimeProperty(ISMTelemetryProperties::EntityName, entityName);
         telemetry.addRuntimeProperty(ISMTelemetryProperties::DataAreaId, selectableDataArea);
         telemetry.addRuntimeProperty(ISMTelemetryProperties::IsCompare, any2Str(isCompare));

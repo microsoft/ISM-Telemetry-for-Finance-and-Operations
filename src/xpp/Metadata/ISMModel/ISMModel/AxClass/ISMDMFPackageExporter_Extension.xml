@@ -24,7 +24,7 @@ public final class ISMDMFPackageExporter_Extension
         telemetry.addRuntimeProperty(ISMTelemetryProperties::PackageName, packageName);
         telemetry.addRuntimeProperty(ISMTelemetryProperties::PackageUrl, packageUrl);
         telemetry.addRuntimeProperty(ISMTelemetryProperties::DefinitionGroupId, definitionGroupId);
-        telemetry.addRuntimeProperty(ISMTelemetryProperties::SourceExecutionId, executionId);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::ExecutionId, executionId);
         telemetry.addRuntimeProperty(ISMTelemetryProperties::ReExecute, any2Str(reExecute));
         telemetry.addRuntimeProperty(ISMTelemetryProperties::LegalEntityId, legalEntityId);
         telemetry.addRuntimeProperty(ISMTelemetryProperties::CreatePackage, any2Str(createPackage));
@@ -48,9 +48,9 @@ public final class ISMDMFPackageExporter_Extension
     {
 
         ISMTelemetryDMF telemetry = ISMTelemetryDMF::construct();
-        telemetry.addRuntimeProperty(ISMTelemetryProperties::SourceDefinitionGroupId, _definitionGroup);
-        telemetry.addRuntimeProperty(ISMTelemetryProperties::SourceExecutionId, _executionId);
-        telemetry.addRuntimeProperty(ISMTelemetryProperties::Entity, _entity);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::DefinitionGroupId, _definitionGroup);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::ExecutionId, _executionId);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::EntityName, _entity);
         telemetry.addRuntimeProperty(ISMTelemetryProperties::SourceFormat, _sourceFormat);
         telemetry.addRuntimeProperty(ISMTelemetryProperties::PreviewCount, int2Str(_previewCount));
 
