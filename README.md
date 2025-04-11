@@ -27,15 +27,15 @@ This project provides sample implementations of telemetry in D365 FSCM. It inclu
 
 ## Installation
 
-1. Clone the repository OR download the "MyModel" folder
-2. Add the MyModel to your PackagesLocalDirectory folder
-3. If you use an UDE environment, you "Configure metadata" and point the folder for Custom metadata to the "XPPCode" folder
+1. Clone the repository OR download the "ISMModel" folder
+2. Add the ISMModel to your PackagesLocalDirectory folder
+3. If you use an UDE environment, you "Configure metadata" and point the folder for Custom metadata to the "Metadata" folder
    ![image](https://github.com/user-attachments/assets/94915643-3bbd-46a9-8e88-a17842a604d9)
 
-4. If you use a non UDE environment, copy the "XPPCode/MyModel" into the PackagesLocalDirectory folder of your installation
+4. If you use a non UDE environment, copy the "src/xpp/Metadata/ISMModel" into the PackagesLocalDirectory folder of your installation
 5. Refresh the models in VS
    ![image](https://github.com/user-attachments/assets/c63090fe-8240-4103-adc0-977be350ff55)
-6. Build the model "MyModel"
+6. Build the model "ISMModel"
 7. Enable the feature "Monitoring and Telemetry" in "Feature management workspace"
    ![image](https://github.com/user-attachments/assets/9e9e52c7-8238-42c6-93ce-88aff7c91bd7)
 9. Once the changes are all built, open the menu "Monitoring and telemetry parameters" 
@@ -110,20 +110,20 @@ With the base classes you have the ability to log telemetry almost in any circum
 
 ### Practical example 
 
-The "MyTelemetryGeneric" class is the fully implemented version of telemetry tracking, lets take that one as an example:
+The "ISMTelemetryGeneric" class is the fully implemented version of telemetry tracking, lets take that one as an example:
 
 ```
 /// <summary>
-/// Generic telemetry class for My model
+/// Generic telemetry class for ISM model
 /// </summary>
-class MyTelemetryGeneric extends MyTelemetryBase
+class ISMTelemetryGeneric extends ISMTelemetryBase
 
 {
     public void new()
     {
         super();
         
-        this.eventId = MyTelemetryEventIds::MyEvent;
+        this.eventId = ISMTelemetryEventIds::ISMEvent;
     }
 
     // if the log level is set to information it will log the request and response data as wekk as there is an error
@@ -155,16 +155,16 @@ Code for the extension
 
 ```
 [ExtensionOf(classStr(CustAccountStatementExtController))]
-internal final class MyCustAccountStatementExtController_Extension
+internal final class ISMCustAccountStatementExtController_Extension
 {
     protected void runPrintMgmt()
     {
 
-        MyTelemetryGeneric telemetry = new MyTelemetryGeneric(); //This will start the stopwatch
+        ISMTelemetryGeneric telemetry = new ISMTelemetryGeneric(); //This will start the stopwatch
 
         next runPrintMgmt();
 
-        telemetry.processEvent(MyTelemetryEventNames::CustomerStatement);
+        telemetry.processEvent(ISMTelemetryEventNames::CustomerStatement);
     }
 
 }
@@ -176,9 +176,9 @@ Code for the Eventname:
 /// <summary>
 /// Defines Telemetry event names logged into AppInsights
 /// </summary>
-public final class MyTelemetryEventNames
+public final class ISMTelemetryEventNames
 {
-    public static const str MyEventName                         = 'MyEventName';
+    public static const str ISMEventName                         = 'ISMEventName';
     public static const str BatchJobStatusUpdate                = 'BatchJobStatusUpdate';
     public static const str BatchJobCreated                     = 'BatchJobCreated';
     public static const str BatchStatusUpdate                   = 'BatchStatusUpdate';
@@ -193,27 +193,27 @@ The telemetry class you declare can be your own created one, or the generic one,
 
 If we want to add additional properties e.g. from the previous screenshot of the user selection, we can add them with "addRuntimeProperty" 
 
-1. Adding a new line for "CustAccount" in "MyTelemetryProperties"
+1. Adding a new line for "CustAccount" in "ISMTelemetryProperties"
 ```
 public static const str CustAccount 		        = 'CustAccount';
 ```
 2. Changing the extension to add a runtimeproperty
 ```
 [ExtensionOf(classStr(CustAccountStatementExtController))]
-internal final class MyCustAccountStatementExtController_Extension
+internal final class ISMCustAccountStatementExtController_Extension
 {
     protected void runPrintMgmt()
     {
 
-        MyTelemetryGeneric telemetry = new MyTelemetryGeneric(); //This will start the stopwatch
+        ISMTelemetryGeneric telemetry = new ISMTelemetryGeneric(); //This will start the stopwatch
 
         CustAccountStatementExtContract contract = this.parmContract() as CustAccountStatementExtContract;
         
-        telemetry.addRuntimeProperty(MyTelemetryProperties::CustAccount, contract.parmCustAccount());
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::CustAccount, contract.parmCustAccount());
         
         next runPrintMgmt();
 
-        telemetry.processEvent(MyTelemetryEventNames::CustomerStatement);
+        telemetry.processEvent(ISMTelemetryEventNames::CustomerStatement);
     }
 
 }
@@ -248,7 +248,7 @@ In most cases the "processEvent" are beeing, depending on the need of the custom
 processTrace should be used if you want to trace a specific processs, e.g. a new functionality where you want to track very detailed at the beginning but want to reduce it once the feature settles down.
 
 ### Tracking time in telemetry 
-By default, every time you declare a class like telemetry = new MyTelemetryGeneric(), it will start a .NET stopwatch. Once you do "processEvent", "processTrace" or "processMetric" it will capture the elapsed time and store it automatically as "ElapsedTimeMilliseconds" in your telemetry data. Also it will restart the stopwatch, in case you want to track more data. 
+By default, every time you declare a class like telemetry = new ISMTelemetryGeneric(), it will start a .NET stopwatch. Once you do "processEvent", "processTrace" or "processMetric" it will capture the elapsed time and store it automatically as "ElapsedTimeMilliseconds" in your telemetry data. Also it will restart the stopwatch, in case you want to track more data. 
 
 From a data perspective, each appInsights entry will have either the time captured from declaration to event processing or from previous event to current event. 
 
@@ -281,13 +281,13 @@ This can be used if you declare the telemetry on a class level and you process t
 This could be the case for the customer statement as example above, instead of adding it manually, you can create a own telemetry class for it, where you enricht additional data and then add it as base property. 
 
 ```
-internal final class MyTelemetryCustStatement extends MyTelemetryBase
+internal final class ISMTelemetryCustStatement extends ISMTelemetryBase
 {
     public void new(CustAccount _custaccount)
     {
         super();
 
-        this.addBaseProperty(MyTelemetryProperties::CustAccount,_custaccount);
+        this.addBaseProperty(ISMTelemetryProperties::CustAccount,_custaccount);
         
     }
 
@@ -307,19 +307,19 @@ Now you can use this in the controller, declare on class level.
 
 ```
 [ExtensionOf(classStr(CustAccountStatementExtController))]
-internal final class MyCustAccountStatementExtController_Extension
+internal final class ISMCustAccountStatementExtController_Extension
 {
-    public MyTelemetryCustStatement telemetry;
+    public ISMTelemetryCustStatement telemetry;
     protected void runPrintMgmt()
     {
         
         CustAccountStatementExtContract contract = this.parmContract() as CustAccountStatementExtContract;
         
-        telemetry = new MyTelemetryCustStatement(contract.parmCustAccount());
+        telemetry = new ISMTelemetryCustStatement(contract.parmCustAccount());
 
         next runPrintMgmt();
 
-        telemetry.processEvent(MyTelemetryEventNames::CustomerStatement);
+        telemetry.processEvent(ISMTelemetryEventNames::CustomerStatement);
     }
 
     protected void populateReportSettingsByCustomer(CustTable _custTable)
