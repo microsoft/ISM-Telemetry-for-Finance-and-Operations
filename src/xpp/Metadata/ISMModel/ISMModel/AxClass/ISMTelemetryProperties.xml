@@ -54,7 +54,7 @@ public static final class ISMTelemetryProperties
     public static const str PackageFileId = 'packageFileId';
     public static const str PackageName = 'packageName';
     public static const str PackageUrl = 'packageUrl';
-    public static const str PreviewCount = '_previewCount';
+    public static const str PreviewCount = 'PreviewCount';
     public static const str ProcessIntegrationBridgeData = 'processIntegrationBridgeData';
     public static const str RecordData = 'RecordData';
     public static const str RecordsProcessed = 'RecordsProcessed';
@@ -65,15 +65,21 @@ public static final class ISMTelemetryProperties
     public static const str RuntimeTask = 'RuntimeTask';
     public static const str SchedulingPriority = 'SchedulingPriority';
     public static const str Severity = 'Severity';
-    public static const str SourceDefinitionGroupId = 'sourceDefinitionGroupId';
-    public static const str SourceExecutionId = 'sourceExecutionId';
-    public static const str SourceFormat = '_sourceFormat';
+    public static const str SourceFormat = 'SourceFormat';
     public static const str SourceOrTarget = 'sourceOrTarget';
     public static const str StagingColumnName = 'stagingColumnName';
     public static const str StagingRecId = 'stagingRecId';
     public static const str StagingRecord = 'stagingRecord';
     public static const str StartDateTime = 'StartDateTime';
     public static const str ThresholdToRunInBatch = 'thresholdToRunInBatch';
+    public static const str ExecutionId = 'ExecutionId';
+    public static const str BusinessEventId = 'BusinessEventId';
+    public static const str EventId = 'EventId';
+    public static const str Contract = 'Contract';
+    public static const str EventTime = 'EventTime';
+    public static const str CreatedTransactionId = 'CreatedTransactionId';
+    public static const str LastProcessTime = 'LastProcessTime';
+
 
 
 

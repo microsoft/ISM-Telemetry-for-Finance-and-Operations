@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ISMBusinessEventsExceptionLog_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+/// <summary>
+/// Capture telemetry for BusinessEventsExceptionLog
+/// </summary>
+[ExtensionOf(tableStr(BusinessEventsExceptionLog))]
+public final class ISMBusinessEventsExceptionLog_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>insert</Name>
+				<Source><![CDATA[
+	public void insert()
+    {
+        ISMTelemetryBusinessEvents telemetry = ISMTelemetryBusinessEvents::construct();
+
+		next insert();
+	
+        //this can be done as well
+        //telemetry.addRuntimeProperty(ISMTelemetryProperties::RecordData, ISMJsonSerializer::SerializeJSON(this));
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::BusinessEventId, this.BusinessEventId);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::LegalEntityId, this.LegalEntity);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::EventTime, datetime2Str(this.EventTime));
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::CreatedTransactionId, int642Str(this.CreatedTransactionId));
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::EventId, this.EventId);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::Error, this.ExceptionMessage);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::Contract, this.SerializedContract);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::LastProcessTime, datetime2Str(this.LastProcessTime));
+
+
+        telemetry.processEvent(ISMTelemetryEventNames::BusinessEventFailed);
+
+	}
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

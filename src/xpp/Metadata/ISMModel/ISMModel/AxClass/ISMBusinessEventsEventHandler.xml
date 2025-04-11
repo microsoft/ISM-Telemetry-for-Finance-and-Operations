@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ISMBusinessEventsEventHandler</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+/// <summary>
+/// Event handler classes for Busines Event handlers
+/// </summary>
+public class ISMBusinessEventsEventHandler
+{
+   
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>BusinessEventsCommitLog_onInserted</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Make sure to capture when a business event it created / Triggered and saved in the commit log. This is the stage before the business event is sent
+    /// </summary>
+    /// <param name="sender">Commit record </param>
+    /// <param name="e"> Event args not used</param>
+    [DataEventHandler(tableStr(BusinessEventsCommitLog), DataEventType::Inserted)]
+    public static void BusinessEventsCommitLog_onInserted(Common sender, DataEventArgs e)
+    {
+
+        BusinessEventsCommitLog commitLog = sender as BusinessEventsCommitLog;
+        ISMTelemetryBusinessEvents telemetry = ISMTelemetryBusinessEvents::construct();
+
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::EventId, commitLog.EventId);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::BusinessEventId, commitLog.BusinessEventId);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::Contract, commitLog.SerializedContract, true);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::LegalEntityId, commitLog.LegalEntity);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::EventTime, datetime2Str(commitLog.EventTime));
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::CreatedTransactionId, int642Str(commitLog.CreatedTransactionId));
+        telemetry.processEvent(ISMTelemetryEventNames::BusinessEventSavedInCommitLog);
+
+
+
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>BusinessEventsCommitLog_onDeleting</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Assumed this is the sate when the business event is sent 
+    /// </summary>
+    /// <param name="sender">Commit record </param>
+    /// <param name="e"> Event args not used</param>
+    [DataEventHandler(tableStr(BusinessEventsCommitLog), DataEventType::Deleting)]
+    public static void BusinessEventsCommitLog_onDeleting(Common sender, DataEventArgs e)
+    {
+
+        BusinessEventsCommitLog commitLog = sender as BusinessEventsCommitLog;
+        ISMTelemetryBusinessEvents telemetry = ISMTelemetryBusinessEvents::construct();
+
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::EventId, commitLog.EventId);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::BusinessEventId, commitLog.BusinessEventId);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::LegalEntityId, commitLog.LegalEntity);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::EventTime, datetime2Str(commitLog.EventTime));
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::CreatedTransactionId, int642Str(commitLog.CreatedTransactionId));
+        telemetry.processEvent(ISMTelemetryEventNames::BusinessEventSent);
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

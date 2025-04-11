@@ -43,6 +43,16 @@
       <Name>ISMBatch_Extension</Name>
       <Link>Batch Telemetry\ISMBatch_Extension</Link>
     </Content>
+    <Content Include="AxClass\ISMBusinessEventsEventHandler">
+      <SubType>Content</SubType>
+      <Name>ISMBusinessEventsEventHandler</Name>
+      <Link>BusinessEvent\ISMBusinessEventsEventHandler</Link>
+    </Content>
+    <Content Include="AxClass\ISMBusinessEventsExceptionLog_Extension">
+      <SubType>Content</SubType>
+      <Name>ISMBusinessEventsExceptionLog_Extension</Name>
+      <Link>BusinessEvent\ISMBusinessEventsExceptionLog_Extension</Link>
+    </Content>
     <Content Include="AxClass\ISMDMFPackageExporter_Extension">
       <SubType>Content</SubType>
       <Name>ISMDMFPackageExporter_Extension</Name>
@@ -67,6 +77,11 @@
       <SubType>Content</SubType>
       <Name>ISMDMFStagingWriter_Extension</Name>
       <Link>DMF Telemetry\ISMDMFStagingWriter_Extension</Link>
+    </Content>
+    <Content Include="AxClass\ISMDualWriteProjectConfiguration_Extension">
+      <SubType>Content</SubType>
+      <Name>ISMDualWriteProjectConfiguration_Extension</Name>
+      <Link>DualWrite\ISMDualWriteProjectConfiguration_Extension</Link>
     </Content>
     <Content Include="AxClass\ISMDualWriteSyncOutbound_Extension">
       <SubType>Content</SubType>
@@ -102,6 +117,11 @@
       <SubType>Content</SubType>
       <Name>ISMTelemetryBatchEventHandler</Name>
       <Link>Batch Telemetry\ISMTelemetryBatchEventHandler</Link>
+    </Content>
+    <Content Include="AxClass\ISMTelemetryBusinessEvents">
+      <SubType>Content</SubType>
+      <Name>ISMTelemetryBusinessEvents</Name>
+      <Link>BusinessEvent\ISMTelemetryBusinessEvents</Link>
     </Content>
     <Content Include="AxClass\ISMTelemetryDMF">
       <SubType>Content</SubType>
@@ -191,6 +211,7 @@
     <Folder Include="Excel export telemetry" />
     <Folder Include="DualWrite" />
     <Folder Include="JsonSerializer" />
+    <Folder Include="BusinessEvent" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
   <Import Project="$(BuildTasksDirectory)\Microsoft.Dynamics.Framework.Tools.BuildTasks.17.0.targets" />

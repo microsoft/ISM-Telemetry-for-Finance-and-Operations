@@ -31,18 +31,10 @@ public final class ISMDualWriteSyncOutbound_Extension
     [SuppressBPWarningAttribute('CARBPMethodNotReferenced','')]
     protected void WriteEntityRecordToCDS(Common entityRecord, NoYes isDelete, boolean isBatchCommit)
     {
-        try
-        {
-        
+        //This likely does not work as the base class throws an exception with errors, therfore it will never reach here
         
         next WriteEntityRecordToCDS(entityRecord, isDelete, isBatchCommit);
 
-        }
-        catch
-        {
-        
-            Info("Something failed");
-        }
         ResponseContract response;
         //CCBDualWriteSyncOutbound outbound = new CCBDualWriteSyncOutbound(null);
         this.checkForModifications = false;

@@ -3,6 +3,8 @@
 ## Ignore everything
 /*
 !pipelines/
+!dashboards/
+!tools/
 ## But keep custom package and models for Package "Git-Tst"
 ## This will capture all models the descriptors for the package Git-Tst
 !src/

@@ -40,8 +40,8 @@ public final class ISMDMFPackageImporter_Extension
     {
         ISMTelemetryDMF telemetry = ISMTelemetryDMF::construct();
 
-        telemetry.addRuntimeProperty(ISMTelemetryProperties::SourceDefinitionGroupId, sourceDefinitionGroupId);
-        telemetry.addRuntimeProperty(ISMTelemetryProperties::SourceExecutionId, sourceExecutionId);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::DefinitionGroupId, sourceDefinitionGroupId);
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::ExecutionId, sourceExecutionId);
         telemetry.addRuntimeProperty(ISMTelemetryProperties::Execute, any2Str(execute));
         telemetry.addRuntimeProperty(ISMTelemetryProperties::Overwrite, any2Str(overwrite));
         telemetry.addRuntimeProperty(ISMTelemetryProperties::LegalEntityId, legalEntityId);

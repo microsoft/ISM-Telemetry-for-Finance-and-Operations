@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ISMDualWriteProjectConfiguration_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+/// <summary>
+/// 
+/// Telemetry for Dualwrite project configuration
+/// </summary>
+[ExtensionOf(tableStr(DualWriteProjectConfiguration))]
+public final class ISMDualWriteProjectConfiguration_Extension
+{
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>insert</Name>
+				<Source><![CDATA[
+    //Starting maps
+    public void insert()
+    {
+        ISMTelemetryDualWrite telemetry = ISMTelemetryDualWrite::construct();
+
+        next insert();
+
+        if(!this.IsDelete)
+        {
+            telemetry.addRuntimeProperty('DVEntity', this.ExternalEntityName);
+            telemetry.addRuntimeProperty('IntegrationKey', this.IntegrationKey);
+            telemetry.addRuntimeProperty('FOEntity', this.InternalEntityName);
+            telemetry.addRuntimeProperty('ProjectName', this.ProjectName);
+            telemetry.addRuntimeProperty('QueryFilter', this.QueryFilterExpression);
+            telemetry.addRuntimeProperty('Status',enum2Str(this.Status));
+            telemetry.processEvent(ISMTelemetryEventNames::DualWriteMapStarted);
+        }
+
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>delete</Name>
+				<Source><![CDATA[
+    //Stopping maps
+    public void delete()
+    {
+        boolean isDelete = this.IsDelete;
+
+        ISMTelemetryDualWrite telemetry = ISMTelemetryDualWrite::construct();
+        telemetry.addRuntimeProperty('DVEntity', this.ExternalEntityName);
+        telemetry.addRuntimeProperty('IntegrationKey', this.IntegrationKey);
+        telemetry.addRuntimeProperty('FOEntity', this.InternalEntityName);
+        telemetry.addRuntimeProperty('ProjectName', this.ProjectName);
+        telemetry.addRuntimeProperty('QueryFilter', this.QueryFilterExpression);
+        telemetry.addRuntimeProperty('Status',enum2Str(DualWriteProjectStatus::Disabled));
+        
+        next delete();
+
+        if(!isDelete)
+        {
+            telemetry.processEvent(ISMTelemetryEventNames::DualWriteMapStopped);
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>update</Name>
+				<Source><![CDATA[
+    //Pausing 
+    public void update()
+    {
+        ISMTelemetryDualWrite telemetry = ISMTelemetryDualWrite::construct();
+
+        next update();
+
+        if(!this.IsDelete)
+        {
+            telemetry.addRuntimeProperty('DVEntity', this.ExternalEntityName);
+            telemetry.addRuntimeProperty('IntegrationKey', this.IntegrationKey);
+            telemetry.addRuntimeProperty('FOEntity', this.InternalEntityName);
+            telemetry.addRuntimeProperty('ProjectName', this.ProjectName);
+            telemetry.addRuntimeProperty('QueryFilter', this.QueryFilterExpression);
+            telemetry.addRuntimeProperty('Status',enum2Str(this.Status));
+            telemetry.processEvent(ISMTelemetryEventNames::DualWriteMapPaused);
+        }
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
