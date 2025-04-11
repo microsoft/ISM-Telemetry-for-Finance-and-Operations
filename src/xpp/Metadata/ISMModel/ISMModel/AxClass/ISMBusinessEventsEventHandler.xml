@@ -3,6 +3,8 @@
 	<Name>ISMBusinessEventsEventHandler</Name>
 	<SourceCode>
 		<Declaration><![CDATA[
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 /// <summary>
 /// Event handler classes for Busines Event handlers
 /// </summary>
