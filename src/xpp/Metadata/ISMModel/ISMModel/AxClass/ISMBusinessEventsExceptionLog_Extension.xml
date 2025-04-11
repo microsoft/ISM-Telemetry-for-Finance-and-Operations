@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ISMBusinessEventsExceptionLog_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[ExtensionOf(tableStr(BusinessEventsExceptionLog))]
+public final class ISMBusinessEventsExceptionLog_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>insert</Name>
+				<Source><![CDATA[
+	public void insert()
+    {
+        ISMTelemetryBusinessEvents telemetry = ISMTelemetryBusinessEvents::construct();
+
+		next insert();
+	
+        
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::RecordData, ISMJsonSerializer::SerializeJSON(this));
+        telemetry.addRuntimeProperty('BusinessEventId', this.BusinessEventId);
+        telemetry.processEvent(ISMTelemetryEventNames::BusinessEventFailed);
+
+	}
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

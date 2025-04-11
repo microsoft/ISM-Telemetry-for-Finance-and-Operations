@@ -73,6 +73,12 @@ public static final class ISMTelemetryProperties
     public static const str StartDateTime = 'StartDateTime';
     public static const str ThresholdToRunInBatch = 'thresholdToRunInBatch';
     public static const str ExecutionId = 'ExecutionId';
+    public static const str BusinessEventId = 'BusinessEventId';
+    public static const str EventId = 'EventId';
+    public static const str Contract = 'Contract';
+    public static const str EventTime = 'EventTime';
+    public static const str CreatedTransactionId = 'CreatedTransactionId';
+
 
 
 
