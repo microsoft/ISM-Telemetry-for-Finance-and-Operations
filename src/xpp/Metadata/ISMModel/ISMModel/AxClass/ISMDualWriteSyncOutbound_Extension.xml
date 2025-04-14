@@ -3,11 +3,6 @@
 	<Name>ISMDualWriteSyncOutbound_Extension</Name>
 	<SourceCode>
 		<Declaration><![CDATA[
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT License.
-/// <summary>
-/// Telemetry for Dualwrite errors
-/// </summary>
 using Microsoft.Dynamics.ApplicationPlatform.Environment;
 using Microsoft.Dynamics.AX.Security.ADALClientAuthentication;
 using Microsoft.Dynamics.BusinessPlatform.SharedTypes;
@@ -18,17 +13,28 @@ using Microsoft.Dynamics.DualWrite.Metadata.Contracts;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+/// <summary>
+/// Telemetry for Dualwrite errors
+/// </summary>
 [ExtensionOf(classStr(DualWriteSyncOutbound))]
 public final class ISMDualWriteSyncOutbound_Extension
 {
     public str errorMsg;
+
 }
 ]]></Declaration>
 		<Methods>
 			<Method>
 				<Name>WriteEntityRecordToCDS</Name>
 				<Source><![CDATA[
-    [SuppressBPWarningAttribute('CARBPMethodNotReferenced','')]
+    /// <summary>
+    /// The actual DW write action
+    /// </summary>
+    /// <param name = "entityRecord">the record </param>
+    /// <param name = "isDelete">is a delete or not</param>
+    /// <param name = "isBatchCommit">Commits in batch or not</param>
     protected void WriteEntityRecordToCDS(Common entityRecord, NoYes isDelete, boolean isBatchCommit)
     {
         //This likely does not work as the base class throws an exception with errors, therfore it will never reach here
@@ -36,7 +42,6 @@ public final class ISMDualWriteSyncOutbound_Extension
         next WriteEntityRecordToCDS(entityRecord, isDelete, isBatchCommit);
 
         ResponseContract response;
-        //CCBDualWriteSyncOutbound outbound = new CCBDualWriteSyncOutbound(null);
         this.checkForModifications = false;
 
 

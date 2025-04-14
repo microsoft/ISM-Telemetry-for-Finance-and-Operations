@@ -21,8 +21,8 @@ public final class ISMBusinessEventsExceptionLog_Extension
     {
         ISMTelemetryBusinessEvents telemetry = ISMTelemetryBusinessEvents::construct();
 
-		next insert();
-	
+        next insert();
+ 
         //this can be done as well
         //telemetry.addRuntimeProperty(ISMTelemetryProperties::RecordData, ISMJsonSerializer::SerializeJSON(this));
         telemetry.addRuntimeProperty(ISMTelemetryProperties::BusinessEventId, this.BusinessEventId);
@@ -37,7 +37,7 @@ public final class ISMBusinessEventsExceptionLog_Extension
 
         telemetry.processEvent(ISMTelemetryEventNames::BusinessEventFailed);
 
-	}
+    }
 
 ]]></Source>
 			</Method>

@@ -17,6 +17,9 @@ public final class ISMDMFStagingWriter_Extension
 			<Method>
 				<Name>run</Name>
 				<Source><![CDATA[
+    /// <summary>
+    /// Runs the telemetry staging writer
+    /// </summary>
     public void run()
     {
 

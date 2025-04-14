@@ -38,8 +38,8 @@ public class ISMRedirect
 				<Source><![CDATA[
     private void initValues()
     {
-        formName = parameters.lookup("Form");
-        reference = parameters.lookup("Reference");
+        formName = parameters.lookup('Form');
+        reference = parameters.lookup('Reference');
     
     }
 

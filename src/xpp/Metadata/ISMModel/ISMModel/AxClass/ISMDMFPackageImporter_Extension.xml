@@ -14,13 +14,32 @@ public final class ISMDMFPackageImporter_Extension
 {
 
   
-
 }
 ]]></Declaration>
 		<Methods>
 			<Method>
 				<Name>importFromPackageV2</Name>
 				<Source><![CDATA[
+    /// <summary>
+    /// Imports a data package into the system with telemetry tracking.
+    /// </summary>
+    /// <param name="packageUrl">The URL of the package to be imported.</param>
+    /// <param name="sourceDefinitionGroupId">The ID of the source definition group.</param>
+    /// <param name="sourceExecutionId">The execution ID of the source process.</param>
+    /// <param name="execute">Indicates whether the package should be executed after import.</param>
+    /// <param name="overwrite">Indicates whether existing data should be overwritten.</param>
+    /// <param name="legalEntityId">The legal entity ID for the import operation.</param>
+    /// <param name="importBatchGroupId">The batch group ID for the import operation.</param>
+    /// <param name="failOnError">Indicates whether the process should fail on error.</param>
+    /// <param name="packageFileId">The file ID of the package being imported.</param>
+    /// <param name="_processIntegrationBridgeData">Indicates whether to process integration bridge data.</param>
+    /// <param name="_export">Indicates whether the operation is an export process.</param>
+    /// <param name="internalCall">Indicates whether the call is internal.</param>
+    /// <param name="_runAsyncWithoutBatch">Indicates whether to run asynchronously without a batch.</param>
+    /// <param name="_thresholdToRunInBatch">The threshold value to determine if the process should run in a batch.</param>
+    /// <param name="_previewCount">The number of records to preview before processing.</param>
+    /// <param name="_messageId">The message ID associated with the operation.</param>
+    /// <returns>The execution ID of the import process.</returns>
     public DMFExecutionId importFromPackageV2(SharedServiceUnitURL packageUrl,
                                             DMFDefinitionGroupName sourceDefinitionGroupId,
                                             DMFExecutionId sourceExecutionId,

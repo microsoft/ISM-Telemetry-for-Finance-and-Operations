@@ -27,7 +27,6 @@ public class ISMTelemetryExcelExport extends ISMTelemetryBase
 			<Method>
 				<Name>new</Name>
 				<Source><![CDATA[
-    [SuppressBPWarningAttribute('CARBPMethodNotReferenced','')]
     protected void new()
     {
         super();
@@ -38,7 +37,6 @@ public class ISMTelemetryExcelExport extends ISMTelemetryBase
 			<Method>
 				<Name>shouldLogEvent</Name>
 				<Source><![CDATA[
-    [SuppressBPWarningAttribute('CARBPMethodNotReferenced','')]
     protected boolean shouldLogEvent()
     {
         return true;
@@ -49,7 +47,6 @@ public class ISMTelemetryExcelExport extends ISMTelemetryBase
 			<Method>
 				<Name>postPopulateProperties</Name>
 				<Source><![CDATA[
-    [SuppressBPWarningAttribute('CARBPMethodNotReferenced','')]
     protected void postPopulateProperties()
     {
     }

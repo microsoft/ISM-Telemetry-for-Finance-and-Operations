@@ -38,6 +38,7 @@ internal final class ISMTelemetryBatchEventHandler
             catch
             {
                 // Do nothing telemetry should not stop the batch job
+                Global::exceptionTextFallThrough();
             }
         }
 

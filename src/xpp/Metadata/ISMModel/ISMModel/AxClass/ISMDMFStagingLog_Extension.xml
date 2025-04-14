@@ -17,6 +17,17 @@ public final class ISMDMFStagingLog_Extension
 			<Method>
 				<Name>insertLogs</Name>
 				<Source><![CDATA[
+    /// <summary>
+    /// Inserts logs into the DMFStagingLog table and captures telemetry data for the staging log process.
+    /// </summary>
+    /// <param name="_dMFExecutionId">The execution ID of the DMF process.</param>
+    /// <param name="_sourceOrTarget">Specifies whether the log is for the source or target.</param>
+    /// <param name="_infologStartIndex">The starting index of the infolog messages to copy.</param>
+    /// <param name="_stagingLogRecId">The record ID of the staging log entry.</param>
+    /// <param name="_entityName">The name of the entity being processed.</param>
+    /// <param name="_batchId">The batch ID associated with the process.</param>
+    /// <param name="_defGroupName">The definition group name for the process.</param>
+    /// <returns>The record ID of the inserted log entry.</returns>
     public static client server RecId insertLogs(DMFExecutionId         _dMFExecutionId,
                                                  DMFSourceTarget        _sourceOrTarget,
                                                  int                    _infologStartIndex,
@@ -65,11 +76,13 @@ public final class ISMDMFStagingLog_Extension
 
 
             if(messageStr != '')
+            {
                 telemetry.processEvent(ISMTelemetryEventNames::DMFStagingLogMessage);
+            }
         }
         catch
         {
-
+            Global::exceptionTextFallThrough();
         }
 
        

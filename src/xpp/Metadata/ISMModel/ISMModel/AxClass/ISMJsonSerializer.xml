@@ -3,13 +3,13 @@
 	<Name>ISMJsonSerializer</Name>
 	<SourceCode>
 		<Declaration><![CDATA[
+using Newtonsoft.Json.Linq;
+using MetaModel = Microsoft.Dynamics.AX.Metadata.MetaModel;
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 /// <summary>
 /// Custom serliaziser for JSON serialization of tabular objects.
 /// </summary>
-using Newtonsoft.Json.Linq;
-using MetaModel = Microsoft.Dynamics.AX.Metadata.MetaModel;
 public class ISMJsonSerializer
 {
     protected JsonSerializerSettings settings = null;
@@ -29,7 +29,8 @@ public class ISMJsonSerializer
     /// Creates a new instance of the <c>JsonSerializer</c> class given the designated parameters.
     /// </summary>
     /// <param name = "_settings">The parameters used to influence the serialization.</param>
-    internal void new(JsonSerializerSettings _settings, Common _common)
+    /// <param name = "_common">The object to serialize.</param>"
+    protected void new(JsonSerializerSettings _settings, Common _common)
     {
         this.settings = _settings;
         this.common = _common;
@@ -40,6 +41,11 @@ public class ISMJsonSerializer
 			<Method>
 				<Name>SerializeJSON</Name>
 				<Source><![CDATA[
+    /// <summary>
+    /// Serializes the given common record 
+    /// </summary>
+    /// <param name = "_common">The record</param>
+    /// <returns>JSON String</returns>
     public static str SerializeJSON(Common _common)
     {
         str ret; 
@@ -76,6 +82,10 @@ public class ISMJsonSerializer
 			<Method>
 				<Name>serializeUserFields</Name>
 				<Source><![CDATA[
+    /// <summary>
+    /// Serializes the user fields of the given table metadata.
+    /// </summary>
+    /// <param name = "_tableMetadata">MetaData </param>
     private void serializeUserFields(DictTable _tableMetadata)
     {
         if (_tableMetadata.supportInheritance() && _tableMetadata.extends())
@@ -89,7 +99,7 @@ public class ISMJsonSerializer
         {
             DictField field = _tableMetadata.fieldObject(_tableMetadata.fieldCnt2Id(fieldNo));
 
-        this.serializeField(field);
+            this.serializeField(field);
         }
     }
 
@@ -98,9 +108,12 @@ public class ISMJsonSerializer
 			<Method>
 				<Name>serializeField</Name>
 				<Source><![CDATA[
+    /// <summary>
+    /// Serilizes the fields of the given table.
+    /// </summary>
+    /// <param name = "_field">Field</param>
     protected void serializeField(DictField _field)
     {
-        JObject jsonField = new JObject();
         str fieldName = _field.name();
         var fieldId = fieldName2Id(common.TableId, fieldName);
         
@@ -117,7 +130,6 @@ public class ISMJsonSerializer
             // no container export
             case Types::Container:
                 {
-                    container v = fieldValue;
                     jsonValue = null;
                 }
                 break;
@@ -219,7 +231,9 @@ public class ISMJsonSerializer
     {
         int id = _field.typeId();
         if (id == 0)
+        {
             return _field.type();
+        }
         
         DictType t = new DictType(id);
         return t.baseType();
