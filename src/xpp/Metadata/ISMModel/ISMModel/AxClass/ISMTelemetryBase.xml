@@ -59,7 +59,7 @@ abstract class ISMTelemetryBase
         }
         catch
         {
-            warning(strFmt("Telemetry Metric Processing Error - className : %1",classId2Name(classIdGet(this))));
+            warning(strFmt("@ISM:ISMTelemetryMetricError",classId2Name(classIdGet(this))));
         }
     }
 
@@ -95,7 +95,7 @@ abstract class ISMTelemetryBase
         }
         catch
         {
-            warning(strFmt("Telemetry Add Standard Properties Error - className : %1",classId2Name(classIdGet(this))));
+            warning(strFmt("@ISM:ISMTelemetryRuntimePropertyError",classId2Name(classIdGet(this))));
         }
         
     
@@ -130,7 +130,7 @@ abstract class ISMTelemetryBase
         }
         catch
         {
-            warning(strFmt("Telemetry Add Call Stack Error - className : %1",classId2Name(classIdGet(this))));
+            warning(strFmt("@ISM:ISMTelemetryAddCallStackError",classId2Name(classIdGet(this))));
         }
         
     }
@@ -162,7 +162,7 @@ abstract class ISMTelemetryBase
         }
         catch
         {
-            warning(strFmt("Telemetry Add Runtime Property Error - className : %1",classId2Name(classIdGet(this))));
+            warning(strFmt("@ISM:ISMTelemetryRuntimePropertyError",classId2Name(classIdGet(this))));
         }
   
     }
@@ -206,7 +206,7 @@ abstract class ISMTelemetryBase
         }
         catch
         {
-            warning(strFmt("Telemetry Add Runtime Property Error - className : %1",classId2Name(classIdGet(this))));
+            warning(strFmt("@ISM:ISMTelemetryRuntimePropertyError",classId2Name(classIdGet(this))));
         }
         
     }
@@ -360,7 +360,7 @@ abstract class ISMTelemetryBase
         }
         catch
         {
-            warning(strFmt("Telemetry Clear Runtime Properties Error - className : %1",classId2Name(classIdGet(this))));
+            warning(strFmt("@ISM:ISMTelemetryRuntimePropertyError",classId2Name(classIdGet(this))));
         }
     }
 
@@ -442,7 +442,7 @@ abstract class ISMTelemetryBase
         }
         catch
         {
-            warning(strFmt("Telemetry Event Processing Error: className : %1 - EventName: %2", classId2Name(classIdGet(this)), _name));
+            warning(strFmt("@ISM:ISMTelemetryEventError", classId2Name(classIdGet(this)), _name));
         }
     }
 
@@ -491,7 +491,7 @@ abstract class ISMTelemetryBase
         }
         catch
         {
-            warning(strFmt('Telemetry Trace Processing Error: className : %1 - TraceMessage: %2', classId2Name(classIdGet(this)), traceMessage));
+            warning(strFmt("@ISM:ISMTelemetryTraceError", classId2Name(classIdGet(this)), traceMessage));
         }
     }
 
@@ -656,7 +656,7 @@ abstract class ISMTelemetryBase
         }
 
 
-        SysApplicationInsightsTraceTelemetry traceTelemetry = SysApplicationInsightsTraceTelemetry::newFromEventIdName(traceMessage, dotNetSeverity);
+        SysApplicationInsightsTraceTelemetry traceTelemetry = SysApplicationInsightsTraceTelemetry::newFromMessageAndSeverity(traceMessage, dotNetSeverity);
 
         MapIterator iterator;
         str key, value;

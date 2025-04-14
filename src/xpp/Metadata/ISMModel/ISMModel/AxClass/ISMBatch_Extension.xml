@@ -32,6 +32,7 @@ public final class ISMBatch_Extension
         catch
         {
             //Do nothing, telemetry should not stop the process
+            Global::exceptionTextFallThrough();
         }
 
 

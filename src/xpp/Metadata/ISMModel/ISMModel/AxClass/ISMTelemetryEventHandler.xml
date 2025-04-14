@@ -22,7 +22,8 @@ internal final class ISMTelemetryEventHandler
     /// </summary>
     /// <param name="sender">sender</param>
     /// <param name="e">event</param>
-    [FormEventHandler(formStr(SysIntParameters), FormEventType::Initializing)]
+    [SuppressBPWarning('BPParameterNotUsed', 'Parameter required by the event interface.'),
+    FormEventHandler(formStr(SysIntParameters), FormEventType::Initializing)]
     public static void SysIntParameters_OnInitializing(xFormRun sender, FormEventArgs e)
     {
 

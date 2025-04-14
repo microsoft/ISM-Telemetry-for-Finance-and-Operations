@@ -19,7 +19,9 @@ public final class ISMExportToExcelBox_Extension
 			<Method>
 				<Name>startExport</Name>
 				<Source><![CDATA[
-    [SuppressBPWarningAttribute('CARBPMethodNotReferenced','')]
+    /// <summary>
+    /// Starts the Excel export
+    /// </summary>
     public void startExport()
     {
         telemetry = ISMTelemetryExcelExport::construct();
@@ -32,6 +34,12 @@ public final class ISMExportToExcelBox_Extension
 			<Method>
 				<Name>displayProgress</Name>
 				<Source><![CDATA[
+    /// <summary>
+    /// Displays the progress of the export
+    /// </summary>
+    /// <param name = "recordsProcessed">How many records processed </param>
+    /// <param name = "finalizing">Is it finalizinng</param>
+    /// <returns>true or false</returns>
     public boolean displayProgress(int64 recordsProcessed, int finalizing)
     {
         boolean ret = next displayProgress(recordsProcessed, finalizing);
@@ -49,8 +57,11 @@ public final class ISMExportToExcelBox_Extension
 				<Name>closeForm</Name>
 				<Source><![CDATA[
     /// <summary>
-    /// Performs actions at the end of the export
+    /// Extracts export to excel information
     /// </summary>
+    /// <param name = "rowsExported">How many rows exported</param>
+    /// <param name = "exportRowLimit">Static row limit</param>
+    /// <param name = "exportRowLimitReached">Reached the limit?</param>
     public void closeForm(int64 rowsExported, int64 exportRowLimit, boolean exportRowLimitReached)
     {
         

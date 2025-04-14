@@ -27,7 +27,7 @@ public class ISMTelemetryProperty extends SysApplicationInsightsProperty
     /// <param name = "_key">The key </param>
     /// <param name = "_value">the value</param>
     /// <param name = "_dataType">the data type</param>
-    /// <returns></returns>
+    /// <returns>New class</returns>
     public static ISMTelemetryProperty contruct(str _key, str _value, SysApplicationInsightsComplianceDataType _dataType)
     {
         return new ISMTelemetryProperty(_key, _value, _dataType);
@@ -38,8 +38,7 @@ public class ISMTelemetryProperty extends SysApplicationInsightsProperty
 			<Method>
 				<Name>new</Name>
 				<Source><![CDATA[
-    [SuppressBPWarningAttribute('CARBPMethodNotReferenced','')]
-    private void new(str _key, str _value, SysApplicationInsightsComplianceDataType _dataType)
+    protected void new(str _key, str _value, SysApplicationInsightsComplianceDataType _dataType)
     {
         key = _key;
         dataType = _dataType;

@@ -17,6 +17,20 @@ public final class ISMDMFPackageExporter_Extension
 			<Method>
 				<Name>exportToPackageV2</Name>
 				<Source><![CDATA[
+    /// <summary>
+    /// Exports data to a package with telemetry tracking.
+    /// </summary>
+    /// <param name="packageName">The name of the package to export.</param>
+    /// <param name="packageUrl">The URL where the package will be stored.</param>
+    /// <param name="definitionGroupId">The ID of the definition group being exported.</param>
+    /// <param name="executionId">The execution ID for the export process.</param>
+    /// <param name="reExecute">Indicates whether the export is a re-execution.</param>
+    /// <param name="legalEntityId">The legal entity ID for the export.</param>
+    /// <param name="createPackage">Indicates whether to create a new package.</param>
+    /// <param name="entitySyncVersion">A map containing entity synchronization versions.</param>
+    /// <param name="previewCount">The number of preview records to include in the package.</param>
+    /// <param name="_messageId">The message ID associated with the export operation.</param>
+    /// <returns>The execution ID of the export operation.</returns>
     public DMFExecutionId exportToPackageV2(DMFPackageName packageName, SharedServiceUnitURL packageUrl, DMFDefinitionGroupName definitionGroupId, DMFExecutionId executionId, boolean reExecute, DataAreaName legalEntityId, boolean createPackage, Map entitySyncVersion, int previewCount, str _messageId)
     {
         
@@ -44,6 +58,16 @@ public final class ISMDMFPackageExporter_Extension
 			<Method>
 				<Name>exportToFileV2</Name>
 				<Source><![CDATA[
+    /// <summary>
+    /// Wrapper for exporting data to file.
+    /// </summary>
+    /// <param name = "_definitionGroup">Data project</param>
+    /// <param name = "_executionId">Execution job reference</param>
+    /// <param name = "_entity">Entity name</param>
+    /// <param name = "_sourceFormat">Export format for file</param>
+    /// <param name = "_entitySyncVersion">List of entities with sync version range. Default is null as delta export runs with current sync version.</param>
+    /// <param name = "_previewCount">Preview count for export file.</param>
+    /// <returns>FileId for exported file.</returns>
     public static SharedServiceUnitFileID exportToFileV2(DMFDefinitionGroupName _definitionGroup, DMFExecutionId _executionId, DMFEntityName _entity, DMFSourceName _sourceFormat, Map _entitySyncVersion, int _previewCount)
     {
 

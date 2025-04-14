@@ -30,7 +30,7 @@ public final class ISMBatchJob_Extension
         }
         catch
         {
-
+            Global::exceptionTextFallThrough();
             //do nothing telemetry should not stop the batch job
         }
         next update();
@@ -51,6 +51,7 @@ public final class ISMBatchJob_Extension
         catch
         {
             //do nothing telemetry should not stop the batch job
+            Global::exceptionTextFallThrough();
         }
 
         next insert();
