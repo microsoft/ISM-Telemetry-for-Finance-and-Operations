@@ -1,5 +1,14 @@
 # D365-FO-MonitoringAndTelemetry-Samples
-This repository provides samples for utilizing D365 F&amp;O Monitoring and Telemetry feature including batch job monitoring
+This repository provides samples for utilizing Dynamics 365 Finance & Operations. It will give you a libary which enables you to start emitting your own telemetry in a easy manner. 
+
+This model also includes already telemetry for the following: 
+
+- Batch job monitoring
+- DMF Import and Export analytics
+- Excel exports
+- Business events tracking
+- Partial Dual-write support
+
 
 ## Table of Contents
 
@@ -13,6 +22,11 @@ This repository provides samples for utilizing D365 F&amp;O Monitoring and Telem
 - [Contributing](#contributing)
 - [License](#license)
 
+## Disclaimer / Support
+Please note that this is not supported by Microsoft in anyway. This means if you raise a ticket, support won't help you on issues related to this repo. 
+It is provided AS IS and it can break anytime. Use at your own assessment and at your own risk. 
+
+If you need support or assistance, please use the "Discussions" section in this repo.
 
 ## Introduction
 
