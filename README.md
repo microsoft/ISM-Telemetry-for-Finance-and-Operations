@@ -1,4 +1,4 @@
-# D365-FO-MonitoringAndTelemetry-Samples
+# Dynamics 365 Finance & Operations Telemetry samples
 This repository provides samples for utilizing Dynamics 365 Finance & Operations. It will give you a libary which enables you to start emitting your own telemetry in a easy manner. 
 
 This model also includes already telemetry for the following: 
