@@ -44,43 +44,53 @@ This project provides sample implementations of telemetry in D365 FSCM. It inclu
 1. Clone the repository OR download the "ISMModel" folder
 2. Add the ISMModel to your PackagesLocalDirectory folder
 3. If you use an UDE environment, you "Configure metadata" and point the folder for Custom metadata to the "Metadata" folder
-   ![image](https://github.com/user-attachments/assets/94915643-3bbd-46a9-8e88-a17842a604d9)
+   ![image](https://github.com/user-attachments/assets/f742a44b-b651-497c-9726-8dc80a4214cc)
 
 4. If you use a non UDE environment, copy the "src/xpp/Metadata/ISMModel" into the PackagesLocalDirectory folder of your installation
 5. Refresh the models in VS
-   ![image](https://github.com/user-attachments/assets/c63090fe-8240-4103-adc0-977be350ff55)
+  ![image](https://github.com/user-attachments/assets/3e22fdf7-12f2-448b-adcc-90f271fdd85d)
+
 6. Build the model "ISMModel"
-7. Enable the feature "Monitoring and Telemetry" in "Feature management workspace"
-   ![image](https://github.com/user-attachments/assets/9e9e52c7-8238-42c6-93ce-88aff7c91bd7)
+7. Enable the feature "Monitoring and Telemetry" in "Feature management workspace" if not enabled by default
+   ![image](https://github.com/user-attachments/assets/a661f441-7e1b-4cd5-a390-6d9d4005ff05)
+
 9. Once the changes are all built, open the menu "Monitoring and telemetry parameters" 
-![image](https://github.com/user-attachments/assets/bd9cd393-54e2-4228-90e6-49fbf9d72c5d)
+![image](https://github.com/user-attachments/assets/fa7f08f9-f009-464b-be19-4840a6a434cc)
+
 10. You should see a custom tab called "Logging settings"
-    ![image](https://github.com/user-attachments/assets/d9d857d5-775a-4d3b-9a51-53eccf6ef715)
+    ![image](https://github.com/user-attachments/assets/18f7e9e1-a30b-4b0b-90e5-558f7b4bc50f)
+
 
 
 ## Configure telemetry logging in Finance & Operations
 
 1. Open the menu "Monitoring and telemetry parameters" 
-![image](https://github.com/user-attachments/assets/bd9cd393-54e2-4228-90e6-49fbf9d72c5d)
+![image](https://github.com/user-attachments/assets/d1a3e5f6-1f55-4796-828d-77bc611d793c)
+
 2. Go to "Application Insights Registry"
-   ![image](https://github.com/user-attachments/assets/0e069026-2cef-4785-9087-dcd2434fbde6)
-   And add the "Instrumentation key" from your Azure Application Insights resource into the field "Instrumentation key" 
-   ![image](https://github.com/user-attachments/assets/d85706ae-61a5-44bc-93f0-c0be982f0b31)
+   ![image](https://github.com/user-attachments/assets/fb53cf62-850d-4885-b4f5-cf60374cd905)
+
+   And add the "Instrumentation key" from your Azure Application Insights resource into the field "Instrumentation key"  or the connection string
+   ![image](https://github.com/user-attachments/assets/d63b4111-0e93-4186-a79f-f8d9b253e373)
+
 
 3. Move to tab "Environments" 
-  ![image](https://github.com/user-attachments/assets/d395adb4-563d-4399-85a6-d3c0b955a43e)
+  ![image](https://github.com/user-attachments/assets/d0ce791e-887f-431d-b44b-6dac69e8057a)
   Add your "Environment Id" into the field, you will find the Environment Id as follows:
 
   **Youre using LCS:**
   Go to the LCS Environment overview page, copy field "Environment Id" of the current environment.
-  ![image](https://github.com/user-attachments/assets/d1e0b89d-2963-4f84-b2f0-6cbae2ffe2c1)
+  ![image](https://github.com/user-attachments/assets/a4335200-4b95-445f-89ba-eceb37514301)
+
 
   **Youre using an UDE Environment:**
   Copy the "Environment Id" from the Power platform admin center
-  ![image](https://github.com/user-attachments/assets/7e0b0f1b-35ad-452e-a934-ff617d1799fa)
+  ![image](https://github.com/user-attachments/assets/b1ba92dd-615b-4b3d-a384-0e943806f86d)
+
 
 4. Move to tab "Configure" and enable the events you want to log
-   ![image](https://github.com/user-attachments/assets/4aebae7f-a7b4-4c64-b448-af5160cc4180)
+   ![image](https://github.com/user-attachments/assets/3f47d60f-53e4-43d2-a166-19c03051c8e6)
+
 
 
 The telemetry should be emitting after the setup is complete. To test, simply schedule a batch job. 
