@@ -589,7 +589,7 @@
       "selectionType": "scalar",
       "includeAllOption": false,
       "defaultValue": {
-        "kind": "no-selection"
+        "kind": "query-result"
       },
       "dataSource": {
         "kind": "query",
@@ -600,7 +600,8 @@
         "queryRef": {
           "kind": "query",
           "queryId": "8d870644-27cf-415b-8627-0161c02cec60"
-        }
+        },
+        "autoReset": true
       },
       "showOnPages": {
         "kind": "all"
@@ -988,7 +989,7 @@
         "kind": "parameter",
         "parameterId": "d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"
       },
-      "text": "let NameMapping = datatable (OriginalName: string, PrettyName: string)\n[\n    \"d6cb6bc9-6923-ef8a-9bfb-6aac09b55048\", \"General Dev UDE\"\n];\ncluster(\"https://ade.applicationinsights.io/subscriptions/42a58a61-6eda-4e80-840b-0c7d57ba8b32/resourceGroups/Telemetry/providers/microsoft.insights/components/FinOpsTelemetry\").database(\"FinOpsTelemetry\").pageViews\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| join kind=leftouter  (NameMapping) on $left.env == $right.OriginalName\n| where env != \"\"\n| extend PrettyName = iff(isempty(PrettyName), env, PrettyName)\n| distinct env, PrettyName",
+      "text": "let NameMapping = datatable (OriginalName: string, PrettyName: string)\n[\n    \"d6cb6bc9-6923-ef8a-9bfb-6aac09b55048\", \"General Dev UDE\"\n];pageViews\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| join kind=leftouter  (NameMapping) on $left.env == $right.OriginalName\n| where env != \"\"\n| extend PrettyName = iff(isempty(PrettyName), env, PrettyName)\n| distinct env, PrettyName",
       "id": "8d870644-27cf-415b-8627-0161c02cec60",
       "usedVariables": []
     },
