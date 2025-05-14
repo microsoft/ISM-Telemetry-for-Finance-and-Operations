@@ -1,1 +1,1017 @@
-{"$schema":"https://dataexplorer.azure.com/static/d/schema/60/dashboard.json","id":"349bfd1c-608a-4495-82e0-1e8dad7dfbd0","eTag":"28cef763-f100-4ed8-86df-753da4477dea","schema_version":"60","title":"FinOps Telemetry Dashboard","tiles":[{"id":"f6395ce3-d301-4689-8cad-e4787346903e","title":"Avg Page open time","visualType":"table","pageId":"804c8964-1c48-4b9c-bdd8-03c05f791b0f","layout":{"x":0,"y":0,"width":8,"height":17},"queryRef":{"kind":"query","queryId":"76866813-df8b-4235-8b96-7ae450ae3bd2"},"visualOptions":{"table__enableRenderLinks":true,"colorRulesDisabled":true,"colorStyle":"light","crossFilterDisabled":false,"drillthroughDisabled":false,"crossFilter":[],"drillthrough":[],"table__renderLinks":[],"colorRules":[]}},{"id":"96266a76-180e-46e9-afa0-5e9c92c7bd43","title":"Error by name ","visualType":"table","pageId":"bd9f9369-8ccd-4a50-80d2-f5dcd8e6da1d","layout":{"x":0,"y":0,"width":20,"height":13},"queryRef":{"kind":"query","queryId":"8a38498e-1fa7-43a1-9e71-9c0874af1564"},"visualOptions":{"table__enableRenderLinks":true,"colorRulesDisabled":true,"colorStyle":"light","crossFilterDisabled":false,"drillthroughDisabled":false,"crossFilter":[{"interaction":"column","property":"outerMessage","parameterId":"56969be9-5892-42c6-b992-8c6217cb44b8","disabled":false}],"drillthrough":[],"table__renderLinks":[],"colorRules":[]}},{"id":"8c9690a5-0f35-406f-b36a-6829cf423c4e","title":"Search by text","description":"Enter a search value in the parameters to explore errors ","visualType":"table","pageId":"bd9f9369-8ccd-4a50-80d2-f5dcd8e6da1d","layout":{"x":0,"y":13,"width":20,"height":9},"queryRef":{"kind":"query","queryId":"cc66f2c2-b419-45bf-a965-746b36aaa4b8"},"visualOptions":{"table__enableRenderLinks":true,"colorRulesDisabled":true,"colorStyle":"light","crossFilterDisabled":false,"drillthroughDisabled":false,"crossFilter":[],"drillthrough":[],"table__renderLinks":[],"colorRules":[]}},{"id":"94acbdf3-f086-4e8f-a815-dd402a695c85","title":"Opening times","visualType":"table","pageId":"804c8964-1c48-4b9c-bdd8-03c05f791b0f","layout":{"x":0,"y":17,"width":17,"height":17},"queryRef":{"kind":"query","queryId":"8ac15bf7-a8c4-4a0b-8ddd-d3cd6737e7fe"},"visualOptions":{"table__enableRenderLinks":true,"colorRulesDisabled":true,"colorStyle":"light","crossFilterDisabled":false,"drillthroughDisabled":false,"crossFilter":[],"drillthrough":[],"table__renderLinks":[],"colorRules":[]}},{"id":"7a0d59ff-8606-4161-8099-6a93da07e470","title":"Currently running Tasks","visualType":"table","pageId":"4795984d-8c36-446d-8251-e5972d6a789e","layout":{"x":11,"y":0,"width":13,"height":9},"queryRef":{"kind":"query","queryId":"9b1dd2bb-abc3-4025-b530-05ab13674637"},"visualOptions":{"table__enableRenderLinks":true,"colorRulesDisabled":true,"colorStyle":"light","crossFilterDisabled":false,"drillthroughDisabled":false,"crossFilter":[],"drillthrough":[],"table__renderLinks":[],"colorRules":[]}},{"id":"7fbf815f-f7c8-44f4-ac07-6f52dd87c0a7","title":"batch task errors","visualType":"table","pageId":"4795984d-8c36-446d-8251-e5972d6a789e","layout":{"x":0,"y":9,"width":24,"height":10},"queryRef":{"kind":"query","queryId":"c179d3e2-e560-4154-b5d3-cea429ba21f9"},"visualOptions":{"table__enableRenderLinks":true,"colorRulesDisabled":true,"colorStyle":"light","crossFilterDisabled":false,"drillthroughDisabled":false,"crossFilter":[],"drillthrough":[],"table__renderLinks":[],"colorRules":[]}},{"id":"37682128-c524-46b9-9e30-6b73d544f1d2","title":"Currently running jobs","visualType":"table","pageId":"4795984d-8c36-446d-8251-e5972d6a789e","layout":{"x":0,"y":0,"width":11,"height":9},"queryRef":{"kind":"query","queryId":"ba59ccda-77d0-466e-9a8b-1c7bf47303ee"},"visualOptions":{"table__enableRenderLinks":true,"colorRulesDisabled":true,"colorStyle":"light","crossFilterDisabled":false,"drillthroughDisabled":false,"crossFilter":[],"drillthrough":[],"table__renderLinks":[],"colorRules":[]}},{"id":"0544eefa-0a0e-441a-9cf1-66259c53a836","title":"Reccuring Batch jobs","visualType":"table","pageId":"4795984d-8c36-446d-8251-e5972d6a789e","layout":{"x":0,"y":19,"width":24,"height":10},"queryRef":{"kind":"query","queryId":"b7ded805-fc0f-43a6-932c-789383590929"},"visualOptions":{"table__enableRenderLinks":true,"colorRulesDisabled":true,"colorStyle":"light","crossFilterDisabled":false,"drillthroughDisabled":false,"crossFilter":[],"drillthrough":[],"table__renderLinks":[],"colorRules":[]}},{"id":"04ba33f9-184d-482b-8cb6-d444edf09ad0","title":"Past Jobs heatmap","visualType":"heatmap","pageId":"4795984d-8c36-446d-8251-e5972d6a789e","layout":{"x":0,"y":29,"width":24,"height":18},"queryRef":{"kind":"query","queryId":"770558f0-a7fb-4e4e-a8f4-ac2779aef085"},"visualOptions":{"xColumn":"timestamp","xColumnTitle":"","yColumnTitle":"","heatMap__dataColumn":"sum_BatchJobDuration","heatMap__colorPaletteKey":"blue","yColumns":["Caption"]}},{"id":"dc873d4b-f4cb-430e-ac49-fcb1ebf03f41","title":"Historical ran jobs ","visualType":"table","pageId":"4795984d-8c36-446d-8251-e5972d6a789e","layout":{"x":0,"y":56,"width":12,"height":14},"queryRef":{"kind":"query","queryId":"31706b4e-b47c-42af-a80a-8845772ecb9b"},"visualOptions":{"table__enableRenderLinks":true,"colorRulesDisabled":true,"colorStyle":"light","crossFilterDisabled":false,"drillthroughDisabled":false,"crossFilter":[],"drillthrough":[],"table__renderLinks":[],"colorRules":[]}},{"id":"f21e79f1-cb3e-4d66-8a03-3088aecca798","title":"Batch AOS distribution","visualType":"area","pageId":"4795984d-8c36-446d-8251-e5972d6a789e","layout":{"x":0,"y":47,"width":24,"height":9},"queryRef":{"kind":"query","queryId":"e1793871-a199-42bb-84f2-23cc1fd3a3df"},"visualOptions":{"multipleYAxes":{"base":{"id":"-1","label":"","columns":[],"yAxisMaximumValue":null,"yAxisMinimumValue":null,"yAxisScale":"linear","horizontalLines":[]},"additional":[],"showMultiplePanels":false},"hideLegend":false,"legendLocation":"bottom","xColumnTitle":"","xColumn":null,"yColumns":null,"seriesColumns":null,"xAxisScale":"linear","verticalLine":"","crossFilterDisabled":false,"drillthroughDisabled":false,"crossFilter":[],"drillthrough":[],"selectedDataOnLoad":{"all":true,"limit":10},"dataPointsTooltip":{"all":false,"limit":1}}},{"id":"e0011743-9044-4c1d-a80b-024f9e102b2d","title":"Excel export telemetry","visualType":"table","pageId":"1d077c66-49e1-4e0e-8b5b-dfce25799f5d","layout":{"x":0,"y":0,"width":17,"height":8},"queryRef":{"kind":"query","queryId":"f42b71c6-9155-4303-9860-8e254ff76570"},"visualOptions":{"table__enableRenderLinks":true,"colorRulesDisabled":true,"colorStyle":"light","crossFilterDisabled":false,"drillthroughDisabled":false,"crossFilter":[],"drillthrough":[],"table__renderLinks":[],"colorRules":[]}},{"id":"4cf71371-b941-4cbf-8dec-c7c1fb4f8ba2","title":"DMF Imports","visualType":"table","pageId":"7e4bef13-2d09-4c25-81c9-89911ba6c7c3","layout":{"x":0,"y":0,"width":15,"height":8},"queryRef":{"kind":"query","queryId":"ee5de98c-216a-4207-a347-0a185792f211"},"visualOptions":{"table__enableRenderLinks":true,"colorRulesDisabled":true,"colorStyle":"light","crossFilterDisabled":false,"drillthroughDisabled":false,"crossFilter":[{"interaction":"column","property":"ExecutionId","parameterId":"2a56cab0-962b-42fa-8e08-75d1b740814a","disabled":false}],"drillthrough":[],"table__renderLinks":[],"colorRules":[]}},{"id":"1b2fae1e-7dc2-4d2a-9db0-681a56d7adfb","title":"DMF Exports","visualType":"table","pageId":"7e4bef13-2d09-4c25-81c9-89911ba6c7c3","layout":{"x":0,"y":8,"width":15,"height":8},"queryRef":{"kind":"query","queryId":"3091baa2-65bd-4cc6-8f20-be282daa4c5a"},"visualOptions":{"table__enableRenderLinks":true,"colorRulesDisabled":true,"colorStyle":"light","crossFilterDisabled":false,"drillthroughDisabled":false,"crossFilter":[{"interaction":"column","property":"ExecutionId","parameterId":"2a56cab0-962b-42fa-8e08-75d1b740814a","disabled":false}],"drillthrough":[],"table__renderLinks":[],"colorRules":[]}},{"id":"4349102b-60bd-49c9-a809-1a7266701f21","title":"DMF process messages","visualType":"table","pageId":"7e4bef13-2d09-4c25-81c9-89911ba6c7c3","layout":{"x":0,"y":16,"width":15,"height":8},"queryRef":{"kind":"query","queryId":"90a581ef-6ada-40ad-b5bc-6d18f087cae1"},"visualOptions":{"table__enableRenderLinks":true,"colorRulesDisabled":true,"colorStyle":"light","crossFilterDisabled":false,"drillthroughDisabled":false,"crossFilter":[],"drillthrough":[],"table__renderLinks":[],"colorRules":[]}},{"id":"4612e92c-68fd-479c-9ba0-9f7dd0264dfe","title":"DMF process messages","visualType":"table","pageId":"7e4bef13-2d09-4c25-81c9-89911ba6c7c3","layout":{"x":0,"y":24,"width":15,"height":8},"queryRef":{"kind":"query","queryId":"9c8ec109-0ba0-41d3-b3a4-e99aef402564"},"visualOptions":{"table__enableRenderLinks":true,"colorRulesDisabled":true,"colorStyle":"light","crossFilterDisabled":false,"drillthroughDisabled":false,"crossFilter":[],"drillthrough":[],"table__renderLinks":[],"colorRules":[]}},{"id":"a3c9efe4-97e8-4173-be7a-a79e7d3ddb18","title":"New tile","visualType":"table","pageId":"9393dc94-eb46-4964-bc35-107c11d4ab59","layout":{"x":0,"y":0,"width":17,"height":7},"queryRef":{"kind":"query","queryId":"c5e7f749-6838-440c-8163-396ec49b1916"},"visualOptions":{"table__enableRenderLinks":true,"colorRulesDisabled":true,"colorStyle":"light","crossFilterDisabled":false,"drillthroughDisabled":false,"crossFilter":[],"drillthrough":[],"table__renderLinks":[],"colorRules":[]}},{"id":"8800f4b5-ad07-4b5d-b085-8f4cd3aa19f5","title":"Business events","visualType":"table","pageId":"3770f62d-eb4c-4b4b-95f7-693cdbca820d","layout":{"x":0,"y":0,"width":18,"height":8},"queryRef":{"kind":"query","queryId":"5a6b80b9-2eda-48da-9bf6-b074af0146e8"},"visualOptions":{"table__enableRenderLinks":true,"colorRulesDisabled":true,"colorStyle":"light","crossFilterDisabled":false,"drillthroughDisabled":false,"crossFilter":[],"drillthrough":[],"table__renderLinks":[],"colorRules":[]}}],"baseQueries":[{"id":"f218871f-0bdf-4411-8e4c-c102924174b7","queryId":"48e7d995-a28e-4d0b-8da4-4a0770d5198f","variableName":"baseQuery"}],"parameters":[{"kind":"duration","id":"e62f909e-7b8c-47e3-92af-ca862c5f9571","displayName":"Time range","description":"","beginVariableName":"_startTime","endVariableName":"_endTime","defaultValue":{"kind":"dynamic","count":1,"unit":"hours"},"showOnPages":{"kind":"all"}},{"kind":"dataSource","id":"d0a5cfe6-dd7c-4af3-a37d-d819c3678e64","displayName":"AppInsights Resource","description":"","defaultValue":{"kind":"dataSource","dataSourceId":"b2107d4a-456d-4609-9a3e-6df014d6df31"},"dataSource":{"kind":"dataSource","values":{"kind":"all"}},"showOnPages":{"kind":"all"}},{"kind":"string","id":"c48ad1a8-d70e-4889-a7f7-9286e5776fa3","displayName":"Environment","description":"","variableName":"_environment","selectionType":"scalar","includeAllOption":false,"defaultValue":{"kind":"no-selection"},"dataSource":{"kind":"query","columns":{"value":"env","label":"PrettyName"},"queryRef":{"kind":"query","queryId":"8d870644-27cf-415b-8627-0161c02cec60"}},"showOnPages":{"kind":"all"}},{"kind":"string","id":"9ba819d6-d260-4f52-b574-f323c22b1b0d","displayName":"Company","description":"","variableName":"_company","selectionType":"scalar","includeAllOption":true,"defaultValue":{"kind":"all"},"dataSource":{"kind":"query","columns":{"value":"Company"},"queryRef":{"kind":"query","queryId":"8de630b8-48ef-446c-a3ce-f16da5756a82"}},"showOnPages":{"kind":"selection","pageIds":["68c9265b-dd67-4b2a-98ff-acd7df10f73b","45280ac4-b4e7-44f8-b03d-f24911f59a78","dddfa662-4ab6-43f7-87d6-5a3465581c98","b62c4c4d-3dce-4fbe-9a55-e3aafd3db4b5"]}},{"kind":"string","selectionType":"freetext","id":"56969be9-5892-42c6-b992-8c6217cb44b8","displayName":"Textsearch","variableName":"_searchText","description":"","defaultValue":{"kind":"all"},"showOnPages":{"kind":"selection","pageIds":["bd9f9369-8ccd-4a50-80d2-f5dcd8e6da1d"]}},{"kind":"string","selectionType":"freetext","id":"e3df871a-b95b-42f5-9707-6a774ab83ef8","displayName":"Formname","variableName":"_formName","description":"","defaultValue":{"kind":"value","value":"Please enter"},"showOnPages":{"kind":"selection","pageIds":["804c8964-1c48-4b9c-bdd8-03c05f791b0f"]}},{"kind":"string","id":"2a56cab0-962b-42fa-8e08-75d1b740814a","displayName":"Execution Id","description":"","variableName":"_executionId","selectionType":"array","includeAllOption":false,"defaultValue":{"kind":"values","values":[""]},"dataSource":{"kind":"query","columns":{"value":"ExecutionId","label":"ExecutionId"},"queryRef":{"kind":"query","queryId":"8d28461b-8e3e-45a5-b985-582b62f3c194"}},"showOnPages":{"kind":"selection","pageIds":["7e4bef13-2d09-4c25-81c9-89911ba6c7c3"]}}],"dataSources":[{"id":"b2107d4a-456d-4609-9a3e-6df014d6df31","kind":"manual-kusto","scopeId":"kusto","name":"FinOpsTelemetry","clusterUri":"https://ade.applicationinsights.io/subscriptions/42a58a61-6eda-4e80-840b-0c7d57ba8b32/resourceGroups/Telemetry/providers/microsoft.insights/components/FinOpsTelemetry","database":"FinOpsTelemetry"}],"pages":[{"name":"Page views","id":"804c8964-1c48-4b9c-bdd8-03c05f791b0f"},{"name":"System Exceptions","id":"bd9f9369-8ccd-4a50-80d2-f5dcd8e6da1d"},{"name":"Batch jobs","id":"4795984d-8c36-446d-8251-e5972d6a789e"},{"name":"Excel Exports","id":"1d077c66-49e1-4e0e-8b5b-dfce25799f5d"},{"name":"DMF","id":"7e4bef13-2d09-4c25-81c9-89911ba6c7c3"},{"name":"Dual-write","id":"9393dc94-eb46-4964-bc35-107c11d4ab59"},{"name":"BusinessEvents","id":"3770f62d-eb4c-4b4b-95f7-693cdbca820d"}],"queries":[{"dataSource":{"kind":"parameter","parameterId":"d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"},"text":"pageViews\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime\n| summarize durationSeconds = round(avg(duration) / 1000, 0), count() by name\n| order by durationSeconds desc","id":"76866813-df8b-4235-8b96-7ae450ae3bd2","usedVariables":["_endTime","_environment","_startTime"]},{"dataSource":{"kind":"parameter","parameterId":"d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"},"text":"exceptions\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime\n| project timestamp, env, outerMessage, outerType\n| summarize count() by outerMessage, outerType\n| order by count_ desc","id":"8a38498e-1fa7-43a1-9e71-9c0874af1564","usedVariables":["_endTime","_environment","_startTime"]},{"dataSource":{"kind":"parameter","parameterId":"d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"},"text":"exceptions\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime\n| extend CallStack = tostring(cd.CallStack)\n| extend ClassName = tostring(cd.ClassName)\n| extend activityId = tostring(cd.activityId)\n| extend BatchJobId = tolong(cd.BatchJobId)\n| project timestamp,outerMessage, outerType, CallStack, ClassName,activityId, BatchJobId\n| where _searchText != \"\" and  (CallStack contains _searchText or outerMessage contains _searchText or ClassName contains _searchText)","id":"cc66f2c2-b419-45bf-a965-746b36aaa4b8","usedVariables":["_endTime","_environment","_searchText","_startTime"]},{"dataSource":{"kind":"parameter","parameterId":"d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"},"text":"pageViews\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime\n| where name contains _formName\n| extend durationSeconds = round(duration / 1000, 0)\n| project timestamp, name, durationSeconds, user_Id, cd.activityId //, cd\n| order by durationSeconds desc","id":"8ac15bf7-a8c4-4a0b-8ddd-d3cd6737e7fe","usedVariables":["_endTime","_environment","_formName","_startTime"]},{"dataSource":{"kind":"parameter","parameterId":"d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"},"text":"customEvents\n| where name in (\"BatchStatusUpdate\")\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| extend SessionId = tostring(cd.SessionId)\n| extend Orders = tostring(cd.Orders)\n| extend BatchJobId = tolong(cd.BatchJobId)\n| extend BatchJobTaskId = tolong(cd.BatchJobTaskId)\n| extend ChildBatchJobId = tolong(cd.ChildBatchJobId)\n| extend ElapsedMilliseconds = tolong(cd.ElapsedMilliseconds)\n| extend Company = toupper(cd.DataAreaId)\n| extend User = cd.CurrentUserId\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime\n| extend currentStatus = tostring(cd.NewStatus)\n| extend prevStatus = tostring(cd.OrigStatus)\n| extend Caption = tostring(cd.BatchJobName)\n| extend Error = tostring(cd.Error)\n| extend ExecutingBy = tostring(cd.ExecutingBy)\n| extend Reccurence = tostring(cd.Reccurence)\n| extend CreatedBy = tostring(cd.CreatedBy)\n| extend StartDateTime = todatetime(cd.StartDateTime)\n| extend EndDateTime = todatetime(cd.EndDateTime)\n| extend AOS = tostring(cd.AOS)\n| project  timestamp, SessionId, name, Company, ElapsedMilliseconds, User, BatchJobId, BatchJobTaskId, Caption, currentStatus, prevStatus, StartDateTime, cd, AOS\n| summarize max(timestamp), arg_max(timestamp, Caption), arg_max(timestamp, currentStatus), arg_max(timestamp, StartDateTime) , arg_max(timestamp, cd) by BatchJobId, BatchJobTaskId, AOS\n| where currentStatus == \"Executing\"\n| project BatchJobId, BatchJobTaskId, Status = currentStatus, Caption, lastUpdate = max_timestamp, AOS","id":"9b1dd2bb-abc3-4025-b530-05ab13674637","usedVariables":["_endTime","_environment","_startTime"]},{"dataSource":{"kind":"parameter","parameterId":"d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"},"text":"customEvents\n| where name in (\"BatchStatusUpdate\")\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| extend SessionId = tostring(cd.SessionId)\n| extend Orders = tostring(cd.Orders)\n| extend BatchJobId = tolong(cd.BatchJobId)\n| extend BatchJobTaskId = tolong(cd.BatchJobTaskId)\n| extend ChildBatchJobId = tolong(cd.ChildBatchJobId)\n| extend ElapsedMilliseconds = tolong(cd.ElapsedMilliseconds)\n| extend Company = toupper(cd.DataAreaId)\n| extend User = cd.CurrentUserId\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime\n| extend currentStatus = tostring(cd.NewStatus)\n| extend prevStatus = tostring(cd.OrigStatus)\n| extend Caption = tostring(cd.BatchJobName)\n| extend Error = gzip_decompress_from_base64_string(tostring(cd.Error))\n| extend AOS = tostring(cd.AOS)\n    | join kind=inner (customEvents\n    | where name in (\"BatchJobStatusUpdate\")\n    | extend cd = parse_json(customDimensions)\n    | extend env = tostring(cd.environmentId)\n    | extend SessionId = tostring(cd.SessionId)\n    | extend Orders = tostring(cd.Orders)\n    | extend BatchJobId = tolong(cd.BatchJobId)\n    | extend BatchJobTaskId = tolong(cd.BatchJobTaskId)\n    | extend ChildBatchJobId = tolong(cd.ChildBatchJobId)\n    | extend ElapsedMilliseconds = tolong(cd.ElapsedMilliseconds)\n    | extend Company = toupper(cd.DataAreaId)\n    | extend User = cd.CurrentUserId\n    | where env == _environment\n    | where timestamp > _startTime\n    | where timestamp < _endTime\n    | extend currentStatus = tostring(cd.NewStatus)\n    | extend prevStatus = tostring(cd.OrigStatus)\n    | extend Caption = tostring(cd.BatchJobName)\n    | extend Error = tostring(cd.Error)\n    | extend ExecutingBy = tostring(cd.ExecutingBy)\n    | extend Reccurence = tostring(cd.Reccurence)\n    | extend CreatedBy = tostring(cd.CreatedBy)\n    | project  timestamp, Company, Error, ElapsedMilliseconds, User, BatchJobId, BatchJobTaskId, Caption, currentStatus, prevStatus,ExecutingBy,Reccurence,CreatedBy, cd\n    | summarize max(timestamp), batchJobCaption = arg_max(Caption, timestamp), arg_max(currentStatus, timestamp) by BatchJobId, ExecutingBy\n    ) on $left.BatchJobId == $right.BatchJobId\n| project  timestamp, Company, batchJobCaption, Error, ElapsedMilliseconds, User, BatchJobId, BatchJobTaskId, Caption, currentStatus, prevStatus,ExecutingBy, AOS\n| where currentStatus == \"Error\"\n| project timestamp, BatchJobId, BatchJobTaskId, Company, batchJobCaption, Error, AOS, ExecutingBy","id":"c179d3e2-e560-4154-b5d3-cea429ba21f9","usedVariables":["_endTime","_environment","_startTime"]},{"dataSource":{"kind":"parameter","parameterId":"d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"},"text":"customEvents\n| where name in (\"BatchJobStatusUpdate\")\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| extend SessionId = tostring(cd.SessionId)\n| extend Orders = tostring(cd.Orders)\n| extend BatchJobId = tolong(cd.BatchJobId)\n| extend BatchJobTaskId = tolong(cd.BatchJobTaskId)\n| extend ChildBatchJobId = tolong(cd.ChildBatchJobId)\n| extend ElapsedMilliseconds = tolong(cd.ElapsedMilliseconds)\n| extend Company = toupper(cd.DataAreaId)\n| extend User = cd.CurrentUserId\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime\n| extend currentStatus = tostring(cd.NewStatus)\n| extend prevStatus = tostring(cd.OrigStatus)\n| extend Caption = tostring(cd.BatchJobName)\n| extend Error = tostring(cd.Error)\n| extend ExecutingBy = tostring(cd.ExecutingBy)\n| extend Reccurence = tostring(cd.Reccurence)\n| extend CreatedBy = tostring(cd.CreatedBy)\n| project  timestamp, SessionId, name, Company, ElapsedMilliseconds, User, BatchJobId, BatchJobTaskId, Caption, currentStatus, prevStatus, cd\n| summarize max(timestamp),arg_max(timestamp, Caption) , arg_max(timestamp, currentStatus) by BatchJobId, Company\n    | join kind=inner  (customEvents\n    | where name in (\"BatchStatusUpdate\")\n    | extend cd = parse_json(customDimensions)\n    | extend env = tostring(cd.environmentId)\n    | extend SessionId = tostring(cd.SessionId)\n    | extend Orders = tostring(cd.Orders)\n    | extend BatchJobId = tolong(cd.BatchJobId)\n    | extend BatchJobTaskId = tolong(cd.BatchJobTaskId)\n    | extend ChildBatchJobId = tolong(cd.ChildBatchJobId)\n    | extend ElapsedMilliseconds = tolong(cd.ElapsedMilliseconds)\n    | extend Company = toupper(cd.DataAreaId)\n    | extend User = cd.CurrentUserId\n    | where env == _environment\n    | where timestamp > _startTime\n    | where timestamp < _endTime\n    | extend currentStatus = tostring(cd.NewStatus)\n    | extend prevStatus = tostring(cd.OrigStatus)\n    | extend Caption = tostring(cd.BatchJobName)\n    | extend Error = tostring(cd.Error)\n    | extend ExecutingBy = tostring(cd.ExecutingBy)\n    | extend Reccurence = tostring(cd.Reccurence)\n    | extend CreatedBy = tostring(cd.CreatedBy)\n    | project  timestamp, SessionId, name, Company, ElapsedMilliseconds, User, BatchJobId, BatchJobTaskId, Caption, currentStatus, prevStatus, cd\n    | summarize max(timestamp), arg_max(timestamp, Caption), BatchStatus = arg_max(timestamp, currentStatus) by BatchJobId\n    | where currentStatus == \"Executing\"\n    ) on $left.BatchJobId == $right.BatchJobId\n| project BatchJobId, Status = currentStatus1, Caption, Company","id":"ba59ccda-77d0-466e-9a8b-1c7bf47303ee","usedVariables":["_endTime","_environment","_startTime"]},{"dataSource":{"kind":"parameter","parameterId":"d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"},"text":"customEvents\n| where name in (\"BatchJobStatusUpdate\")\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| extend SessionId = tostring(cd.SessionId)\n| extend Orders = tostring(cd.Orders)\n| extend BatchJobId = tolong(cd.BatchJobId)\n| extend BatchJobTaskId = tolong(cd.BatchJobTaskId)\n| extend ChildBatchJobId = tolong(cd.ChildBatchJobId)\n| extend ElapsedMilliseconds = tolong(cd.ElapsedMilliseconds)\n| extend Company = toupper(cd.DataAreaId)\n| extend User = cd.CurrentUserId\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime\n| extend currentStatus = tostring(cd.NewStatus)\n| extend prevStatus = tostring(cd.OrigStatus)\n| extend Caption = tostring(cd.BatchJobName)\n| extend Error = tostring(cd.Error)\n| extend ExecutingBy = tostring(cd.ExecutingBy)\n| extend Reccurence = tostring(cd.Reccurence)\n| extend CreatedBy = tostring(cd.CreatedBy)\n| extend StartDateTime = todatetime(cd.StartDateTime)\n| extend EndDateTime = todatetime(cd.EndDateTime)\n| extend AOS = tostring(cd.AOS)\n| where Reccurence contains \"Occurs\"\n| project  timestamp, SessionId, name, Company, ElapsedMilliseconds, User, BatchJobId, BatchJobTaskId, Caption, currentStatus, prevStatus, Reccurence, cd\n| summarize lastUpdated = max(timestamp), take_any(Company), take_any(Caption), take_any(Reccurence) by BatchJobId\n","id":"b7ded805-fc0f-43a6-932c-789383590929","usedVariables":["_endTime","_environment","_startTime"]},{"dataSource":{"kind":"parameter","parameterId":"d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"},"text":"customEvents\n| where name in (\"BatchJobStatusUpdate\")\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| extend SessionId = tostring(cd.SessionId)\n| extend Orders = tostring(cd.Orders)\n| extend BatchJobId = tolong(cd.BatchJobId)\n| extend BatchJobTaskId = tolong(cd.BatchJobTaskId)\n| extend ChildBatchJobId = tolong(cd.ChildBatchJobId)\n| extend ElapsedMilliseconds = tolong(cd.ElapsedMilliseconds)\n| extend Company = toupper(cd.DataAreaId)\n| extend User = cd.CurrentUserId\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime\n| extend currentStatus = tostring(cd.NewStatus)\n| extend prevStatus = tostring(cd.OrigStatus)\n| extend Caption = tostring(cd.BatchJobName)\n| extend Error = tostring(cd.Error)\n| extend ExecutingBy = tostring(cd.ExecutingBy)\n| extend Reccurence = tostring(cd.Reccurence)\n| extend CreatedBy = tostring(cd.CreatedBy)\n| extend StartDateTime = todatetime(cd.StartDateTime)\n| extend EndDateTime = todatetime(cd.EndDateTime)\n| extend BatchJobDuration = EndDateTime - StartDateTime\n| where currentStatus in (\"Ended\", \"Error\")\n| project  timestamp, SessionId, name, Company, ElapsedMilliseconds, User, BatchJobId, BatchJobTaskId, Caption, currentStatus, prevStatus, cd, BatchJobDuration, EndDateTime\n| summarize sum(BatchJobDuration) by Caption, currentStatus, bin(timestamp, 5m), EndDateTime","id":"770558f0-a7fb-4e4e-a8f4-ac2779aef085","usedVariables":["_endTime","_environment","_startTime"]},{"dataSource":{"kind":"parameter","parameterId":"d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"},"text":"customEvents\n| where name in (\"BatchJobStatusUpdate\")\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| extend SessionId = tostring(cd.SessionId)\n| extend Orders = tostring(cd.Orders)\n| extend BatchJobId = tolong(cd.BatchJobId)\n| extend BatchJobTaskId = tolong(cd.BatchJobTaskId)\n| extend ChildBatchJobId = tolong(cd.ChildBatchJobId)\n| extend ElapsedMilliseconds = tolong(cd.ElapsedMilliseconds)\n| extend Company = toupper(cd.DataAreaId)\n| extend User = cd.CurrentUserId\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime\n| extend currentStatus = tostring(cd.NewStatus)\n| extend prevStatus = tostring(cd.OrigStatus)\n| extend Caption = tostring(cd.BatchJobName)\n| extend Error = tostring(cd.Error)\n| extend ExecutingBy = tostring(cd.ExecutingBy)\n| extend Reccurence = tostring(cd.Reccurence)\n| extend CreatedBy = tostring(cd.CreatedBy)\n| extend StartDateTime = todatetime(cd.StartDateTime)\n| extend EndDateTime = todatetime(cd.EndDateTime)\n| extend BatchJobDuration = EndDateTime - StartDateTime\n| where currentStatus in (\"Ended\", \"Error\")\n| project  timestamp, SessionId, name, Company, ElapsedMilliseconds, User, BatchJobId, BatchJobTaskId, Caption, currentStatus, prevStatus, cd, BatchJobDuration, StartDateTime, EndDateTime\n| summarize sum(BatchJobDuration) by Caption, Status = currentStatus, StartDateTime, EndDateTime","id":"31706b4e-b47c-42af-a80a-8845772ecb9b","usedVariables":["_endTime","_environment","_startTime"]},{"dataSource":{"kind":"parameter","parameterId":"d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"},"text":"customEvents\n| where name in (\"BatchStatusUpdate\")\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| extend SessionId = tostring(cd.SessionId)\n| extend Orders = tostring(cd.Orders)\n| extend BatchJobId = tolong(cd.BatchJobId)\n| extend BatchJobTaskId = tolong(cd.BatchJobTaskId)\n| extend ChildBatchJobId = tolong(cd.ChildBatchJobId)\n| extend ElapsedMilliseconds = tolong(cd.ElapsedMilliseconds)\n| extend Company = toupper(cd.DataAreaId)\n| extend User = cd.CurrentUserId\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime\n| extend currentStatus = tostring(cd.NewStatus)\n| extend prevStatus = tostring(cd.OrigStatus)\n| extend Caption = tostring(cd.BatchJobName)\n| extend Error = tostring(cd.Error)\n| extend ExecutingBy = tostring(cd.ExecutingBy)\n| extend Reccurence = tostring(cd.Reccurence)\n| extend CreatedBy = tostring(cd.CreatedBy)\n| extend StartDateTime = todatetime(cd.StartDateTime)\n| extend EndDateTime = todatetime(cd.EndDateTime)\n| extend AOS = tostring(cd.AOS)\n| where currentStatus in (\"Executing\")\n| project  timestamp, SessionId, name, Company, ElapsedMilliseconds, User, BatchJobId, BatchJobTaskId, Caption, currentStatus, StartDateTime, cd, AOS\n| summarize count() by AOS, bin(timestamp, 15m)","id":"e1793871-a199-42bb-84f2-23cc1fd3a3df","usedVariables":["_endTime","_environment","_startTime"]},{"dataSource":{"kind":"inline","dataSourceId":"b2107d4a-456d-4609-9a3e-6df014d6df31"},"text":"baseQuery\n| where name in (\"ExcelExportStarted\", \"ExcelExportProgress\", \"ExcelExportEnded\")\n| extend RowsExported = cd.RecordsProcessed\n| extend ElapsedMilliseconds = cd.ElapsedMilliseconds\n| extend ExportRowLimitReached = cd.ExportRowLimitReached\n| extend ExportRowLimit = cd.ExportRowLimit\n| project timestamp, name, User, RowsExported, ElapsedMilliseconds, ExportRowLimitReached, ExportRowLimit, ActivityId","id":"f42b71c6-9155-4303-9860-8e254ff76570","usedVariables":["baseQuery"]},{"dataSource":{"kind":"inline","dataSourceId":"b2107d4a-456d-4609-9a3e-6df014d6df31"},"text":"baseQuery\n| where name == \"DMFImport\"\n| extend EntityName = cd.entityName\n| extend ExecutionId = tostring(cd.ExecutionId)\n| project timestamp, name, ElapsedMilliseconds, EntityName, ExecutionId, ActivityId,BatchJobId,  cd","id":"ee5de98c-216a-4207-a347-0a185792f211","usedVariables":["baseQuery"]},{"dataSource":{"kind":"inline","dataSourceId":"b2107d4a-456d-4609-9a3e-6df014d6df31"},"text":"baseQuery\n| where name in (\"DMFExportFile\", \"DMFExportPackage\")\n| extend EntityName = cd.entityName\n| extend ExecutionId = tostring(cd.ExecutionId)\n| project timestamp, name, ElapsedMilliseconds, EntityName, ExecutionId, ActivityId,BatchJobId,  cd","id":"3091baa2-65bd-4cc6-8f20-be282daa4c5a","usedVariables":["baseQuery"]},{"dataSource":{"kind":"inline","dataSourceId":"b2107d4a-456d-4609-9a3e-6df014d6df31"},"text":"baseQuery\n| where name in (\"DMFStagingLogMessage\")\n| extend EntityName = cd.entityName\n| extend ExecutionId = tostring(cd.ExecutionId)\n| extend Message = cd.Message\n| where isempty(_executionId) or   ExecutionId in (_executionId)\n| project timestamp, name,Message, ExecutionId, ActivityId,BatchJobId,  cd","id":"90a581ef-6ada-40ad-b5bc-6d18f087cae1","usedVariables":["_executionId","baseQuery"]},{"dataSource":{"kind":"inline","dataSourceId":"b2107d4a-456d-4609-9a3e-6df014d6df31"},"text":"baseQuery\n| where name in (\"DMFStagingLogDetailMessage\")\n| extend EntityName = cd.entityName\n| extend ExecutionId = tostring(cd.ExecutionId)\n| extend Message = cd.Message\n| where isempty(_executionId) or   ExecutionId in (_executionId)\n| extend stagingRecord = parse_json(gzip_decompress_from_base64_string(tostring(cd.stagingRecord)))\n| extend Error = tostring(cd.Error)\n| project timestamp, name,Error, EntityName, stagingRecord, ExecutionId, ActivityId,BatchJobId,  cd","id":"9c8ec109-0ba0-41d3-b3a4-e99aef402564","usedVariables":["_executionId","baseQuery"]},{"dataSource":{"kind":"inline","dataSourceId":"b2107d4a-456d-4609-9a3e-6df014d6df31"},"text":"baseQuery\n| where name in (\"DualWriteMapStarted\", \"DualWriteMapPaused\", \"DualWriteMapStopped\")\n| extend Status = cd.Status\n| extend IntegrationKey = cd.IntegrationKey\n| extend DVEntity = cd.DVEntity\n| extend QueryFilter = cd.QueryFilter\n| extend  ProjectName = cd.ProjectName\n| extend  FOEntity = cd.FOEntity\n| project timestamp, name, Status, IntegrationKey, DVEntity, FOEntity, ProjectName, QueryFilter","id":"c5e7f749-6838-440c-8163-396ec49b1916","usedVariables":["baseQuery"]},{"dataSource":{"kind":"inline","dataSourceId":"b2107d4a-456d-4609-9a3e-6df014d6df31"},"text":"baseQuery\n| where name in (\"BusinessEventSent\", \"BusinessEventSavedInCommitLog\")\n| extend payload = gzip_decompress_from_base64_string(tostring(cd.Contract))\n| extend EventId = tostring(cd.EventId)\n| extend BusinessEventId = tostring(cd.BusinessEventId)\n| extend CreatedTransactionId = tostring(cd.CreatedTransactionId)\n| extend LegalEntity = tostring(cd.LegalEntity)\n| project timestamp, name,  BusinessEventId, EventId, CreatedTransactionId, LegalEntity, payload","id":"5a6b80b9-2eda-48da-9bf6-b074af0146e8","usedVariables":["baseQuery"]},{"id":"48e7d995-a28e-4d0b-8da4-4a0770d5198f","dataSource":{"kind":"parameter","parameterId":"d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"},"text":"customEvents\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| extend SessionId = tostring(cd.SessionId)\n| extend BatchJobId = tolong(cd.BatchJobId)\n| extend BatchJobTaskId = tolong(cd.BatchJobTaskId)\n| extend ElapsedMilliseconds = tolong(cd.ElapsedMilliseconds)\n| extend Company = toupper(cd.DataAreaId)\n| extend User = cd.CurrentUserId\n| extend ActivityId = cd.activityId\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime","usedVariables":["_endTime","_environment","_startTime"]},{"dataSource":{"kind":"parameter","parameterId":"d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"},"text":"let NameMapping = datatable (OriginalName: string, PrettyName: string)\n[\n    \"d6cb6bc9-6923-ef8a-9bfb-6aac09b55048\", \"General Dev UDE\"\n];\ncluster(\"https://ade.applicationinsights.io/subscriptions/42a58a61-6eda-4e80-840b-0c7d57ba8b32/resourceGroups/Telemetry/providers/microsoft.insights/components/FinOpsTelemetry\").database(\"FinOpsTelemetry\").pageViews\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| join kind=leftouter  (NameMapping) on $left.env == $right.OriginalName\n| where env != \"\"\n| extend PrettyName = iff(isempty(PrettyName), env, PrettyName)\n| distinct env, PrettyName","id":"8d870644-27cf-415b-8627-0161c02cec60","usedVariables":[]},{"dataSource":{"kind":"parameter","parameterId":"d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"},"text":"customEvents\n| extend cd = parse_json(customDimensions)\n| extend Company = toupper(tostring(cd.DataAreaId))\n| distinct Company ","id":"8de630b8-48ef-446c-a3ce-f16da5756a82","usedVariables":[]},{"dataSource":{"kind":"inline","dataSourceId":"b2107d4a-456d-4609-9a3e-6df014d6df31"},"text":"baseQuery\n| where name in (\"DMFExportFile\", \"DMFExportPackage\", \"DMFImport\")\n| extend EntityName = cd.entityName\n| extend ExecutionId = tostring(cd.ExecutionId)\n| summarize by ExecutionId\n| project ExecutionId","id":"8d28461b-8e3e-45a5-b985-582b62f3c194","usedVariables":["baseQuery"]}]}
+{
+  "$schema": "https://dataexplorer.azure.com/static/d/schema/60/dashboard.json",
+  "id": "349bfd1c-608a-4495-82e0-1e8dad7dfbd0",
+  "eTag": "28cef763-f100-4ed8-86df-753da4477dea",
+  "schema_version": "60",
+  "title": "FinOps Telemetry Dashboard",
+  "tiles": [
+    {
+      "id": "f6395ce3-d301-4689-8cad-e4787346903e",
+      "title": "Avg Page open time",
+      "visualType": "table",
+      "pageId": "804c8964-1c48-4b9c-bdd8-03c05f791b0f",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 8,
+        "height": 17
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "76866813-df8b-4235-8b96-7ae450ae3bd2"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRulesDisabled": true,
+        "colorStyle": "light",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": []
+      }
+    },
+    {
+      "id": "96266a76-180e-46e9-afa0-5e9c92c7bd43",
+      "title": "Error by name ",
+      "visualType": "table",
+      "pageId": "bd9f9369-8ccd-4a50-80d2-f5dcd8e6da1d",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 20,
+        "height": 13
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "8a38498e-1fa7-43a1-9e71-9c0874af1564"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRulesDisabled": true,
+        "colorStyle": "light",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [
+          {
+            "interaction": "column",
+            "property": "outerMessage",
+            "parameterId": "56969be9-5892-42c6-b992-8c6217cb44b8",
+            "disabled": false
+          }
+        ],
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": []
+      }
+    },
+    {
+      "id": "8c9690a5-0f35-406f-b36a-6829cf423c4e",
+      "title": "Search by text",
+      "description": "Enter a search value in the parameters to explore errors ",
+      "visualType": "table",
+      "pageId": "bd9f9369-8ccd-4a50-80d2-f5dcd8e6da1d",
+      "layout": {
+        "x": 0,
+        "y": 13,
+        "width": 20,
+        "height": 9
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "cc66f2c2-b419-45bf-a965-746b36aaa4b8"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRulesDisabled": true,
+        "colorStyle": "light",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": []
+      }
+    },
+    {
+      "id": "94acbdf3-f086-4e8f-a815-dd402a695c85",
+      "title": "Opening times",
+      "visualType": "table",
+      "pageId": "804c8964-1c48-4b9c-bdd8-03c05f791b0f",
+      "layout": {
+        "x": 0,
+        "y": 17,
+        "width": 17,
+        "height": 17
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "8ac15bf7-a8c4-4a0b-8ddd-d3cd6737e7fe"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRulesDisabled": true,
+        "colorStyle": "light",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": []
+      }
+    },
+    {
+      "id": "7a0d59ff-8606-4161-8099-6a93da07e470",
+      "title": "Currently running Tasks",
+      "visualType": "table",
+      "pageId": "4795984d-8c36-446d-8251-e5972d6a789e",
+      "layout": {
+        "x": 11,
+        "y": 0,
+        "width": 13,
+        "height": 9
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "9b1dd2bb-abc3-4025-b530-05ab13674637"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRulesDisabled": true,
+        "colorStyle": "light",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": []
+      }
+    },
+    {
+      "id": "7fbf815f-f7c8-44f4-ac07-6f52dd87c0a7",
+      "title": "batch task errors",
+      "visualType": "table",
+      "pageId": "4795984d-8c36-446d-8251-e5972d6a789e",
+      "layout": {
+        "x": 0,
+        "y": 9,
+        "width": 24,
+        "height": 10
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "c179d3e2-e560-4154-b5d3-cea429ba21f9"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRulesDisabled": true,
+        "colorStyle": "light",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": []
+      }
+    },
+    {
+      "id": "37682128-c524-46b9-9e30-6b73d544f1d2",
+      "title": "Currently running jobs",
+      "visualType": "table",
+      "pageId": "4795984d-8c36-446d-8251-e5972d6a789e",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 11,
+        "height": 9
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "ba59ccda-77d0-466e-9a8b-1c7bf47303ee"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRulesDisabled": true,
+        "colorStyle": "light",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": []
+      }
+    },
+    {
+      "id": "0544eefa-0a0e-441a-9cf1-66259c53a836",
+      "title": "Reccuring Batch jobs",
+      "visualType": "table",
+      "pageId": "4795984d-8c36-446d-8251-e5972d6a789e",
+      "layout": {
+        "x": 0,
+        "y": 19,
+        "width": 24,
+        "height": 10
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "b7ded805-fc0f-43a6-932c-789383590929"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRulesDisabled": true,
+        "colorStyle": "light",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": []
+      }
+    },
+    {
+      "id": "04ba33f9-184d-482b-8cb6-d444edf09ad0",
+      "title": "Past Jobs heatmap",
+      "visualType": "heatmap",
+      "pageId": "4795984d-8c36-446d-8251-e5972d6a789e",
+      "layout": {
+        "x": 0,
+        "y": 29,
+        "width": 24,
+        "height": 18
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "770558f0-a7fb-4e4e-a8f4-ac2779aef085"
+      },
+      "visualOptions": {
+        "xColumn": "timestamp",
+        "xColumnTitle": "",
+        "yColumnTitle": "",
+        "heatMap__dataColumn": "sum_BatchJobDuration",
+        "heatMap__colorPaletteKey": "blue",
+        "yColumns": [
+          "Caption"
+        ]
+      }
+    },
+    {
+      "id": "dc873d4b-f4cb-430e-ac49-fcb1ebf03f41",
+      "title": "Historical ran jobs ",
+      "visualType": "table",
+      "pageId": "4795984d-8c36-446d-8251-e5972d6a789e",
+      "layout": {
+        "x": 0,
+        "y": 56,
+        "width": 12,
+        "height": 14
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "31706b4e-b47c-42af-a80a-8845772ecb9b"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRulesDisabled": true,
+        "colorStyle": "light",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": []
+      }
+    },
+    {
+      "id": "f21e79f1-cb3e-4d66-8a03-3088aecca798",
+      "title": "Batch AOS distribution",
+      "visualType": "area",
+      "pageId": "4795984d-8c36-446d-8251-e5972d6a789e",
+      "layout": {
+        "x": 0,
+        "y": 47,
+        "width": 24,
+        "height": 9
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "e1793871-a199-42bb-84f2-23cc1fd3a3df"
+      },
+      "visualOptions": {
+        "multipleYAxes": {
+          "base": {
+            "id": "-1",
+            "label": "",
+            "columns": [],
+            "yAxisMaximumValue": null,
+            "yAxisMinimumValue": null,
+            "yAxisScale": "linear",
+            "horizontalLines": []
+          },
+          "additional": [],
+          "showMultiplePanels": false
+        },
+        "hideLegend": false,
+        "legendLocation": "bottom",
+        "xColumnTitle": "",
+        "xColumn": null,
+        "yColumns": null,
+        "seriesColumns": null,
+        "xAxisScale": "linear",
+        "verticalLine": "",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "selectedDataOnLoad": {
+          "all": true,
+          "limit": 10
+        },
+        "dataPointsTooltip": {
+          "all": false,
+          "limit": 1
+        }
+      }
+    },
+    {
+      "id": "e0011743-9044-4c1d-a80b-024f9e102b2d",
+      "title": "Excel export telemetry",
+      "visualType": "table",
+      "pageId": "1d077c66-49e1-4e0e-8b5b-dfce25799f5d",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 17,
+        "height": 8
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "f42b71c6-9155-4303-9860-8e254ff76570"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRulesDisabled": true,
+        "colorStyle": "light",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": []
+      }
+    },
+    {
+      "id": "4cf71371-b941-4cbf-8dec-c7c1fb4f8ba2",
+      "title": "DMF Imports",
+      "visualType": "table",
+      "pageId": "7e4bef13-2d09-4c25-81c9-89911ba6c7c3",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 15,
+        "height": 8
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "ee5de98c-216a-4207-a347-0a185792f211"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRulesDisabled": true,
+        "colorStyle": "light",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [
+          {
+            "interaction": "column",
+            "property": "ExecutionId",
+            "parameterId": "2a56cab0-962b-42fa-8e08-75d1b740814a",
+            "disabled": false
+          }
+        ],
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": []
+      }
+    },
+    {
+      "id": "1b2fae1e-7dc2-4d2a-9db0-681a56d7adfb",
+      "title": "DMF Exports",
+      "visualType": "table",
+      "pageId": "7e4bef13-2d09-4c25-81c9-89911ba6c7c3",
+      "layout": {
+        "x": 0,
+        "y": 8,
+        "width": 15,
+        "height": 8
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "3091baa2-65bd-4cc6-8f20-be282daa4c5a"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRulesDisabled": true,
+        "colorStyle": "light",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [
+          {
+            "interaction": "column",
+            "property": "ExecutionId",
+            "parameterId": "2a56cab0-962b-42fa-8e08-75d1b740814a",
+            "disabled": false
+          }
+        ],
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": []
+      }
+    },
+    {
+      "id": "4349102b-60bd-49c9-a809-1a7266701f21",
+      "title": "DMF process messages",
+      "visualType": "table",
+      "pageId": "7e4bef13-2d09-4c25-81c9-89911ba6c7c3",
+      "layout": {
+        "x": 0,
+        "y": 16,
+        "width": 15,
+        "height": 8
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "90a581ef-6ada-40ad-b5bc-6d18f087cae1"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRulesDisabled": true,
+        "colorStyle": "light",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": []
+      }
+    },
+    {
+      "id": "4612e92c-68fd-479c-9ba0-9f7dd0264dfe",
+      "title": "DMF process messages",
+      "visualType": "table",
+      "pageId": "7e4bef13-2d09-4c25-81c9-89911ba6c7c3",
+      "layout": {
+        "x": 0,
+        "y": 24,
+        "width": 15,
+        "height": 8
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "9c8ec109-0ba0-41d3-b3a4-e99aef402564"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRulesDisabled": true,
+        "colorStyle": "light",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": []
+      }
+    },
+    {
+      "id": "a3c9efe4-97e8-4173-be7a-a79e7d3ddb18",
+      "title": "New tile",
+      "visualType": "table",
+      "pageId": "9393dc94-eb46-4964-bc35-107c11d4ab59",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 17,
+        "height": 7
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "c5e7f749-6838-440c-8163-396ec49b1916"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRulesDisabled": true,
+        "colorStyle": "light",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": []
+      }
+    },
+    {
+      "id": "8800f4b5-ad07-4b5d-b085-8f4cd3aa19f5",
+      "title": "Business events",
+      "visualType": "table",
+      "pageId": "3770f62d-eb4c-4b4b-95f7-693cdbca820d",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 18,
+        "height": 8
+      },
+      "queryRef": {
+        "kind": "query",
+        "queryId": "5a6b80b9-2eda-48da-9bf6-b074af0146e8"
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRulesDisabled": true,
+        "colorStyle": "light",
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "crossFilter": [],
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": []
+      }
+    }
+  ],
+  "baseQueries": [
+    {
+      "id": "f218871f-0bdf-4411-8e4c-c102924174b7",
+      "queryId": "48e7d995-a28e-4d0b-8da4-4a0770d5198f",
+      "variableName": "baseQuery"
+    }
+  ],
+  "parameters": [
+    {
+      "kind": "duration",
+      "id": "e62f909e-7b8c-47e3-92af-ca862c5f9571",
+      "displayName": "Time range",
+      "description": "",
+      "beginVariableName": "_startTime",
+      "endVariableName": "_endTime",
+      "defaultValue": {
+        "kind": "dynamic",
+        "count": 1,
+        "unit": "hours"
+      },
+      "showOnPages": {
+        "kind": "all"
+      }
+    },
+    {
+      "kind": "dataSource",
+      "id": "d0a5cfe6-dd7c-4af3-a37d-d819c3678e64",
+      "displayName": "AppInsights Resource",
+      "description": "",
+      "defaultValue": {
+        "kind": "dataSource",
+        "dataSourceId": "b2107d4a-456d-4609-9a3e-6df014d6df31"
+      },
+      "dataSource": {
+        "kind": "dataSource",
+        "values": {
+          "kind": "all"
+        }
+      },
+      "showOnPages": {
+        "kind": "all"
+      }
+    },
+    {
+      "kind": "string",
+      "id": "c48ad1a8-d70e-4889-a7f7-9286e5776fa3",
+      "displayName": "Environment",
+      "description": "",
+      "variableName": "_environment",
+      "selectionType": "scalar",
+      "includeAllOption": false,
+      "defaultValue": {
+        "kind": "query-result"
+      },
+      "dataSource": {
+        "kind": "query",
+        "columns": {
+          "value": "env",
+          "label": "PrettyName"
+        },
+        "queryRef": {
+          "kind": "query",
+          "queryId": "8d870644-27cf-415b-8627-0161c02cec60"
+        },
+        "autoReset": true
+      },
+      "showOnPages": {
+        "kind": "all"
+      }
+    },
+    {
+      "kind": "string",
+      "id": "9ba819d6-d260-4f52-b574-f323c22b1b0d",
+      "displayName": "Company",
+      "description": "",
+      "variableName": "_company",
+      "selectionType": "scalar",
+      "includeAllOption": true,
+      "defaultValue": {
+        "kind": "all"
+      },
+      "dataSource": {
+        "kind": "query",
+        "columns": {
+          "value": "Company"
+        },
+        "queryRef": {
+          "kind": "query",
+          "queryId": "8de630b8-48ef-446c-a3ce-f16da5756a82"
+        }
+      },
+      "showOnPages": {
+        "kind": "selection",
+        "pageIds": [
+          "68c9265b-dd67-4b2a-98ff-acd7df10f73b",
+          "45280ac4-b4e7-44f8-b03d-f24911f59a78",
+          "dddfa662-4ab6-43f7-87d6-5a3465581c98",
+          "b62c4c4d-3dce-4fbe-9a55-e3aafd3db4b5"
+        ]
+      }
+    },
+    {
+      "kind": "string",
+      "selectionType": "freetext",
+      "id": "56969be9-5892-42c6-b992-8c6217cb44b8",
+      "displayName": "Textsearch",
+      "variableName": "_searchText",
+      "description": "",
+      "defaultValue": {
+        "kind": "all"
+      },
+      "showOnPages": {
+        "kind": "selection",
+        "pageIds": [
+          "bd9f9369-8ccd-4a50-80d2-f5dcd8e6da1d"
+        ]
+      }
+    },
+    {
+      "kind": "string",
+      "selectionType": "freetext",
+      "id": "e3df871a-b95b-42f5-9707-6a774ab83ef8",
+      "displayName": "Formname",
+      "variableName": "_formName",
+      "description": "",
+      "defaultValue": {
+        "kind": "value",
+        "value": "Please enter"
+      },
+      "showOnPages": {
+        "kind": "selection",
+        "pageIds": [
+          "804c8964-1c48-4b9c-bdd8-03c05f791b0f"
+        ]
+      }
+    },
+    {
+      "kind": "string",
+      "id": "2a56cab0-962b-42fa-8e08-75d1b740814a",
+      "displayName": "Execution Id",
+      "description": "",
+      "variableName": "_executionId",
+      "selectionType": "array",
+      "includeAllOption": false,
+      "defaultValue": {
+        "kind": "values",
+        "values": [
+          ""
+        ]
+      },
+      "dataSource": {
+        "kind": "query",
+        "columns": {
+          "value": "ExecutionId",
+          "label": "ExecutionId"
+        },
+        "queryRef": {
+          "kind": "query",
+          "queryId": "8d28461b-8e3e-45a5-b985-582b62f3c194"
+        }
+      },
+      "showOnPages": {
+        "kind": "selection",
+        "pageIds": [
+          "7e4bef13-2d09-4c25-81c9-89911ba6c7c3"
+        ]
+      }
+    }
+  ],
+  "dataSources": [
+    {
+      "id": "b2107d4a-456d-4609-9a3e-6df014d6df31",
+      "kind": "manual-kusto",
+      "scopeId": "kusto",
+      "name": "FinOpsTelemetry",
+      "clusterUri": "https://ade.applicationinsights.io/subscriptions/42a58a61-6eda-4e80-840b-0c7d57ba8b32/resourceGroups/Telemetry/providers/microsoft.insights/components/FinOpsTelemetry",
+      "database": "FinOpsTelemetry"
+    }
+  ],
+  "pages": [
+    {
+      "name": "Page views",
+      "id": "804c8964-1c48-4b9c-bdd8-03c05f791b0f"
+    },
+    {
+      "name": "System Exceptions",
+      "id": "bd9f9369-8ccd-4a50-80d2-f5dcd8e6da1d"
+    },
+    {
+      "name": "Batch jobs",
+      "id": "4795984d-8c36-446d-8251-e5972d6a789e"
+    },
+    {
+      "name": "Excel Exports",
+      "id": "1d077c66-49e1-4e0e-8b5b-dfce25799f5d"
+    },
+    {
+      "name": "DMF",
+      "id": "7e4bef13-2d09-4c25-81c9-89911ba6c7c3"
+    },
+    {
+      "name": "Dual-write",
+      "id": "9393dc94-eb46-4964-bc35-107c11d4ab59"
+    },
+    {
+      "name": "BusinessEvents",
+      "id": "3770f62d-eb4c-4b4b-95f7-693cdbca820d"
+    }
+  ],
+  "queries": [
+    {
+      "dataSource": {
+        "kind": "parameter",
+        "parameterId": "d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"
+      },
+      "text": "pageViews\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime\n| summarize durationSeconds = round(avg(duration) / 1000, 0), count() by name\n| order by durationSeconds desc",
+      "id": "76866813-df8b-4235-8b96-7ae450ae3bd2",
+      "usedVariables": [
+        "_endTime",
+        "_environment",
+        "_startTime"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "parameter",
+        "parameterId": "d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"
+      },
+      "text": "exceptions\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime\n| project timestamp, env, outerMessage, outerType\n| summarize count() by outerMessage, outerType\n| order by count_ desc",
+      "id": "8a38498e-1fa7-43a1-9e71-9c0874af1564",
+      "usedVariables": [
+        "_endTime",
+        "_environment",
+        "_startTime"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "parameter",
+        "parameterId": "d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"
+      },
+      "text": "exceptions\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime\n| extend CallStack = tostring(cd.CallStack)\n| extend ClassName = tostring(cd.ClassName)\n| extend activityId = tostring(cd.activityId)\n| extend BatchJobId = tolong(cd.BatchJobId)\n| project timestamp,outerMessage, outerType, CallStack, ClassName,activityId, BatchJobId\n| where _searchText != \"\" and  (CallStack contains _searchText or outerMessage contains _searchText or ClassName contains _searchText)",
+      "id": "cc66f2c2-b419-45bf-a965-746b36aaa4b8",
+      "usedVariables": [
+        "_endTime",
+        "_environment",
+        "_searchText",
+        "_startTime"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "parameter",
+        "parameterId": "d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"
+      },
+      "text": "pageViews\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime\n| where name contains _formName\n| extend durationSeconds = round(duration / 1000, 0)\n| project timestamp, name, durationSeconds, user_Id, cd.activityId //, cd\n| order by durationSeconds desc",
+      "id": "8ac15bf7-a8c4-4a0b-8ddd-d3cd6737e7fe",
+      "usedVariables": [
+        "_endTime",
+        "_environment",
+        "_formName",
+        "_startTime"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "parameter",
+        "parameterId": "d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"
+      },
+      "text": "customEvents\n| where name in (\"BatchStatusUpdate\")\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| extend SessionId = tostring(cd.SessionId)\n| extend Orders = tostring(cd.Orders)\n| extend BatchJobId = tolong(cd.BatchJobId)\n| extend BatchJobTaskId = tolong(cd.BatchJobTaskId)\n| extend ChildBatchJobId = tolong(cd.ChildBatchJobId)\n| extend ElapsedMilliseconds = tolong(cd.ElapsedMilliseconds)\n| extend Company = toupper(cd.DataAreaId)\n| extend User = cd.CurrentUserId\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime\n| extend currentStatus = tostring(cd.NewStatus)\n| extend prevStatus = tostring(cd.OrigStatus)\n| extend Caption = tostring(cd.BatchJobName)\n| extend Error = tostring(cd.Error)\n| extend ExecutingBy = tostring(cd.ExecutingBy)\n| extend Reccurence = tostring(cd.Reccurence)\n| extend CreatedBy = tostring(cd.CreatedBy)\n| extend StartDateTime = todatetime(cd.StartDateTime)\n| extend EndDateTime = todatetime(cd.EndDateTime)\n| extend AOS = tostring(cd.AOS)\n| project  timestamp, SessionId, name, Company, ElapsedMilliseconds, User, BatchJobId, BatchJobTaskId, Caption, currentStatus, prevStatus, StartDateTime, cd, AOS\n| summarize max(timestamp), arg_max(timestamp, Caption), arg_max(timestamp, currentStatus), arg_max(timestamp, StartDateTime) , arg_max(timestamp, cd) by BatchJobId, BatchJobTaskId, AOS\n| where currentStatus == \"Executing\"\n| project BatchJobId, BatchJobTaskId, Status = currentStatus, Caption, lastUpdate = max_timestamp, AOS",
+      "id": "9b1dd2bb-abc3-4025-b530-05ab13674637",
+      "usedVariables": [
+        "_endTime",
+        "_environment",
+        "_startTime"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "parameter",
+        "parameterId": "d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"
+      },
+      "text": "customEvents\n| where name in (\"BatchStatusUpdate\")\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| extend SessionId = tostring(cd.SessionId)\n| extend Orders = tostring(cd.Orders)\n| extend BatchJobId = tolong(cd.BatchJobId)\n| extend BatchJobTaskId = tolong(cd.BatchJobTaskId)\n| extend ChildBatchJobId = tolong(cd.ChildBatchJobId)\n| extend ElapsedMilliseconds = tolong(cd.ElapsedMilliseconds)\n| extend Company = toupper(cd.DataAreaId)\n| extend User = cd.CurrentUserId\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime\n| extend currentStatus = tostring(cd.NewStatus)\n| extend prevStatus = tostring(cd.OrigStatus)\n| extend Caption = tostring(cd.BatchJobName)\n| extend Error = gzip_decompress_from_base64_string(tostring(cd.Error))\n| extend AOS = tostring(cd.AOS)\n    | join kind=inner (customEvents\n    | where name in (\"BatchJobStatusUpdate\")\n    | extend cd = parse_json(customDimensions)\n    | extend env = tostring(cd.environmentId)\n    | extend SessionId = tostring(cd.SessionId)\n    | extend Orders = tostring(cd.Orders)\n    | extend BatchJobId = tolong(cd.BatchJobId)\n    | extend BatchJobTaskId = tolong(cd.BatchJobTaskId)\n    | extend ChildBatchJobId = tolong(cd.ChildBatchJobId)\n    | extend ElapsedMilliseconds = tolong(cd.ElapsedMilliseconds)\n    | extend Company = toupper(cd.DataAreaId)\n    | extend User = cd.CurrentUserId\n    | where env == _environment\n    | where timestamp > _startTime\n    | where timestamp < _endTime\n    | extend currentStatus = tostring(cd.NewStatus)\n    | extend prevStatus = tostring(cd.OrigStatus)\n    | extend Caption = tostring(cd.BatchJobName)\n    | extend Error = tostring(cd.Error)\n    | extend ExecutingBy = tostring(cd.ExecutingBy)\n    | extend Reccurence = tostring(cd.Reccurence)\n    | extend CreatedBy = tostring(cd.CreatedBy)\n    | project  timestamp, Company, Error, ElapsedMilliseconds, User, BatchJobId, BatchJobTaskId, Caption, currentStatus, prevStatus,ExecutingBy,Reccurence,CreatedBy, cd\n    | summarize max(timestamp), batchJobCaption = arg_max(Caption, timestamp), arg_max(currentStatus, timestamp) by BatchJobId, ExecutingBy\n    ) on $left.BatchJobId == $right.BatchJobId\n| project  timestamp, Company, batchJobCaption, Error, ElapsedMilliseconds, User, BatchJobId, BatchJobTaskId, Caption, currentStatus, prevStatus,ExecutingBy, AOS\n| where currentStatus == \"Error\"\n| project timestamp, BatchJobId, BatchJobTaskId, Company, batchJobCaption, Error, AOS, ExecutingBy",
+      "id": "c179d3e2-e560-4154-b5d3-cea429ba21f9",
+      "usedVariables": [
+        "_endTime",
+        "_environment",
+        "_startTime"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "parameter",
+        "parameterId": "d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"
+      },
+      "text": "customEvents\n| where name in (\"BatchJobStatusUpdate\")\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| extend SessionId = tostring(cd.SessionId)\n| extend Orders = tostring(cd.Orders)\n| extend BatchJobId = tolong(cd.BatchJobId)\n| extend BatchJobTaskId = tolong(cd.BatchJobTaskId)\n| extend ChildBatchJobId = tolong(cd.ChildBatchJobId)\n| extend ElapsedMilliseconds = tolong(cd.ElapsedMilliseconds)\n| extend Company = toupper(cd.DataAreaId)\n| extend User = cd.CurrentUserId\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime\n| extend currentStatus = tostring(cd.NewStatus)\n| extend prevStatus = tostring(cd.OrigStatus)\n| extend Caption = tostring(cd.BatchJobName)\n| extend Error = tostring(cd.Error)\n| extend ExecutingBy = tostring(cd.ExecutingBy)\n| extend Reccurence = tostring(cd.Reccurence)\n| extend CreatedBy = tostring(cd.CreatedBy)\n| project  timestamp, SessionId, name, Company, ElapsedMilliseconds, User, BatchJobId, BatchJobTaskId, Caption, currentStatus, prevStatus, cd\n| summarize max(timestamp),arg_max(timestamp, Caption) , arg_max(timestamp, currentStatus) by BatchJobId, Company\n    | join kind=inner  (customEvents\n    | where name in (\"BatchStatusUpdate\")\n    | extend cd = parse_json(customDimensions)\n    | extend env = tostring(cd.environmentId)\n    | extend SessionId = tostring(cd.SessionId)\n    | extend Orders = tostring(cd.Orders)\n    | extend BatchJobId = tolong(cd.BatchJobId)\n    | extend BatchJobTaskId = tolong(cd.BatchJobTaskId)\n    | extend ChildBatchJobId = tolong(cd.ChildBatchJobId)\n    | extend ElapsedMilliseconds = tolong(cd.ElapsedMilliseconds)\n    | extend Company = toupper(cd.DataAreaId)\n    | extend User = cd.CurrentUserId\n    | where env == _environment\n    | where timestamp > _startTime\n    | where timestamp < _endTime\n    | extend currentStatus = tostring(cd.NewStatus)\n    | extend prevStatus = tostring(cd.OrigStatus)\n    | extend Caption = tostring(cd.BatchJobName)\n    | extend Error = tostring(cd.Error)\n    | extend ExecutingBy = tostring(cd.ExecutingBy)\n    | extend Reccurence = tostring(cd.Reccurence)\n    | extend CreatedBy = tostring(cd.CreatedBy)\n    | project  timestamp, SessionId, name, Company, ElapsedMilliseconds, User, BatchJobId, BatchJobTaskId, Caption, currentStatus, prevStatus, cd\n    | summarize max(timestamp), arg_max(timestamp, Caption), BatchStatus = arg_max(timestamp, currentStatus) by BatchJobId\n    | where currentStatus == \"Executing\"\n    ) on $left.BatchJobId == $right.BatchJobId\n| project BatchJobId, Status = currentStatus1, Caption, Company",
+      "id": "ba59ccda-77d0-466e-9a8b-1c7bf47303ee",
+      "usedVariables": [
+        "_endTime",
+        "_environment",
+        "_startTime"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "parameter",
+        "parameterId": "d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"
+      },
+      "text": "customEvents\n| where name in (\"BatchJobStatusUpdate\")\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| extend SessionId = tostring(cd.SessionId)\n| extend Orders = tostring(cd.Orders)\n| extend BatchJobId = tolong(cd.BatchJobId)\n| extend BatchJobTaskId = tolong(cd.BatchJobTaskId)\n| extend ChildBatchJobId = tolong(cd.ChildBatchJobId)\n| extend ElapsedMilliseconds = tolong(cd.ElapsedMilliseconds)\n| extend Company = toupper(cd.DataAreaId)\n| extend User = cd.CurrentUserId\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime\n| extend currentStatus = tostring(cd.NewStatus)\n| extend prevStatus = tostring(cd.OrigStatus)\n| extend Caption = tostring(cd.BatchJobName)\n| extend Error = tostring(cd.Error)\n| extend ExecutingBy = tostring(cd.ExecutingBy)\n| extend Reccurence = tostring(cd.Reccurence)\n| extend CreatedBy = tostring(cd.CreatedBy)\n| extend StartDateTime = todatetime(cd.StartDateTime)\n| extend EndDateTime = todatetime(cd.EndDateTime)\n| extend AOS = tostring(cd.AOS)\n| where Reccurence contains \"Occurs\"\n| project  timestamp, SessionId, name, Company, ElapsedMilliseconds, User, BatchJobId, BatchJobTaskId, Caption, currentStatus, prevStatus, Reccurence, cd\n| summarize lastUpdated = max(timestamp), take_any(Company), take_any(Caption), take_any(Reccurence) by BatchJobId\n",
+      "id": "b7ded805-fc0f-43a6-932c-789383590929",
+      "usedVariables": [
+        "_endTime",
+        "_environment",
+        "_startTime"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "parameter",
+        "parameterId": "d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"
+      },
+      "text": "customEvents\n| where name in (\"BatchJobStatusUpdate\")\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| extend SessionId = tostring(cd.SessionId)\n| extend Orders = tostring(cd.Orders)\n| extend BatchJobId = tolong(cd.BatchJobId)\n| extend BatchJobTaskId = tolong(cd.BatchJobTaskId)\n| extend ChildBatchJobId = tolong(cd.ChildBatchJobId)\n| extend ElapsedMilliseconds = tolong(cd.ElapsedMilliseconds)\n| extend Company = toupper(cd.DataAreaId)\n| extend User = cd.CurrentUserId\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime\n| extend currentStatus = tostring(cd.NewStatus)\n| extend prevStatus = tostring(cd.OrigStatus)\n| extend Caption = tostring(cd.BatchJobName)\n| extend Error = tostring(cd.Error)\n| extend ExecutingBy = tostring(cd.ExecutingBy)\n| extend Reccurence = tostring(cd.Reccurence)\n| extend CreatedBy = tostring(cd.CreatedBy)\n| extend StartDateTime = todatetime(cd.StartDateTime)\n| extend EndDateTime = todatetime(cd.EndDateTime)\n| extend BatchJobDuration = EndDateTime - StartDateTime\n| where currentStatus in (\"Ended\", \"Error\")\n| project  timestamp, SessionId, name, Company, ElapsedMilliseconds, User, BatchJobId, BatchJobTaskId, Caption, currentStatus, prevStatus, cd, BatchJobDuration, EndDateTime\n| summarize sum(BatchJobDuration) by Caption, currentStatus, bin(timestamp, 5m), EndDateTime",
+      "id": "770558f0-a7fb-4e4e-a8f4-ac2779aef085",
+      "usedVariables": [
+        "_endTime",
+        "_environment",
+        "_startTime"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "parameter",
+        "parameterId": "d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"
+      },
+      "text": "customEvents\n| where name in (\"BatchJobStatusUpdate\")\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| extend SessionId = tostring(cd.SessionId)\n| extend Orders = tostring(cd.Orders)\n| extend BatchJobId = tolong(cd.BatchJobId)\n| extend BatchJobTaskId = tolong(cd.BatchJobTaskId)\n| extend ChildBatchJobId = tolong(cd.ChildBatchJobId)\n| extend ElapsedMilliseconds = tolong(cd.ElapsedMilliseconds)\n| extend Company = toupper(cd.DataAreaId)\n| extend User = cd.CurrentUserId\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime\n| extend currentStatus = tostring(cd.NewStatus)\n| extend prevStatus = tostring(cd.OrigStatus)\n| extend Caption = tostring(cd.BatchJobName)\n| extend Error = tostring(cd.Error)\n| extend ExecutingBy = tostring(cd.ExecutingBy)\n| extend Reccurence = tostring(cd.Reccurence)\n| extend CreatedBy = tostring(cd.CreatedBy)\n| extend StartDateTime = todatetime(cd.StartDateTime)\n| extend EndDateTime = todatetime(cd.EndDateTime)\n| extend BatchJobDuration = EndDateTime - StartDateTime\n| where currentStatus in (\"Ended\", \"Error\")\n| project  timestamp, SessionId, name, Company, ElapsedMilliseconds, User, BatchJobId, BatchJobTaskId, Caption, currentStatus, prevStatus, cd, BatchJobDuration, StartDateTime, EndDateTime\n| summarize sum(BatchJobDuration) by Caption, Status = currentStatus, StartDateTime, EndDateTime",
+      "id": "31706b4e-b47c-42af-a80a-8845772ecb9b",
+      "usedVariables": [
+        "_endTime",
+        "_environment",
+        "_startTime"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "parameter",
+        "parameterId": "d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"
+      },
+      "text": "customEvents\n| where name in (\"BatchStatusUpdate\")\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| extend SessionId = tostring(cd.SessionId)\n| extend Orders = tostring(cd.Orders)\n| extend BatchJobId = tolong(cd.BatchJobId)\n| extend BatchJobTaskId = tolong(cd.BatchJobTaskId)\n| extend ChildBatchJobId = tolong(cd.ChildBatchJobId)\n| extend ElapsedMilliseconds = tolong(cd.ElapsedMilliseconds)\n| extend Company = toupper(cd.DataAreaId)\n| extend User = cd.CurrentUserId\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime\n| extend currentStatus = tostring(cd.NewStatus)\n| extend prevStatus = tostring(cd.OrigStatus)\n| extend Caption = tostring(cd.BatchJobName)\n| extend Error = tostring(cd.Error)\n| extend ExecutingBy = tostring(cd.ExecutingBy)\n| extend Reccurence = tostring(cd.Reccurence)\n| extend CreatedBy = tostring(cd.CreatedBy)\n| extend StartDateTime = todatetime(cd.StartDateTime)\n| extend EndDateTime = todatetime(cd.EndDateTime)\n| extend AOS = tostring(cd.AOS)\n| where currentStatus in (\"Executing\")\n| project  timestamp, SessionId, name, Company, ElapsedMilliseconds, User, BatchJobId, BatchJobTaskId, Caption, currentStatus, StartDateTime, cd, AOS\n| summarize count() by AOS, bin(timestamp, 15m)",
+      "id": "e1793871-a199-42bb-84f2-23cc1fd3a3df",
+      "usedVariables": [
+        "_endTime",
+        "_environment",
+        "_startTime"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "b2107d4a-456d-4609-9a3e-6df014d6df31"
+      },
+      "text": "baseQuery\n| where name in (\"ExcelExportStarted\", \"ExcelExportProgress\", \"ExcelExportEnded\")\n| extend RowsExported = cd.RecordsProcessed\n| extend ElapsedMilliseconds = cd.ElapsedMilliseconds\n| extend ExportRowLimitReached = cd.ExportRowLimitReached\n| extend ExportRowLimit = cd.ExportRowLimit\n| project timestamp, name, User, RowsExported, ElapsedMilliseconds, ExportRowLimitReached, ExportRowLimit, ActivityId",
+      "id": "f42b71c6-9155-4303-9860-8e254ff76570",
+      "usedVariables": [
+        "baseQuery"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "b2107d4a-456d-4609-9a3e-6df014d6df31"
+      },
+      "text": "baseQuery\n| where name == \"DMFImport\"\n| extend EntityName = cd.entityName\n| extend ExecutionId = tostring(cd.ExecutionId)\n| project timestamp, name, ElapsedMilliseconds, EntityName, ExecutionId, ActivityId,BatchJobId,  cd",
+      "id": "ee5de98c-216a-4207-a347-0a185792f211",
+      "usedVariables": [
+        "baseQuery"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "b2107d4a-456d-4609-9a3e-6df014d6df31"
+      },
+      "text": "baseQuery\n| where name in (\"DMFExportFile\", \"DMFExportPackage\")\n| extend EntityName = cd.entityName\n| extend ExecutionId = tostring(cd.ExecutionId)\n| project timestamp, name, ElapsedMilliseconds, EntityName, ExecutionId, ActivityId,BatchJobId,  cd",
+      "id": "3091baa2-65bd-4cc6-8f20-be282daa4c5a",
+      "usedVariables": [
+        "baseQuery"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "b2107d4a-456d-4609-9a3e-6df014d6df31"
+      },
+      "text": "baseQuery\n| where name in (\"DMFStagingLogMessage\")\n| extend EntityName = cd.entityName\n| extend ExecutionId = tostring(cd.ExecutionId)\n| extend Message = cd.Message\n| where isempty(_executionId) or   ExecutionId in (_executionId)\n| project timestamp, name,Message, ExecutionId, ActivityId,BatchJobId,  cd",
+      "id": "90a581ef-6ada-40ad-b5bc-6d18f087cae1",
+      "usedVariables": [
+        "_executionId",
+        "baseQuery"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "b2107d4a-456d-4609-9a3e-6df014d6df31"
+      },
+      "text": "baseQuery\n| where name in (\"DMFStagingLogDetailMessage\")\n| extend EntityName = cd.entityName\n| extend ExecutionId = tostring(cd.ExecutionId)\n| extend Message = cd.Message\n| where isempty(_executionId) or   ExecutionId in (_executionId)\n| extend stagingRecord = parse_json(gzip_decompress_from_base64_string(tostring(cd.stagingRecord)))\n| extend Error = tostring(cd.Error)\n| project timestamp, name,Error, EntityName, stagingRecord, ExecutionId, ActivityId,BatchJobId,  cd",
+      "id": "9c8ec109-0ba0-41d3-b3a4-e99aef402564",
+      "usedVariables": [
+        "_executionId",
+        "baseQuery"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "b2107d4a-456d-4609-9a3e-6df014d6df31"
+      },
+      "text": "baseQuery\n| where name in (\"DualWriteMapStarted\", \"DualWriteMapPaused\", \"DualWriteMapStopped\")\n| extend Status = cd.Status\n| extend IntegrationKey = cd.IntegrationKey\n| extend DVEntity = cd.DVEntity\n| extend QueryFilter = cd.QueryFilter\n| extend  ProjectName = cd.ProjectName\n| extend  FOEntity = cd.FOEntity\n| project timestamp, name, Status, IntegrationKey, DVEntity, FOEntity, ProjectName, QueryFilter",
+      "id": "c5e7f749-6838-440c-8163-396ec49b1916",
+      "usedVariables": [
+        "baseQuery"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "b2107d4a-456d-4609-9a3e-6df014d6df31"
+      },
+      "text": "baseQuery\n| where name in (\"BusinessEventSent\", \"BusinessEventSavedInCommitLog\")\n| extend payload = gzip_decompress_from_base64_string(tostring(cd.Contract))\n| extend EventId = tostring(cd.EventId)\n| extend BusinessEventId = tostring(cd.BusinessEventId)\n| extend CreatedTransactionId = tostring(cd.CreatedTransactionId)\n| extend LegalEntity = tostring(cd.LegalEntity)\n| project timestamp, name,  BusinessEventId, EventId, CreatedTransactionId, LegalEntity, payload",
+      "id": "5a6b80b9-2eda-48da-9bf6-b074af0146e8",
+      "usedVariables": [
+        "baseQuery"
+      ]
+    },
+    {
+      "id": "48e7d995-a28e-4d0b-8da4-4a0770d5198f",
+      "dataSource": {
+        "kind": "parameter",
+        "parameterId": "d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"
+      },
+      "text": "customEvents\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| extend SessionId = tostring(cd.SessionId)\n| extend BatchJobId = tolong(cd.BatchJobId)\n| extend BatchJobTaskId = tolong(cd.BatchJobTaskId)\n| extend ElapsedMilliseconds = tolong(cd.ElapsedMilliseconds)\n| extend Company = toupper(cd.DataAreaId)\n| extend User = cd.CurrentUserId\n| extend ActivityId = cd.activityId\n| where env == _environment\n| where timestamp > _startTime\n| where timestamp < _endTime",
+      "usedVariables": [
+        "_endTime",
+        "_environment",
+        "_startTime"
+      ]
+    },
+    {
+      "dataSource": {
+        "kind": "parameter",
+        "parameterId": "d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"
+      },
+      "text": "let NameMapping = datatable (OriginalName: string, PrettyName: string)\n[\n    \"d6cb6bc9-6923-ef8a-9bfb-6aac09b55048\", \"General Dev UDE\"\n];pageViews\n| extend cd = parse_json(customDimensions)\n| extend env = tostring(cd.environmentId)\n| join kind=leftouter  (NameMapping) on $left.env == $right.OriginalName\n| where env != \"\"\n| extend PrettyName = iff(isempty(PrettyName), env, PrettyName)\n| distinct env, PrettyName",
+      "id": "8d870644-27cf-415b-8627-0161c02cec60",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "parameter",
+        "parameterId": "d0a5cfe6-dd7c-4af3-a37d-d819c3678e64"
+      },
+      "text": "customEvents\n| extend cd = parse_json(customDimensions)\n| extend Company = toupper(tostring(cd.DataAreaId))\n| distinct Company ",
+      "id": "8de630b8-48ef-446c-a3ce-f16da5756a82",
+      "usedVariables": []
+    },
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "b2107d4a-456d-4609-9a3e-6df014d6df31"
+      },
+      "text": "baseQuery\n| where name in (\"DMFExportFile\", \"DMFExportPackage\", \"DMFImport\")\n| extend EntityName = cd.entityName\n| extend ExecutionId = tostring(cd.ExecutionId)\n| summarize by ExecutionId\n| project ExecutionId",
+      "id": "8d28461b-8e3e-45a5-b985-582b62f3c194",
+      "usedVariables": [
+        "baseQuery"
+      ]
+    }
+  ]
+}
