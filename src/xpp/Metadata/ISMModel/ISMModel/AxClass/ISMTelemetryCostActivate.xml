@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ISMTelemetryCostActivate</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+/// <summary>
+/// Class for cost activation purpose
+/// </summary>
+class ISMTelemetryCostActivate extends ISMTelemetryBase
+
+{
+
+    // This class is used to send telemetry events for generic ISM model events
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>construct</Name>
+				<Source><![CDATA[
+    public static ISMTelemetryCostActivate construct()
+    {
+        return new ISMTelemetryCostActivate();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>new</Name>
+				<Source><![CDATA[
+    protected void new()
+    {
+        super();
+
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>shouldLogEvent</Name>
+				<Source><![CDATA[
+    // if the log level is set to information it will log the request and response data as wekk as there is an error,
+    
+    protected boolean shouldLogEvent()
+    {
+        return true;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>postPopulateProperties</Name>
+				<Source><![CDATA[
+    protected void postPopulateProperties()
+    {
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

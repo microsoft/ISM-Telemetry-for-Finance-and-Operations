@@ -28,6 +28,7 @@ public final class ISMTelemetryEventNames
     public static const str BusinessEventFailed                = 'BusinessEventFailed';
     public static const str BusinessEventSavedInCommitLog                = 'BusinessEventSavedInCommitLog';
     public static const str BusinessEventSent                = 'BusinessEventSent';
+    public static const str CostActivateItem                = 'CostActivateItem';
 
 }
 ]]></Declaration>

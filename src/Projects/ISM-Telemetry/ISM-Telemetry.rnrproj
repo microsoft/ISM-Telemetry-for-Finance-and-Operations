@@ -93,6 +93,11 @@
       <Name>ISMExportToExcelBox_Extension</Name>
       <Link>Excel export telemetry\ISMExportToExcelBox_Extension</Link>
     </Content>
+    <Content Include="AxClass\ISMInventItemPriceActivationTaskActivateSim_Extension">
+      <SubType>Content</SubType>
+      <Name>ISMInventItemPriceActivationTaskActivateSim_Extension</Name>
+      <Link>CostActivation\ISMInventItemPriceActivationTaskActivateSim_Extension</Link>
+    </Content>
     <Content Include="AxClass\ISMJsonSerializer">
       <SubType>Content</SubType>
       <Name>ISMJsonSerializer</Name>
@@ -122,6 +127,11 @@
       <SubType>Content</SubType>
       <Name>ISMTelemetryBusinessEvents</Name>
       <Link>BusinessEvent\ISMTelemetryBusinessEvents</Link>
+    </Content>
+    <Content Include="AxClass\ISMTelemetryCostActivate">
+      <SubType>Content</SubType>
+      <Name>ISMTelemetryCostActivate</Name>
+      <Link>CostActivation\ISMTelemetryCostActivate</Link>
     </Content>
     <Content Include="AxClass\ISMTelemetryDMF">
       <SubType>Content</SubType>
@@ -212,6 +222,7 @@
     <Folder Include="DualWrite" />
     <Folder Include="JsonSerializer" />
     <Folder Include="BusinessEvent" />
+    <Folder Include="CostActivation" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
   <Import Project="$(BuildTasksDirectory)\Microsoft.Dynamics.Framework.Tools.BuildTasks.17.0.targets" />

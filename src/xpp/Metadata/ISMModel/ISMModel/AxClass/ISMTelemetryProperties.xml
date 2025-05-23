@@ -79,6 +79,7 @@ public static final class ISMTelemetryProperties
     public static const str EventTime = 'EventTime';
     public static const str CreatedTransactionId = 'CreatedTransactionId';
     public static const str LastProcessTime = 'LastProcessTime';
+    public static const str ItemId = 'ItemId';
 
 
 

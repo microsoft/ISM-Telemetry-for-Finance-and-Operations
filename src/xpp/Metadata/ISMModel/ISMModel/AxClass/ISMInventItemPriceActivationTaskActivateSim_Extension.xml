@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ISMInventItemPriceActivationTaskActivateSim_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+/// <summary>
+/// Class to measure cost activation timing
+/// </summary>
+[ExtensionOf(classStr(InventItemPriceActivationTaskActivateSim))]
+internal final class ISMInventItemPriceActivationTaskActivateSim_Extension
+{
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>activateOneInventItemPriceSim</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Activate prices 
+    /// </summary>
+    /// <param name = "_inventItemPriceSim">pricesum</param>
+    /// <returns>activated</returns>
+    public static boolean activateOneInventItemPriceSim(InventItemPriceSim _inventItemPriceSim)
+    {
+        boolean priceActivated = false;
+
+        //this will start the stopwatch 
+        ISMTelemetryCostActivate telemetry = ISMTelemetryCostActivate::construct();
+        telemetry.addRuntimeProperty(ISMTelemetryProperties::ItemId, _inventItemPriceSim.ItemId);
+
+        priceActivated = next activateOneInventItemPriceSim(_inventItemPriceSim);
+
+        telemetry.processEvent(ISMTelemetryEventNames::CostActivateItem);
+
+        return priceActivated;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

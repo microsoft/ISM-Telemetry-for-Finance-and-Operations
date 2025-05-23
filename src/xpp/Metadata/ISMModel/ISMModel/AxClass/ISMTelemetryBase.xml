@@ -79,6 +79,15 @@ abstract class ISMTelemetryBase
             this.addBaseProperty(ISMTelemetryProperties::CurrentUserId,curUserId());
             this.addBaseProperty(ISMTelemetryProperties::DataAreaId,curExt());
 
+            //adding Task ID
+            if(Global::isRunningOnBatch())
+            {
+                Batch batchTask = BatchHeader::getCurrentBatchTask();
+                this.addBaseProperty(ISMTelemetryProperties::BatchJobTaskId, int642Str(batchTask.RecId));
+            }
+
+
+            /* This is not required anymore its logged by default in SysApplicationInsightsTelemetryContractBase
             BatchHeader currentHeader   = BatchHeader::getCurrentBatchHeader();
             Batch       currentTask     =   BatchHeader::getCurrentBatchTask();
 
@@ -92,6 +101,7 @@ abstract class ISMTelemetryBase
             {
                 this.addBaseProperty(ISMTelemetryProperties::BatchJobTaskId, int642Str(currentTask.RecId));
             }
+            */
         }
         catch
         {
