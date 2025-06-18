@@ -142,12 +142,14 @@ public class ISMTelemetryBatch extends ISMTelemetryBase
         if(batchJobUpdateTmp == null)
         {
             this.addRuntimeProperty(ISMTelemetryProperties::NewStatus, enum2Str(batchJob.Status));
+            this.addRuntimeProperty(ISMTelemetryProperties::OrigStartDateTime, datetime2Str(batchJobUpdateTmp.OrigStartDateTime));
             this.addRuntimeProperty(ISMTelemetryProperties::StartDateTime, datetime2Str(batchJob.StartDateTime));
             this.addRuntimeProperty(ISMTelemetryProperties::EndDateTime, datetime2Str(batchJob.EndDateTime));
         }
         else
         {
             this.addRuntimeProperty(ISMTelemetryProperties::NewStatus, enum2Str(batchJobUpdateTmp.Status));
+            this.addRuntimeProperty(ISMTelemetryProperties::OrigStartDateTime, datetime2Str(batchJobUpdateTmp.OrigStartDateTime));
             this.addRuntimeProperty(ISMTelemetryProperties::StartDateTime, datetime2Str(batchJobUpdateTmp.StartDateTime));
             this.addRuntimeProperty(ISMTelemetryProperties::EndDateTime, datetime2Str(batchJobUpdateTmp.EndDateTime));
         }
