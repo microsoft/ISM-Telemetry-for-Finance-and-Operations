@@ -19,6 +19,7 @@ public static final class ISMTelemetryProperties
     public const str BatchJobId = 'BatchJobId';
     public const str BatchJobName = 'BatchJobName';
     public const str BatchJobTaskId = 'BatchJobTaskId';
+	public const str BusinessEventId = 'BusinessEventId';
     public const str CallStack = 'CallStack';
     public const str ChildBatchJobId = 'ChildBatchJobId';
     public const str ClassName = 'ClassName';
@@ -40,6 +41,7 @@ public static final class ISMTelemetryProperties
     public const str EventTime = 'EventTime';
     public const str Execute = 'execute';
     public const str ExecutingBy = 'ExecutingBy';
+	public const str ExecutionId = 'ExecutionId';
     public const str Export = '_export';
     public const str ExportRowLimit = 'ExportRowLimit';
     public const str ExportRowLimitReached = 'ExportRowLimitReached';
@@ -79,8 +81,6 @@ public static final class ISMTelemetryProperties
     public const str StagingRecord = 'stagingRecord';
     public const str StartDateTime = 'StartDateTime';
     public const str ThresholdToRunInBatch = 'thresholdToRunInBatch';
-    public const str ExecutionId = 'ExecutionId';
-    public const str BusinessEventId = 'BusinessEventId';
 }
 ]]></Declaration>
 		<Methods />
