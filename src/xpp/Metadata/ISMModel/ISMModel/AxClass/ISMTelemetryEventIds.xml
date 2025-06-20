@@ -10,8 +10,8 @@
 /// </summary>
 public static final class ISMTelemetryEventIds
 {
-    public static const str ISMEvent                    = '1'; //ISM event 
-    public static const str ISMGenericEvent                   = '2'; //ISM event 2
+    public const str ISMEvent           = '1'; //ISM event 
+    public const str ISMGenericEvent    = '2'; //ISM event 2
 }
 ]]></Declaration>
 		<Methods />
