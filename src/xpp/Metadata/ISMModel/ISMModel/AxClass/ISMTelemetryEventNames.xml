@@ -10,25 +10,25 @@
 /// </summary>
 public final class ISMTelemetryEventNames
 {
-    public static const str ISMEventName                         = 'ISMEventName';
-    public static const str BatchJobStatusUpdate                = 'BatchJobStatusUpdate';
-    public static const str BatchJobCreated                     = 'BatchJobCreated';
-    public static const str BatchStatusUpdate                   = 'BatchStatusUpdate';
-    public static const str DMFExportPackage                = 'DMFExportPackage';
-    public static const str DMFExportFile                = 'DMFExportFile';
-    public static const str DMFImport                = 'DMFImport';
-    public static const str DMFStagingLogMessage                = 'DMFStagingLogMessage';
-    public static const str DMFStagingLogDetailMessage                = 'DMFStagingLogDetailMessage';
-    public static const str ExcelExportStarted                = 'ExcelExportStarted';
-    public static const str ExcelExportEnded                = 'ExcelExportEnded';
-    public static const str ExcelExportProgress                = 'ExcelExportProgress';
-    public static const str DualWriteMapStarted                = 'DualWriteMapStarted';
-    public static const str DualWriteMapStopped              = 'DualWriteMapStopped';
-    public static const str DualWriteMapPaused                = 'DualWriteMapPaused';
-    public static const str BusinessEventFailed                = 'BusinessEventFailed';
-    public static const str BusinessEventSavedInCommitLog                = 'BusinessEventSavedInCommitLog';
-    public static const str BusinessEventSent                = 'BusinessEventSent';
-    public static const str CostActivateItem                = 'CostActivateItem';
+    public const str ISMEventName                   = 'ISMEventName';
+    public const str BatchJobStatusUpdate           = 'BatchJobStatusUpdate';
+    public const str BatchJobCreated                = 'BatchJobCreated';
+    public const str BatchStatusUpdate              = 'BatchStatusUpdate';
+    public const str DMFExportPackage               = 'DMFExportPackage';
+    public const str DMFExportFile                  = 'DMFExportFile';
+    public const str DMFImport                      = 'DMFImport';
+    public const str DMFStagingLogMessage           = 'DMFStagingLogMessage';
+    public const str DMFStagingLogDetailMessage     = 'DMFStagingLogDetailMessage';
+    public const str ExcelExportStarted             = 'ExcelExportStarted';
+    public const str ExcelExportEnded               = 'ExcelExportEnded';
+    public const str ExcelExportProgress            = 'ExcelExportProgress';
+    public const str DualWriteMapStarted            = 'DualWriteMapStarted';
+    public const str DualWriteMapStopped            = 'DualWriteMapStopped';
+    public const str DualWriteMapPaused             = 'DualWriteMapPaused';
+    public const str BusinessEventFailed            = 'BusinessEventFailed';
+    public const str BusinessEventSavedInCommitLog  = 'BusinessEventSavedInCommitLog';
+    public const str BusinessEventSent              = 'BusinessEventSent';
+    public const str CostActivateItem               = 'CostActivateItem';
 
 }
 ]]></Declaration>

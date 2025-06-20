@@ -10,70 +10,52 @@
 /// </summary>
 internal final class ISMTelemetryEventHandler
 {
-    
 }
 ]]></Declaration>
 		<Methods>
 			<Method>
-				<Name>SysIntParameters_OnInitializing</Name>
+				<Name>sysIntParameters_OnInitializing</Name>
 				<Source><![CDATA[
     /// <summary>
     /// Initializes the telemetry parameters for all child classes of ISMTelemetryBase
     /// </summary>
     /// <param name="sender">sender</param>
-    /// <param name="e">event</param>
+    /// <param name="e">event arguments</param>
     [SuppressBPWarning('BPParameterNotUsed', 'Parameter required by the event interface.'),
     FormEventHandler(formStr(SysIntParameters), FormEventType::Initializing)]
-    public static void SysIntParameters_OnInitializing(xFormRun sender, FormEventArgs e)
+    public static void sysIntParameters_OnInitializing(xFormRun sender, FormEventArgs e)
     {
-
-        #define.ClassPath(@"\Classes\%1")
-
-        SysDictClass    dictClass;
-        List            extendedClassList;
-        ListEnumerator  listEnumerator;
-        ClassName       className;
-       // MethodName      methodName;
-        ClassId         childClass;
-        TreeNode        childClassNode;
-        ISMTelemetryParameters  param;
+        #AOT
 
         //set parent class and method you want to investigate
-        className           = classStr(ISMTelemetryBase);
-        //methodName          = "DefaultDimension";
+        ClassName baseClassName = classStr(ISMTelemetryBase);
 
-        dictClass           = new SysDictClass(className2Id(classname));
-        extendedClassList   = dictClass.extendedBy();
+        SysDictClass dictClass = new SysDictClass(className2Id(baseClassName));
+        List extendedClassList = dictClass.extendedBy();
 
         //loop through all child classes
         if (extendedClassList.elements())
         {
-            listEnumerator = extendedClassList.getEnumerator();
+            ListEnumerator listEnumerator = extendedClassList.getEnumerator();
 
             while (listEnumerator.moveNext())
             {
-                childClass      = listEnumerator.current();
-                childClassNode  = TreeNode::findNode(strFmt(#ClassPath, classId2Name(childClass)));
+                ClassId childClassId = listEnumerator.current();
+                TreeNode childClassNode = TreeNode::findNode(#ClassesPath + #AOTDelimiter + classId2Name(childClassId));
 
-                //param = ISMTelemetryParameters::find(childClassNode.AOTname());
-                param = ISMTelemetryParameters::find(childClassNode.AOTname());
+                ISMTelemetryParameters param = ISMTelemetryParameters::find(childClassNode.AOTname());
 
-                if(!param)
+                if (!param)
                 {
                     ttsbegin;
-                    param.clear();
                     param.TelemetryClass = childClassNode.AOTname();
                     param.IsEnabled = NoYes::Yes;
                     param.SeverityLevel = ISMTelemetrySeverityLevel::Information;
                     param.insert();
                     ttscommit;
                 }
-
             }
-            
         }
-        
-
     }
 
 ]]></Source>

@@ -6,6 +6,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 using DataContracts = Microsoft.ApplicationInsights.DataContracts;
+
 /// <summary>
 /// Base class for Telemetry
 /// </summary>
@@ -18,7 +19,7 @@ abstract class ISMTelemetryBase
 
     protected ISMTelemetryParameters logParams;
 
-    //you can fill this field or not, if you dont fill it, it will be set to 0
+    //you can fill this field or not, if you don't fill it, it will be set to 0
     protected str eventId;
 
 }
@@ -34,7 +35,7 @@ abstract class ISMTelemetryBase
 
         logParams = ISMTelemetryParameters::find(this.telemetryName());
 
-        if(!logParams)
+        if (!logParams)
         {
             logParams.TelemetryClass = this.telemetryName();
             logParams.IsEnabled = NoYes::Yes;
@@ -50,7 +51,7 @@ abstract class ISMTelemetryBase
     /// <summary>
     /// Method ProcessMetric
     /// </summary>
-    /// <param name = "_value"> Value of the metric </param>
+    /// <param name = "_value">Value of the metric</param>
     public final void processMetric(real _value)
     {
         try
@@ -69,18 +70,17 @@ abstract class ISMTelemetryBase
 				<Name>addStandardProperties</Name>
 				<Source><![CDATA[
     /// <summary>
-    ///  adds standard properties to the telemetry
+    ///  Adds standard properties to the telemetry
     /// </summary>
     protected void addStandardProperties()
     {
         try
         {
-
             this.addBaseProperty(ISMTelemetryProperties::CurrentUserId,curUserId());
             this.addBaseProperty(ISMTelemetryProperties::DataAreaId,curExt());
 
             //adding Task ID
-            if(Global::isRunningOnBatch())
+            if (Global::isRunningOnBatch())
             {
                 Batch batchTask = BatchHeader::getCurrentBatchTask();
                 this.addBaseProperty(ISMTelemetryProperties::BatchJobTaskId, int642Str(batchTask.RecId));
@@ -105,10 +105,8 @@ abstract class ISMTelemetryBase
         }
         catch
         {
-            warning(strFmt("@ISM:ISMTelemetryRuntimePropertyError",classId2Name(classIdGet(this))));
+            warning(strFmt("@ISM:ISMTelemetryRuntimePropertyError", classId2Name(classIdGet(this))));
         }
-        
-    
     }
 
 ]]></Source>
@@ -123,16 +121,12 @@ abstract class ISMTelemetryBase
     {
         try
         {
-            container ISMCallStack;
-            int i;
             str callStackStr;
+            container ismCallStack = xSession::xppCallStack();
 
-            ;
-
-            ISMCallStack = xSession::xppCallStack();
-            for(i=1; i<=conlen(ISMCallStack); i++)
+            for (int i = 1; i <= conlen(ismCallStack); i++)
             {
-                callStackStr += conpeek(ISMCallStack, i);
+                callStackStr += conpeek(ismCallStack, i);
             }
             //make sure callstack is compressed
             this.addRuntimeProperty(ISMTelemetryProperties::CallStack, callStackStr, true);
@@ -140,7 +134,7 @@ abstract class ISMTelemetryBase
         }
         catch
         {
-            warning(strFmt("@ISM:ISMTelemetryAddCallStackError",classId2Name(classIdGet(this))));
+            warning(strFmt("@ISM:ISMTelemetryAddCallStackError", classId2Name(classIdGet(this))));
         }
         
     }
@@ -153,26 +147,25 @@ abstract class ISMTelemetryBase
     /// <summary>
     /// Adds the base property to the telemetry
     /// </summary>
-    /// <param name = "key"> Key of the property </param>
-    /// <param name = "value"> Value of the property </param>
-    /// <param name = "compressData"> Compress data </param>
-    ///
-    protected void addBaseProperty(str key, str value, boolean compressData = false)
+    /// <param name = "_key">Key of the property</param>
+    /// <param name = "_value">Value of the property</param>
+    /// <param name = "_compressData">Compress data; optional</param>
+    protected void addBaseProperty(str _key, str _value, boolean _compressData = false)
     {
         try
         {
-            if(compressData)
+            if (_compressData)
             {
-                this.compressData(key, value, true);
+                this.compressData(_key, _value, true);
             }
             else
             {
-                basePropertyMap.insert(key, value);
+                basePropertyMap.insert(_key, _value);
             }
         }
         catch
         {
-            warning(strFmt("@ISM:ISMTelemetryRuntimePropertyError",classId2Name(classIdGet(this))));
+            warning(strFmt("@ISM:ISMTelemetryRuntimePropertyError", classId2Name(classIdGet(this))));
         }
   
     }
@@ -185,10 +178,10 @@ abstract class ISMTelemetryBase
     /// <summary>
     /// Adds the runtime property to the telemetry
     /// </summary>
-    /// <param name = "key"> Key of the property </param>
-    /// <param name = "value"> Value of the property </param>
-    /// <param name = "compressData"> Compress data </param>
-    public void addRuntimeProperty(str key, str value, boolean compressData = false)
+    /// <param name = "_key">Key of the property</param>
+    /// <param name = "_value">Value of the property</param>
+    /// <param name = "_compressData">Compress data; optional</param>
+    public void addRuntimeProperty(str _key, str _value, boolean _compressData = false)
     {
         //find the old property:
         //check if theres a base property and update that one with the new value
@@ -197,19 +190,19 @@ abstract class ISMTelemetryBase
 
         try
         {
-            if(basePropertyMap.exists(key))
+            if (basePropertyMap.exists(_key))
             {
-                this.addBaseProperty(key, value, compressData);
+                this.addBaseProperty(_key, _value, _compressData);
             }
             else
             {
-                if(compressData)
+                if (_compressData)
                 {
-                    this.compressData(key, value, false);
+                    this.compressData(_key, _value, false);
                 }
                 else
                 {
-                    runtimePropertyMap.insert(key, value);
+                    runtimePropertyMap.insert(_key, _value);
                 }
                 
             }
@@ -218,7 +211,6 @@ abstract class ISMTelemetryBase
         {
             warning(strFmt("@ISM:ISMTelemetryRuntimePropertyError",classId2Name(classIdGet(this))));
         }
-        
     }
 
 ]]></Source>
@@ -229,17 +221,17 @@ abstract class ISMTelemetryBase
     /// <summary>
     /// Compresses the string data and logs it.
     /// </summary>
-    /// <param name = "_proprty">Property name</param>
+    /// <param name = "_property">Property name</param>
     /// <param name = "_data">data</param>
-    /// <param name = "isBaseProperty">is base property</param>
-    private void compressData(str _proprty, str _data, boolean isBaseProperty)
+    /// <param name = "_isBaseProperty">is base property</param>
+    private void compressData(str _property, str _data, boolean _isBaseProperty)
     {
         try
         {
             System.String inputString = _data;
             System.IO.MemoryStream memoryStream = new System.IO.MemoryStream();
             System.IO.Compression.GZipStream gzip = new System.IO.Compression.GZipStream(memoryStream, System.IO.Compression.CompressionMode::Compress);
-            System.Text.Encoding utf8 = System.Text.Encoding::get_UTF8();
+            System.Text.Encoding utf8 = System.Text.Encoding::UTF8;
             System.Byte[] byteArray = utf8.GetBytes(inputString);
     
             gzip.Write(byteArray, 0, byteArray.get_Length());
@@ -253,18 +245,18 @@ abstract class ISMTelemetryBase
             memoryStream.Dispose();
             gzip.Dispose();
     
-            this.SplitAndProcessString(_proprty, compressedBase64, isBaseProperty);
+            this.splitAndProcessString(_property, compressedBase64, _isBaseProperty);
         }
         //in case of any failue, add the data as is
         catch
         {
-            if(isBaseProperty)
+            if (_isBaseProperty)
             {
-                basePropertyMap.insert(_proprty, _data);
+                basePropertyMap.insert(_property, _data);
             }
             else
             {
-                runtimePropertyMap.insert(_proprty, _data);
+                runtimePropertyMap.insert(_property, _data);
             }
         }
 
@@ -273,42 +265,40 @@ abstract class ISMTelemetryBase
 ]]></Source>
 			</Method>
 			<Method>
-				<Name>SplitAndProcessString</Name>
+				<Name>splitAndProcessString</Name>
 				<Source><![CDATA[
     /// <summary>
     /// Splits the string into chunks and logs it.
     /// </summary>
-    /// <param name = "_proprty">Property</param>
+    /// <param name = "_property">Property</param>
     /// <param name = "_data">Data</param>
-    /// <param name = "isBaseProperty">Is base property</param>
+    /// <param name = "_isBaseProperty">Is base property</param>
     ///
-    private void SplitAndProcessString(str _proprty, str _data, boolean isBaseProperty)
+    private void splitAndProcessString(str _property, str _data, boolean _isBaseProperty)
     {
-        
-        int startPosition = 1;
         int chunkLength = 8000;
-        int remainingLength;
-        str chunk;
-        int i = 1;
 
         //check if a split is needed at all
-        if(strLen(_data) <= chunkLength)
+        if (strLen(_data) <= chunkLength)
         {
-            if(isBaseProperty)
+            if (_isBaseProperty)
             {
-                basePropertyMap.insert(_proprty, _data);
+                basePropertyMap.insert(_property, _data);
             }
             else
             {
-                runtimePropertyMap.insert(_proprty, _data);
+                runtimePropertyMap.insert(_property, _data);
             }
             return;
         }
+
+        int startPosition = 1;
+        int i = 1; // TODO: Review: The value never changes.
     
         while (startPosition <= strLen(_data))
         {
             // Calculate the remaining length of the string
-            remainingLength = strLen(_data) - startPosition + 1;
+            int remainingLength = strLen(_data) - startPosition + 1;
         
             // Determine the length of the current chunk
             if (remainingLength < chunkLength)
@@ -317,24 +307,20 @@ abstract class ISMTelemetryBase
             }
         
             // Extract a substring of the determined length from the original string
-            chunk = substr(_data, startPosition, chunkLength);
-        
-            
+            str chunk = substr(_data, startPosition, chunkLength);
         
             // Move the start position for the next chunk
             startPosition += chunkLength;
 
             //add the values to the map
-            if(isBaseProperty)
+            if (_isBaseProperty)
             {
-                basePropertyMap.insert(strFmt('%1%2', _proprty, i), chunk);
+                basePropertyMap.insert(strFmt('%1%2', _property, i), chunk);
             }
             else
             {
-                runtimePropertyMap.insert(strFmt('%1%2', _proprty, i), chunk);
+                runtimePropertyMap.insert(strFmt('%1%2', _property, i), chunk);
             }
-            
-
         }
     }
 
@@ -385,17 +371,15 @@ abstract class ISMTelemetryBase
     /// <returns>bool wheter to log telemetry or not</returns>
     internal boolean shouldSkipLogging()
     {
-        if(!this.shouldLogEvent())
+        if (!this.shouldLogEvent())
         {
             return true;
         }
 
-        if(!logParams.IsEnabled)
+        if (!logParams.IsEnabled)
         {
             return true;
         }
-
-        
 
         return false;
     }
@@ -408,17 +392,11 @@ abstract class ISMTelemetryBase
     /// <summary>
     /// Validates if telemetry should be logged based on severity level
     /// </summary>
-    /// <param name = "severity"> Severity level </param>
+    /// <param name = "_severity"> Severity level </param>
     /// <returns>bool wheter to log telemetry or not</returns>
-    private boolean shouldSkipOnSeverityLevel(ISMTelemetrySeverityLevel severity)
+    private boolean shouldSkipOnSeverityLevel(ISMTelemetrySeverityLevel _severity)
     {
-
-        if(logParams.SeverityLevel > severity)
-        {
-            return true;
-        }
-
-        return false;
+        return logParams.SeverityLevel > _severity;
     }
 
 ]]></Source>
@@ -435,12 +413,12 @@ abstract class ISMTelemetryBase
         try
         {
             str name = _name;
-            if(this.shouldSkipLogging())
+            if (this.shouldSkipLogging())
             {
                 return;
             }
 
-            if(!name)
+            if (!name)
             {
                 name = this.telemetryName();
             }
@@ -478,18 +456,18 @@ abstract class ISMTelemetryBase
     /// <summary>
     /// Method processTrace
     /// </summary>
-    /// <param name = "traceMessage"> Message of the trace </param>
-    /// <param name = "severity"> Severity of the trace </param>
-    public final void processTrace(str traceMessage, ISMTelemetrySeverityLevel severity = ISMTelemetrySeverityLevel::Information)
+    /// <param name = "_traceMessage">Message of the trace</param>
+    /// <param name = "_severity">Severity of the trace; optional </param>
+    public final void processTrace(str _traceMessage, ISMTelemetrySeverityLevel _severity = ISMTelemetrySeverityLevel::Information)
     {
         try
         {
-            if(this.shouldSkipLogging())
+            if (this.shouldSkipLogging())
             {
                 return;
             }
 
-            if(this.shouldSkipOnSeverityLevel(severity))
+            if (this.shouldSkipOnSeverityLevel(_severity))
             {
                 return;
             }
@@ -497,11 +475,11 @@ abstract class ISMTelemetryBase
             this.addStandardProperties();
             this.setElapsedMilliseconds();
             this.postPopulateProperties();
-            this.logTrace(traceMessage, severity);
+            this.logTrace(_traceMessage, _severity);
         }
         catch
         {
-            warning(strFmt("@ISM:ISMTelemetryTraceError", classId2Name(classIdGet(this)), traceMessage));
+            warning(strFmt("@ISM:ISMTelemetryTraceError", classId2Name(classIdGet(this)), _traceMessage));
         }
     }
 
@@ -575,28 +553,23 @@ abstract class ISMTelemetryBase
     /// </summary>
     /// <param name = "_eventId"> Event Id </param>
     /// <param name = "_name"> Name of the event </param>
-    protected void logEvent(str _eventId, str _name )
+    protected void logEvent(str _eventId, str _name)
     {
         SysApplicationInsightsEventTelemetry eventTelemetry = SysApplicationInsightsEventTelemetry::newFromEventIdName(_eventId, _name);
 
-        MapIterator iterator;
-        str key, value;
-
-
         // Get an iterator for the map
-        iterator = new MapIterator(basePropertyMap);
+        MapIterator iterator = new MapIterator(basePropertyMap);
 
         // Loop through the map & add base properties
         while (iterator.more())
         {
-            key = iterator.key();
-            value = iterator.value();
+            str key = iterator.key();
+            str value = iterator.value();
             
-            ISMTelemetryProperty property = ISMTelemetryProperty::contruct(key, value, SysApplicationInsightsComplianceDataType::CustomerContent);
+            ISMTelemetryProperty property = ISMTelemetryProperty::construct(key, value, SysApplicationInsightsComplianceDataType::CustomerContent);
             eventTelemetry.addProperty(property);
             iterator.next();
         }
-
 
         //add runtime properties:
         iterator = new MapIterator(runtimePropertyMap);
@@ -604,10 +577,10 @@ abstract class ISMTelemetryBase
         // Loop through the map & add base properties
         while (iterator.more())
         {
-            key = iterator.key();
-            value = iterator.value();
+            str key = iterator.key();
+            str value = iterator.value();
             
-            ISMTelemetryProperty property = ISMTelemetryProperty::contruct(key, value, SysApplicationInsightsComplianceDataType::CustomerContent);
+            ISMTelemetryProperty property = ISMTelemetryProperty::construct(key, value, SysApplicationInsightsComplianceDataType::CustomerContent);
             eventTelemetry.addProperty(property);
             iterator.next();
         }
@@ -637,13 +610,12 @@ abstract class ISMTelemetryBase
     /// <summary>
     /// Method Log
     /// </summary>
-    /// <param name = "traceMessage"> Message of the trace </param>
-    /// <param name = "severity"> Severity of the trace </param>
-    protected void logTrace(str traceMessage, ISMTelemetrySeverityLevel severity = ISMTelemetrySeverityLevel::Information)
+    /// <param name = "_traceMessage">Message of the trace</param>
+    /// <param name = "_severity">Severity of the trace; optional</param>
+    protected void logTrace(str _traceMessage, ISMTelemetrySeverityLevel _severity = ISMTelemetrySeverityLevel::Information)
     {
-
         DataContracts.SeverityLevel dotNetSeverity;
-        switch(severity)
+        switch (_severity)
         {
             case ISMTelemetrySeverityLevel::Critical:
                 dotNetSeverity = DataContracts.SeverityLevel::Critical;
@@ -665,26 +637,22 @@ abstract class ISMTelemetryBase
                 break;
         }
 
+        SysApplicationInsightsTraceTelemetry traceTelemetry = SysApplicationInsightsTraceTelemetry::newFromMessageAndSeverity(_traceMessage, dotNetSeverity);
 
-        SysApplicationInsightsTraceTelemetry traceTelemetry = SysApplicationInsightsTraceTelemetry::newFromMessageAndSeverity(traceMessage, dotNetSeverity);
-
-        MapIterator iterator;
-        str key, value;
         // Iterate through the list and add to traceTelemetry
         // Get an iterator for the map
-        iterator = new MapIterator(basePropertyMap);
+        MapIterator iterator = new MapIterator(basePropertyMap);
 
         // Loop through the map & add base properties
         while (iterator.more())
         {
-            key = iterator.key();
-            value = iterator.value();
+            str key = iterator.key();
+            str value = iterator.value();
             
-            ISMTelemetryProperty property = ISMTelemetryProperty::contruct(key, value, SysApplicationInsightsComplianceDataType::CustomerContent);
+            ISMTelemetryProperty property = ISMTelemetryProperty::construct(key, value, SysApplicationInsightsComplianceDataType::CustomerContent);
             traceTelemetry.addProperty(property);
             iterator.next();
         }
-
 
         //add runtime properties:
         iterator = new MapIterator(runtimePropertyMap);
@@ -692,10 +660,10 @@ abstract class ISMTelemetryBase
         // Loop through the map & add base properties
         while (iterator.more())
         {
-            key = iterator.key();
-            value = iterator.value();
+            str key = iterator.key();
+            str value = iterator.value();
             
-            ISMTelemetryProperty property = ISMTelemetryProperty::contruct(key, value, SysApplicationInsightsComplianceDataType::CustomerContent);
+            ISMTelemetryProperty property = ISMTelemetryProperty::construct(key, value, SysApplicationInsightsComplianceDataType::CustomerContent);
             traceTelemetry.addProperty(property);
             iterator.next();
         }
@@ -711,29 +679,24 @@ abstract class ISMTelemetryBase
     /// <summary>
     /// Method Log
     /// </summary>
-    /// <param name = "message"> Message of the exception </param>
-    protected void logException(str message)
+    /// <param name = "_message"> Message of the exception </param>
+    protected void logException(str _message)
     {
-        SysApplicationInsightsExceptionTelemetry exceptionTelemetry = SysApplicationInsightsExceptionTelemetry::newFromExceptionMessage(message);
-
-        MapIterator iterator;
-        str key, value;
-
+        SysApplicationInsightsExceptionTelemetry exceptionTelemetry = SysApplicationInsightsExceptionTelemetry::newFromExceptionMessage(_message);
 
         // Get an iterator for the map
-        iterator = new MapIterator(basePropertyMap);
+        MapIterator iterator = new MapIterator(basePropertyMap);
 
         // Loop through the map & add base properties
         while (iterator.more())
         {
-            key = iterator.key();
-            value = iterator.value();
+            str key = iterator.key();
+            str value = iterator.value();
             
-            ISMTelemetryProperty property = ISMTelemetryProperty::contruct(key, value, SysApplicationInsightsComplianceDataType::CustomerContent);
+            ISMTelemetryProperty property = ISMTelemetryProperty::construct(key, value, SysApplicationInsightsComplianceDataType::CustomerContent);
             exceptionTelemetry.addProperty(property);
             iterator.next();
         }
-
 
         //add runtime properties:
         iterator = new MapIterator(runtimePropertyMap);
@@ -741,14 +704,13 @@ abstract class ISMTelemetryBase
         // Loop through the map & add base properties
         while (iterator.more())
         {
-            key = iterator.key();
-            value = iterator.value();
+            str key = iterator.key();
+            str value = iterator.value();
             
-            ISMTelemetryProperty property = ISMTelemetryProperty::contruct(key, value, SysApplicationInsightsComplianceDataType::CustomerContent);
+            ISMTelemetryProperty property = ISMTelemetryProperty::construct(key, value, SysApplicationInsightsComplianceDataType::CustomerContent);
             exceptionTelemetry.addProperty(property);
             iterator.next();
         }
-
 
         SysApplicationInsightsTelemetryLogger::instance().trackException(exceptionTelemetry);
     }

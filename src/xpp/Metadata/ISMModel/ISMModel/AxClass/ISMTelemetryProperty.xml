@@ -17,9 +17,9 @@ public class ISMTelemetryProperty extends SysApplicationInsightsProperty
 ]]></Declaration>
 		<Methods>
 			<Method>
-				<Name>contruct</Name>
+				<Name>construct</Name>
 				<Source><![CDATA[
-    // Constructor
+    // Factory methods
 
     /// <summary>
     /// Contructs a new object for Telemetry property
@@ -28,9 +28,27 @@ public class ISMTelemetryProperty extends SysApplicationInsightsProperty
     /// <param name = "_value">the value</param>
     /// <param name = "_dataType">the data type</param>
     /// <returns>New class</returns>
-    public static ISMTelemetryProperty contruct(str _key, str _value, SysApplicationInsightsComplianceDataType _dataType)
+    public static ISMTelemetryProperty construct(str _key, str _value, SysApplicationInsightsComplianceDataType _dataType)
     {
         return new ISMTelemetryProperty(_key, _value, _dataType);
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>contruct</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Contructs a new object for Telemetry property
+    /// </summary>
+    /// <param name = "_key">The key </param>
+    /// <param name = "_value">the value</param>
+    /// <param name = "_dataType">the data type</param>
+    /// <returns>New class</returns>
+    [SysObsolete('Use construct() instead.', false, 23\6\2025)]
+    public static ISMTelemetryProperty contruct(str _key, str _value, SysApplicationInsightsComplianceDataType _dataType)
+    {
+        return ISMTelemetryProperty::construct(_key, _value, _dataType);
     }
 
 ]]></Source>

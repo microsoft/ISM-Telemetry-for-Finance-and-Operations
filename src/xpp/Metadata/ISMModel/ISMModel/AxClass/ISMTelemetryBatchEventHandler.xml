@@ -14,25 +14,25 @@ internal final class ISMTelemetryBatchEventHandler
 ]]></Declaration>
 		<Methods>
 			<Method>
-				<Name>BatchRunBusinessEvents_emitJobEndBusinessEventsUsingBatchJobUpdateTmpDelegate</Name>
+				<Name>batchRunBusinessEvents_emitJobEndBusinessEventsUsingBatchJobUpdateTmpDelegate</Name>
 				<Source><![CDATA[
     ///<summary>
-    ///Jobs moving into state finished beeing logged in telemetry
+    ///Jobs moving into state finished being logged in telemetry.
     ///</summary>
-    ///<param name="jobsToUpdate">The batch jobs to update</param>
+    ///<param name="_jobsToUpdate">Batch jobs to update</param>
     [SubscribesTo(classStr(BatchRunBusinessEvents), delegateStr(BatchRunBusinessEvents, emitJobEndBusinessEventsUsingBatchJobUpdateTmpDelegate))]
-    public static void BatchRunBusinessEvents_emitJobEndBusinessEventsUsingBatchJobUpdateTmpDelegate(BatchJobUpdateTmp jobsToUpdate)
+    internal static void batchRunBusinessEvents_emitJobEndBusinessEventsUsingBatchJobUpdateTmpDelegate(BatchJobUpdateTmp _jobsToUpdate)
     {
-
-        while select jobsToUpdate
+        while select _jobsToUpdate
         {
             BatchJob job;
 
-            select firstonly * from job where job.RecId == jobsToUpdate.BatchJobId;
+            select firstonly job
+                where job.RecId == _jobsToUpdate.BatchJobId;
 
             try
             {
-                ISMTelemetryBatch batch = ISMTelemetryBatch::construct(job.orig(), job, jobsToUpdate);
+                ISMTelemetryBatch batch = ISMTelemetryBatch::construct(job.orig(), job, _jobsToUpdate);
                 batch.processEvent(ISMTelemetryEventNames::BatchJobStatusUpdate);
             }
             catch
