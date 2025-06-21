@@ -44,54 +44,52 @@ This project provides sample implementations of telemetry in D365 FSCM. It inclu
 1. Clone the repository OR download the "ISMModel" folder
 2. Add the ISMModel to your PackagesLocalDirectory folder
 3. If you use an UDE environment, you "Configure metadata" and point the folder for Custom metadata to the "Metadata" folder
-   ![UDE custom metadata configuration](documentation/images/ude-custom-metadata-configuration.png)
+    ![UDE custom metadata configuration](documentation/images/ude-custom-metadata-configuration.png)
 
 4. If you use a non UDE environment, copy the "src/xpp/Metadata/ISMModel" into the PackagesLocalDirectory folder of your installation
 5. Refresh the models in VS
-  ![image](https://github.com/user-attachments/assets/3e22fdf7-12f2-448b-adcc-90f271fdd85d)
+    ![Visual Studio refresh models](documentation/images/visual-studio-refresh-models.png)
 
 6. Build the model "ISMModel"
 7. Enable the feature "Monitoring and Telemetry" in "Feature management workspace" if not enabled by default
-   ![image](https://github.com/user-attachments/assets/a661f441-7e1b-4cd5-a390-6d9d4005ff05)
+    ![Feature management enable monitoring and telemetry](documentation/images/feature-management-enable-monitoring-and-telemetry.png)
 
 9. Once the changes are all built, open the menu "Monitoring and telemetry parameters" 
-![image](https://github.com/user-attachments/assets/fa7f08f9-f009-464b-be19-4840a6a434cc)
+    ![Menu Monitoring and telemetry parameters](documentation/images/menu-monitoring-and-telemetry-parameters.png)
 
 10. You should see a custom tab called "Logging settings"
-    ![image](https://github.com/user-attachments/assets/18f7e9e1-a30b-4b0b-90e5-558f7b4bc50f)
-
-
+    ![Logging settings](documentation/images/logging-settings.png)
 
 ## Configure telemetry logging in Finance & Operations
 
+See also [Get started with telemetry for finance and operations apps](https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started)
+
 1. Open the menu "Monitoring and telemetry parameters" 
-![image](https://github.com/user-attachments/assets/d1a3e5f6-1f55-4796-828d-77bc611d793c)
+    ![Menu Monitoring and telemetry parameters](documentation/images/menu-monitoring-and-telemetry-parameters.png)
 
 2. Go to "Application Insights Registry"
-   ![image](https://github.com/user-attachments/assets/fb53cf62-850d-4885-b4f5-cf60374cd905)
+    ![Application Insights Registry](documentation/images/application-insights-registry.png)
 
-   And add the "Instrumentation key" from your Azure Application Insights resource into the field "Instrumentation key"  or the connection string
-   ![image](https://github.com/user-attachments/assets/d63b4111-0e93-4186-a79f-f8d9b253e373)
-
-
-3. Move to tab "Environments" 
-  ![image](https://github.com/user-attachments/assets/d0ce791e-887f-431d-b44b-6dac69e8057a)
-  Add your "Environment Id" into the field, you will find the Environment Id as follows:
-
-  **Youre using LCS:**
-  Go to the LCS Environment overview page, copy field "Environment Id" of the current environment.
-  ![image](https://github.com/user-attachments/assets/a4335200-4b95-445f-89ba-eceb37514301)
+    And add the "Instrumentation key" from your Azure Application Insights resource into the field "Instrumentation key"  or the connection string
+    ![Application Insights Connection String or Instrumentation Key](documentation/images/application-insights-connection-string-or-instrumentation-key.png)
 
 
-  **Youre using an UDE Environment:**
-  Copy the "Environment Id" from the Power platform admin center
-  ![image](https://github.com/user-attachments/assets/b1ba92dd-615b-4b3d-a384-0e943806f86d)
+3. Move to tab "Environments"
+    ![Environments](documentation/images/environments.png)
+    Add your "Environment Id" into the field, you will find the Environment Id as follows:
+
+    **You are using LCS:**
+    Go to the LCS Environment overview page, copy field "Environment Id" of the current environment.
+    ![LCS Environment Id](documentation/images/lcs-environment-id.png)
+
+
+    **Youre using an UDE Environment:**
+    Copy the "Environment Id" from the Power platform admin center
+    ![UDE Environment Id](documentation/images/ude-environment-id.png)
 
 
 4. Move to tab "Configure" and enable the events you want to log
-   ![image](https://github.com/user-attachments/assets/3f47d60f-53e4-43d2-a166-19c03051c8e6)
-
-
+    ![Configure events to log](documentation/images/configure-events-to-log.png)
 
 The telemetry should be emitting after the setup is complete. To test, simply schedule a batch job. 
 
