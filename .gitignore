@@ -41,3 +41,6 @@ v17
 !nuget.config
 ## packages references for NuGet for use in Pipeline
 !packages.config
+
+## documentation files
+!documentation

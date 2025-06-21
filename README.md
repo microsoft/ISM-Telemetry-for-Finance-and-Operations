@@ -44,7 +44,7 @@ This project provides sample implementations of telemetry in D365 FSCM. It inclu
 1. Clone the repository OR download the "ISMModel" folder
 2. Add the ISMModel to your PackagesLocalDirectory folder
 3. If you use an UDE environment, you "Configure metadata" and point the folder for Custom metadata to the "Metadata" folder
-   ![image](https://github.com/user-attachments/assets/f742a44b-b651-497c-9726-8dc80a4214cc)
+   ![UDE custom metadata configuration](documentation/images/ude-custom-metadata-configuration.png)
 
 4. If you use a non UDE environment, copy the "src/xpp/Metadata/ISMModel" into the PackagesLocalDirectory folder of your installation
 5. Refresh the models in VS
