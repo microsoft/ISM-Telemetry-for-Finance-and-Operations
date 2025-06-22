@@ -83,7 +83,7 @@ See also [Get started with telemetry for finance and operations apps](https://le
     ![LCS Environment Id](documentation/images/lcs-environment-id.png)
 
 
-    **Youre using an UDE Environment:**
+    **You are using an UDE Environment:**
     Copy the "Environment Id" from the Power platform admin center
     ![UDE Environment Id](documentation/images/ude-environment-id.png)
 
@@ -263,25 +263,26 @@ In the UI you will find a on/off switch which enables you to disable sending tel
 
 ![Logging settings](documentation/images/logging-settings.png)
 
-The "Enabled" will completely enable or disable logging
-The "Severity level" you can define when you are using "processTrace" method to do traces. 
+The "Is Enabled" checkbox will completely enable or disable logging.
+The "Severity level" defines what messages are logged for the `processTrace` method to do traces.
 
 ### Types of telemetry
 you will be able to proces different types of telemetry:
 
 - processEvent --> Will process appInsights events into table "customEvents"
 - processTrace --> Will process appInsights traces into table "traces"
-- processMetric --> Will process appInsights metrics into table "customeMetrics"
+- processMetric --> Will process appInsights metrics into table "customMetrics"
 
-In most cases the "processEvent" are beeing, depending on the need of the customer. Metrics are working as well but its limited on how many additional dimensions can be used. 
+In most cases the "processEvent" is used, depending on the need of the customer. Metrics are working as well but its limited on how many additional dimensions can be used.
+
 processTrace should be used if you want to trace a specific processs, e.g. a new functionality where you want to track very detailed at the beginning but want to reduce it once the feature settles down.
 
+Currently, only the "processEvent" telemetry type is used by the telemetry included in this library.
+
 ### Tracking time in telemetry 
-By default, every time you declare a class like telemetry = new ISMTelemetryGeneric(), it will start a .NET stopwatch. Once you do "processEvent", "processTrace" or "processMetric" it will capture the elapsed time and store it automatically as "ElapsedTimeMilliseconds" in your telemetry data. Also it will restart the stopwatch, in case you want to track more data. 
+By default, every time you declare a class like `telemetry = new ISMTelemetryGeneric()`, it will start a .NET stopwatch. Once you do "processEvent", "processTrace" or "processMetric" it will capture the elapsed time and store it automatically as "ElapsedTimeMilliseconds" in your telemetry data. Also it will restart the stopwatch, in case you want to track more data. 
 
 From a data perspective, each appInsights entry will have either the time captured from declaration to event processing or from previous event to current event. 
-
-### 
 
 ### Conditional logging shouldLogEvent 
 
@@ -289,18 +290,13 @@ With the overload of the method "shouldLogEvent" you can decide yourself, based 
 
 ### Post populate properties
 
-the method "postPopulateProperties" is beeing called when you do "processEvent" / "processMetric" / "processTrace". 
-You can enrich data at the point if required. 
+The method "postPopulateProperties" is being called when you do "processEvent" / "processMetric" / "processTrace". 
+
+You can enrich data at that point if required. 
 
 ### Adding callStacks
 
-After declaring the class you can use:
-
-```
-telemetry.addCallStack();
-```
-
-To add the current callStack to the code, this can be used when you log errors, but be aware, adding a callstack does have performance overhead, do not use it frequently 
+After declaring the class you can use `telemetry.addCallStack();` to add the current callStack to the code, this can be used when you log errors, but be aware, adding a callstack does have performance overhead, do not use it frequently. 
 
 ### Base properties vs Runtime properties 
 
