@@ -261,7 +261,7 @@ Once you run the report you will see the telemetry like this:
 ### UI turn off/on switch for cost savings 
 In the UI you will find a on/off switch which enables you to disable sending telemetry for a specific class. This can be used for cost saving if a class was introduced only for temprary logging. 
 
-![image](https://github.com/user-attachments/assets/ed0aaee8-16cb-41ab-8354-25bf50428fa5)
+![Logging settings](documentation/images/logging-settings.png)
 
 The "Enabled" will completely enable or disable logging
 The "Severity level" you can define when you are using "processTrace" method to do traces. 
