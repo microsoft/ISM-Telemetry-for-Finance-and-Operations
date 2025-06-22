@@ -95,32 +95,39 @@ The telemetry should be emitting after the setup is complete. To test, simply sc
 
 ## Configure Azure Data Explorer dashboard
 
-After or before importing the dashboard, the datasources can be replaced with your Azure insights resource. 
+After or before importing the dashboard, the datasource cluster URI needs to be replaced with your Azure Application Insights resource. 
+
 You can replace it simply in an editor in the downloaded JSON file or you import it and do it step by step manually. 
 
-The datasource needs to be formatted like this:
+The datasource cluster URI needs to be formatted like this:
 
-```bash
-cluster("https://ade.applicationinsights.io/subscriptions/<Your Subscrition ID>/resourceGroups/<Your resourcegroup>/providers/microsoft.insights/components/<AppInsights name>").database("<AppInsights name>")
 ```
-You can simply also open the AppInsights resource in Azure portal, and copy parts of the URL on top:
+https://ade.applicationinsights.io/subscriptions/<Your Subscrition ID>/resourceGroups/<Your resourcegroup>/providers/microsoft.insights/components/<AppInsights name>"
+```
+To get most of the required URI, you can open the Application Insights resource in Azure portal, and copy parts of the URL on top:
 
-![image](https://github.com/user-attachments/assets/0f6338cc-b827-4cd0-858e-89940a3d2651)
+![Application Insights URL part for Azure Data Explorer datasource](documentation/images/application-insights-url-part-for-azure-data-explorer-datasource.png)
+
+Look for the following string in the dashboard JSON file or follow the next steps to do it in the Azure Data Explorer dashboard editor:
+
+`https://ade.applicationinsights.io/subscriptions/42a58a61-6eda-4e80-840b-0c7d57ba8b32/resourceGroups/Telemetry/providers/microsoft.insights/components/FinOpsTelemetry`
 
 
 1. Download the dashboard you want from the repo folder "Dashboards"
 2. Open Azure Data Explorer (https://dataexplorer.azure.com/dashboards/)
-4. Go to "New Dashboard" -> New Dashboard from File
-   ![image](https://github.com/user-attachments/assets/514a8c0c-7364-45fd-a948-71a4f3f22e51)
+4. Go to "New Dashboard" -> Import dashboard from file
+    ![Azure Data Explorer: Import dashboard from file](documentation/images/azure-data-explorer-new-dashboard-from-file.png)
 5. Open the dashboard and go to "Edit" mode
-   ![image](https://github.com/user-attachments/assets/bd1a9d3e-93c3-4a3a-afc5-1b664fa197e3)
-6. Now you need to replace all datasources and point it to your AppInsights resource with above string if you havent done it yet.
-7. Replace in datasource:
-   ![image](https://github.com/user-attachments/assets/7564d7f9-8885-467f-88a3-3292654ec602)
-8. Replace in parameters: (Not required if not set anywhere) 
-   ![image](https://github.com/user-attachments/assets/8bf1d7f3-6190-4eb0-882e-9879585aa531)
-9. Replace in all tiles / queries (Not required if not set anywhere) 
-   ![image](https://github.com/user-attachments/assets/e326d9dd-ed3f-4ce5-bb5a-a892b8e0fd60)
+    ![Azure Data Explorer: Dashboard edit mode](documentation/images/azure-data-explorer-dashboard-edit-mode.png)
+6. Now you need to edit the dashboard datasource and point it to your AppInsights resource with above string if you havent done it yet.
+7. Open the edit form of the dashboard datasource `FinOpsTelemetry`:
+    ![Azure Data Explorer: Dashboard datasource edit](documentation/images/azure-data-explorer-dashboard-datasource-edit.png)
+8. Replace the cluster URI with the string from above.
+    ![Azure Data Explorer: Edit cluster URI](documentation/images/azure-data-explorer-edit-cluster-uri.png)
+9. Click "Connect" to validate the connection and check that the name of the Application Insights resource appears in the "Database" lookup.
+10. Click "Apply", then "Close" and then "Save" to persist the changes.
+11. The dashboard should now reload the current page and not show any errors.
+    ![Azure Data Explorer: Dashboard](documentation/images/azure-data-explorer-dashboard.png)
 
 ## Usage 
 
