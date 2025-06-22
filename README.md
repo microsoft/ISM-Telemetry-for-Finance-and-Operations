@@ -44,20 +44,25 @@ This project provides sample implementations of telemetry in D365 FSCM. It inclu
 1. Clone the repository OR download the "ISMModel" folder
 2. Add the ISMModel to your PackagesLocalDirectory folder
 3. If you use an UDE environment, you "Configure metadata" and point the folder for Custom metadata to the "Metadata" folder
+
     ![UDE custom metadata configuration](documentation/images/ude-custom-metadata-configuration.png)
 
 4. If you use a non UDE environment, copy the "src/xpp/Metadata/ISMModel" into the PackagesLocalDirectory folder of your installation
 5. Refresh the models in VS
+
     ![Visual Studio refresh models](documentation/images/visual-studio-refresh-models.png)
 
 6. Build the model "ISMModel"
 7. Enable the feature "Monitoring and Telemetry" in "Feature management workspace" if not enabled by default
+
     ![Feature management enable monitoring and telemetry](documentation/images/feature-management-enable-monitoring-and-telemetry.png)
 
 9. Once the changes are all built, open the menu "Monitoring and telemetry parameters" 
+
     ![Menu Monitoring and telemetry parameters](documentation/images/menu-monitoring-and-telemetry-parameters.png)
 
 10. You should see a custom tab called "Logging settings"
+
     ![Logging settings](documentation/images/logging-settings.png)
 
 ## Configure telemetry logging in Finance & Operations
@@ -65,30 +70,40 @@ This project provides sample implementations of telemetry in D365 FSCM. It inclu
 See also [Get started with telemetry for finance and operations apps](https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started)
 
 1. Open the menu "Monitoring and telemetry parameters" 
+
     ![Menu Monitoring and telemetry parameters](documentation/images/menu-monitoring-and-telemetry-parameters.png)
 
 2. Go to "Application Insights Registry"
+
     ![Application Insights Registry](documentation/images/application-insights-registry.png)
 
     And add the "Instrumentation key" from your Azure Application Insights resource into the field "Instrumentation key"  or the connection string
+
     ![Application Insights Connection String or Instrumentation Key](documentation/images/application-insights-connection-string-or-instrumentation-key.png)
 
 
 3. Move to tab "Environments"
+
     ![Environments](documentation/images/environments.png)
+
     Add your "Environment Id" into the field, you will find the Environment Id as follows:
 
     **You are using LCS:**
+
     Go to the LCS Environment overview page, copy field "Environment Id" of the current environment.
+
     ![LCS Environment Id](documentation/images/lcs-environment-id.png)
 
 
     **You are using an UDE Environment:**
+
     Copy the "Environment Id" from the Power platform admin center
+
     ![UDE Environment Id](documentation/images/ude-environment-id.png)
 
 
 4. Move to tab "Configure" and enable the events you want to log
+
     ![Configure events to log](documentation/images/configure-events-to-log.png)
 
 The telemetry should be emitting after the setup is complete. To test, simply schedule a batch job. 
@@ -116,17 +131,22 @@ Look for the following string in the dashboard JSON file or follow the next step
 1. Download the dashboard you want from the repo folder "Dashboards"
 2. Open Azure Data Explorer (https://dataexplorer.azure.com/dashboards/)
 4. Go to "New Dashboard" -> Import dashboard from file
+
     ![Azure Data Explorer: Import dashboard from file](documentation/images/azure-data-explorer-new-dashboard-from-file.png)
 5. Open the dashboard and go to "Edit" mode
+
     ![Azure Data Explorer: Dashboard edit mode](documentation/images/azure-data-explorer-dashboard-edit-mode.png)
 6. Now you need to edit the dashboard datasource and point it to your AppInsights resource with above string if you havent done it yet.
 7. Open the edit form of the dashboard datasource `FinOpsTelemetry`:
+
     ![Azure Data Explorer: Dashboard datasource edit](documentation/images/azure-data-explorer-dashboard-datasource-edit.png)
 8. Replace the cluster URI with the string from above.
+
     ![Azure Data Explorer: Edit cluster URI](documentation/images/azure-data-explorer-edit-cluster-uri.png)
 9. Click "Connect" to validate the connection and check that the name of the Application Insights resource appears in the "Database" lookup.
 10. Click "Apply", then "Close" and then "Save" to persist the changes.
 11. The dashboard should now reload the current page and not show any errors.
+
     ![Azure Data Explorer: Dashboard](documentation/images/azure-data-explorer-dashboard.png)
 
 ## Usage 
@@ -171,6 +191,7 @@ class ISMTelemetryGeneric extends ISMTelemetryBase
 Whenever you declare the telemetry class, it will automatically start a stopwatch and will capture the time when you do "processEvent". 
 
 We want to measure how long it takes to run a "Customer account statement" 
+
 ![image](https://github.com/user-attachments/assets/0de1220b-d678-4ad4-a323-6c71cfbe892d)
 
 It has multiple parameters of some which we want to also emit to telmetry. 
@@ -251,6 +272,7 @@ internal final class ISMCustAccountStatementExtController_Extension
 Deploy your model for UDE or build it on a LCS environment, then run the report. 
 
 Once you run the report you will see the telemetry like this:
+
 ![image](https://github.com/user-attachments/assets/bab78d66-a2c2-4dd5-bd31-1019c971d734)
 
 
