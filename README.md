@@ -116,9 +116,8 @@ You can replace it simply in an editor in the downloaded JSON file or you import
 
 The datasource cluster URI needs to be formatted like this:
 
-```
-https://ade.applicationinsights.io/subscriptions/<Your Subscrition ID>/resourceGroups/<Your resourcegroup>/providers/microsoft.insights/components/<AppInsights name>"
-```
+`https://ade.applicationinsights.io/subscriptions/<Your Subscrition ID>/resourceGroups/<Your resourcegroup>/providers/microsoft.insights/components/<AppInsights name>`
+
 To get most of the required URI, you can open the Application Insights resource in Azure portal, and copy parts of the URL on top:
 
 ![Application Insights URL part for Azure Data Explorer datasource](documentation/images/application-insights-url-part-for-azure-data-explorer-datasource.png)
