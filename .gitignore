@@ -42,6 +42,10 @@ v17
 ## packages references for NuGet for use in Pipeline
 !packages.config
 
+## documentation files
+!documentation
+
 ## Keep FSC-PS and github
 !.FSC-PS
 !.github
+

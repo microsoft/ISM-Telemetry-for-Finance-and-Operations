@@ -46,85 +46,109 @@ This project provides sample implementations of telemetry in D365 FSCM. It inclu
 1. Clone the repository OR download the "ISMModel" folder
 2. Add the ISMModel to your PackagesLocalDirectory folder
 3. If you use an UDE environment, you "Configure metadata" and point the folder for Custom metadata to the "Metadata" folder
-   ![image](https://github.com/user-attachments/assets/f742a44b-b651-497c-9726-8dc80a4214cc)
+
+    ![UDE custom metadata configuration](documentation/images/ude-custom-metadata-configuration.png)
 
 4. If you use a non UDE environment, copy the "src/xpp/Metadata/ISMModel" into the PackagesLocalDirectory folder of your installation
 5. Refresh the models in VS
-  ![image](https://github.com/user-attachments/assets/3e22fdf7-12f2-448b-adcc-90f271fdd85d)
+
+    ![Visual Studio refresh models](documentation/images/visual-studio-refresh-models.png)
 
 6. Build the model "ISMModel"
 7. Enable the feature "Monitoring and Telemetry" in "Feature management workspace" if not enabled by default
-   ![image](https://github.com/user-attachments/assets/a661f441-7e1b-4cd5-a390-6d9d4005ff05)
+
+    ![Feature management enable monitoring and telemetry](documentation/images/feature-management-enable-monitoring-and-telemetry.png)
 
 9. Once the changes are all built, open the menu "Monitoring and telemetry parameters" 
-![image](https://github.com/user-attachments/assets/fa7f08f9-f009-464b-be19-4840a6a434cc)
+
+    ![Menu Monitoring and telemetry parameters](documentation/images/menu-monitoring-and-telemetry-parameters.png)
 
 10. You should see a custom tab called "Logging settings"
-    ![image](https://github.com/user-attachments/assets/18f7e9e1-a30b-4b0b-90e5-558f7b4bc50f)
 
-
+    ![Logging settings](documentation/images/logging-settings.png)
 
 ## Configure telemetry logging in Finance & Operations
 
+See also [Get started with telemetry for finance and operations apps](https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-getting-started)
+
 1. Open the menu "Monitoring and telemetry parameters" 
-![image](https://github.com/user-attachments/assets/d1a3e5f6-1f55-4796-828d-77bc611d793c)
+
+    ![Menu Monitoring and telemetry parameters](documentation/images/menu-monitoring-and-telemetry-parameters.png)
 
 2. Go to "Application Insights Registry"
-   ![image](https://github.com/user-attachments/assets/fb53cf62-850d-4885-b4f5-cf60374cd905)
 
-   And add the "Instrumentation key" from your Azure Application Insights resource into the field "Instrumentation key"  or the connection string
-   ![image](https://github.com/user-attachments/assets/d63b4111-0e93-4186-a79f-f8d9b253e373)
+    ![Application Insights Registry](documentation/images/application-insights-registry.png)
 
+    And add the "Instrumentation key" from your Azure Application Insights resource into the field "Instrumentation key"  or the connection string
 
-3. Move to tab "Environments" 
-  ![image](https://github.com/user-attachments/assets/d0ce791e-887f-431d-b44b-6dac69e8057a)
-  Add your "Environment Id" into the field, you will find the Environment Id as follows:
-
-  **Youre using LCS:**
-  Go to the LCS Environment overview page, copy field "Environment Id" of the current environment.
-  ![image](https://github.com/user-attachments/assets/a4335200-4b95-445f-89ba-eceb37514301)
+    ![Application Insights Connection String or Instrumentation Key](documentation/images/application-insights-connection-string-or-instrumentation-key.png)
 
 
-  **Youre using an UDE Environment:**
-  Copy the "Environment Id" from the Power platform admin center
-  ![image](https://github.com/user-attachments/assets/b1ba92dd-615b-4b3d-a384-0e943806f86d)
+3. Move to tab "Environments"
+
+    ![Environments](documentation/images/environments.png)
+
+    Add your "Environment Id" into the field, you will find the Environment Id as follows:
+
+    **You are using LCS:**
+
+    Go to the LCS Environment overview page, copy field "Environment Id" of the current environment.
+
+    ![LCS Environment Id](documentation/images/lcs-environment-id.png)
+
+
+    **You are using an UDE Environment:**
+
+    Copy the "Environment Id" from the Power platform admin center
+
+    ![UDE Environment Id](documentation/images/ude-environment-id.png)
 
 
 4. Move to tab "Configure" and enable the events you want to log
-   ![image](https://github.com/user-attachments/assets/3f47d60f-53e4-43d2-a166-19c03051c8e6)
 
-
+    ![Configure events to log](documentation/images/configure-events-to-log.png)
 
 The telemetry should be emitting after the setup is complete. To test, simply schedule a batch job. 
 
 ## Configure Azure Data Explorer dashboard
 
-After or before importing the dashboard, the datasources can be replaced with your Azure insights resource. 
+After or before importing the dashboard, the datasource cluster URI needs to be replaced with your Azure Application Insights resource. 
+
 You can replace it simply in an editor in the downloaded JSON file or you import it and do it step by step manually. 
 
-The datasource needs to be formatted like this:
+The datasource cluster URI needs to be formatted like this:
 
-```bash
-cluster("https://ade.applicationinsights.io/subscriptions/<Your Subscrition ID>/resourceGroups/<Your resourcegroup>/providers/microsoft.insights/components/<AppInsights name>").database("<AppInsights name>")
-```
-You can simply also open the AppInsights resource in Azure portal, and copy parts of the URL on top:
+`https://ade.applicationinsights.io/subscriptions/<Your Subscrition ID>/resourceGroups/<Your resourcegroup>/providers/microsoft.insights/components/<AppInsights name>`
 
-![image](https://github.com/user-attachments/assets/0f6338cc-b827-4cd0-858e-89940a3d2651)
+To get most of the required URI, you can open the Application Insights resource in Azure portal, and copy parts of the URL on top:
+
+![Application Insights URL part for Azure Data Explorer datasource](documentation/images/application-insights-url-part-for-azure-data-explorer-datasource.png)
+
+Look for the following string in the dashboard JSON file or follow the next steps to do it in the Azure Data Explorer dashboard editor:
+
+`https://ade.applicationinsights.io/subscriptions/42a58a61-6eda-4e80-840b-0c7d57ba8b32/resourceGroups/Telemetry/providers/microsoft.insights/components/FinOpsTelemetry`
 
 
 1. Download the dashboard you want from the repo folder "Dashboards"
 2. Open Azure Data Explorer (https://dataexplorer.azure.com/dashboards/)
-4. Go to "New Dashboard" -> New Dashboard from File
-   ![image](https://github.com/user-attachments/assets/514a8c0c-7364-45fd-a948-71a4f3f22e51)
+4. Go to "New Dashboard" -> Import dashboard from file
+
+    ![Azure Data Explorer: Import dashboard from file](documentation/images/azure-data-explorer-new-dashboard-from-file.png)
 5. Open the dashboard and go to "Edit" mode
-   ![image](https://github.com/user-attachments/assets/bd1a9d3e-93c3-4a3a-afc5-1b664fa197e3)
-6. Now you need to replace all datasources and point it to your AppInsights resource with above string if you havent done it yet.
-7. Replace in datasource:
-   ![image](https://github.com/user-attachments/assets/7564d7f9-8885-467f-88a3-3292654ec602)
-8. Replace in parameters: (Not required if not set anywhere) 
-   ![image](https://github.com/user-attachments/assets/8bf1d7f3-6190-4eb0-882e-9879585aa531)
-9. Replace in all tiles / queries (Not required if not set anywhere) 
-   ![image](https://github.com/user-attachments/assets/e326d9dd-ed3f-4ce5-bb5a-a892b8e0fd60)
+
+    ![Azure Data Explorer: Dashboard edit mode](documentation/images/azure-data-explorer-dashboard-edit-mode.png)
+6. Now you need to edit the dashboard datasource and point it to your AppInsights resource with above string if you havent done it yet.
+7. Open the edit form of the dashboard datasource `FinOpsTelemetry`:
+
+    ![Azure Data Explorer: Dashboard datasource edit](documentation/images/azure-data-explorer-dashboard-datasource-edit.png)
+8. Replace the cluster URI with the string from above.
+
+    ![Azure Data Explorer: Edit cluster URI](documentation/images/azure-data-explorer-edit-cluster-uri.png)
+9. Click "Connect" to validate the connection and check that the name of the Application Insights resource appears in the "Database" lookup.
+10. Click "Apply", then "Close" and then "Save" to persist the changes.
+11. The dashboard should now reload the current page and not show any errors.
+
+    ![Azure Data Explorer: Dashboard](documentation/images/azure-data-explorer-dashboard.png)
 
 ## Usage 
 
@@ -168,6 +192,7 @@ class ISMTelemetryGeneric extends ISMTelemetryBase
 Whenever you declare the telemetry class, it will automatically start a stopwatch and will capture the time when you do "processEvent". 
 
 We want to measure how long it takes to run a "Customer account statement" 
+
 ![image](https://github.com/user-attachments/assets/0de1220b-d678-4ad4-a323-6c71cfbe892d)
 
 It has multiple parameters of some which we want to also emit to telmetry. 
@@ -248,6 +273,7 @@ internal final class ISMCustAccountStatementExtController_Extension
 Deploy your model for UDE or build it on a LCS environment, then run the report. 
 
 Once you run the report you will see the telemetry like this:
+
 ![image](https://github.com/user-attachments/assets/bab78d66-a2c2-4dd5-bd31-1019c971d734)
 
 
@@ -258,27 +284,28 @@ Once you run the report you will see the telemetry like this:
 ### UI turn off/on switch for cost savings 
 In the UI you will find a on/off switch which enables you to disable sending telemetry for a specific class. This can be used for cost saving if a class was introduced only for temprary logging. 
 
-![image](https://github.com/user-attachments/assets/ed0aaee8-16cb-41ab-8354-25bf50428fa5)
+![Logging settings](documentation/images/logging-settings.png)
 
-The "Enabled" will completely enable or disable logging
-The "Severity level" you can define when you are using "processTrace" method to do traces. 
+The "Is Enabled" checkbox will completely enable or disable logging.
+The "Severity level" defines what messages are logged for the `processTrace` method to do traces.
 
 ### Types of telemetry
 you will be able to proces different types of telemetry:
 
 - processEvent --> Will process appInsights events into table "customEvents"
 - processTrace --> Will process appInsights traces into table "traces"
-- processMetric --> Will process appInsights metrics into table "customeMetrics"
+- processMetric --> Will process appInsights metrics into table "customMetrics"
 
-In most cases the "processEvent" are beeing, depending on the need of the customer. Metrics are working as well but its limited on how many additional dimensions can be used. 
+In most cases the "processEvent" is used, depending on the need of the customer. Metrics are working as well but its limited on how many additional dimensions can be used.
+
 processTrace should be used if you want to trace a specific processs, e.g. a new functionality where you want to track very detailed at the beginning but want to reduce it once the feature settles down.
 
+Currently, only the "processEvent" telemetry type is used by the telemetry included in this library.
+
 ### Tracking time in telemetry 
-By default, every time you declare a class like telemetry = new ISMTelemetryGeneric(), it will start a .NET stopwatch. Once you do "processEvent", "processTrace" or "processMetric" it will capture the elapsed time and store it automatically as "ElapsedTimeMilliseconds" in your telemetry data. Also it will restart the stopwatch, in case you want to track more data. 
+By default, every time you declare a class like `telemetry = new ISMTelemetryGeneric()`, it will start a .NET stopwatch. Once you do "processEvent", "processTrace" or "processMetric" it will capture the elapsed time and store it automatically as "ElapsedTimeMilliseconds" in your telemetry data. Also it will restart the stopwatch, in case you want to track more data. 
 
 From a data perspective, each appInsights entry will have either the time captured from declaration to event processing or from previous event to current event. 
-
-### 
 
 ### Conditional logging shouldLogEvent 
 
@@ -286,18 +313,13 @@ With the overload of the method "shouldLogEvent" you can decide yourself, based 
 
 ### Post populate properties
 
-the method "postPopulateProperties" is beeing called when you do "processEvent" / "processMetric" / "processTrace". 
-You can enrich data at the point if required. 
+The method "postPopulateProperties" is being called when you do "processEvent" / "processMetric" / "processTrace". 
+
+You can enrich data at that point if required. 
 
 ### Adding callStacks
 
-After declaring the class you can use:
-
-```
-telemetry.addCallStack();
-```
-
-To add the current callStack to the code, this can be used when you log errors, but be aware, adding a callstack does have performance overhead, do not use it frequently 
+After declaring the class you can use `telemetry.addCallStack();` to add the current callStack to the code, this can be used when you log errors, but be aware, adding a callstack does have performance overhead, do not use it frequently. 
 
 ### Base properties vs Runtime properties 
 
