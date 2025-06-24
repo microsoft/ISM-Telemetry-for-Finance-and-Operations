@@ -15,53 +15,44 @@ using Microsoft.Dynamics.DualWrite.Metadata.Contracts;
 [ExtensionOf(classStr(DualWriteSyncOutbound))]
 public final class ISMDualWriteSyncOutbound_Extension
 {
-    public str errorMsg;
+    private str errorMsg;
 
 }
 ]]></Declaration>
 		<Methods>
 			<Method>
-				<Name>WriteEntityRecordToCDS</Name>
+				<Name>writeEntityRecordToCDS</Name>
 				<Source><![CDATA[
     /// <summary>
     /// The actual DW write action
     /// </summary>
-    /// <param name = "entityRecord">the record </param>
-    /// <param name = "isDelete">is a delete or not</param>
-    /// <param name = "isBatchCommit">Commits in batch or not</param>
-    protected void WriteEntityRecordToCDS(Common entityRecord, NoYes isDelete, boolean isBatchCommit)
+    /// <param name = "_entityRecord">the record </param>
+    /// <param name = "_isDelete">is a delete or not</param>
+    /// <param name = "_isBatchCommit">Commits in batch or not</param>
+    protected void writeEntityRecordToCDS(Common _entityRecord, NoYes _isDelete, boolean _isBatchCommit)
     {
-        //This likely does not work as the base class throws an exception with errors, therfore it will never reach here
+        //This likely does not work as the base class throws an exception with errors, therefore it will never reach here.
         
-        next WriteEntityRecordToCDS(entityRecord, isDelete, isBatchCommit);
+        next writeEntityRecordToCDS(_entityRecord, _isDelete, _isBatchCommit);
 
-        ResponseContract response;
         this.checkForModifications = false;
 
+        ResponseContract response = this.responseContract; 
 
-        response = this.responseContract; 
-  
-
-        if(response.ExecutionStatus == ExecutionStatus::Failed)
+        if (response.ExecutionStatus == ExecutionStatus::Failed)
         {
             errorMsg = response.GetFormattedResponseObject();
             errorMsg += response.GetFormattedErrorMessage();
         }
 
-
-        if(errorMsg != '')
+        if (errorMsg != '')
         {
             ISMTelemetryDualWrite telemetry = ISMTelemetryDualWrite::construct();
             telemetry.addRuntimeProperty(ISMTelemetryProperties::Error , errorMsg);
-            telemetry.addRuntimeProperty(ISMTelemetryProperties::EntityName, tableId2Name(entityRecord.TableId));
-            telemetry.addRuntimeProperty(ISMTelemetryProperties::RecordData, JsonSerializer::jsonSerialize(entityRecord));
+            telemetry.addRuntimeProperty(ISMTelemetryProperties::EntityName, tableId2Name(_entityRecord.TableId));
+            telemetry.addRuntimeProperty(ISMTelemetryProperties::RecordData, JsonSerializer::jsonSerialize(_entityRecord));
             telemetry.processEvent();
         }
-        
-
-
-
-
     }
 
 ]]></Source>
