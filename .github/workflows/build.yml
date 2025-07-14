@@ -144,11 +144,3 @@ jobs:
 
       - name: Read settings
         uses: fscpscollaborative/fscps.gh/ReadSettings@v2.1
-
-      - name: Finalize the workflow
-        id: PostProcess
-        uses: fscpscollaborative/fscps.gh/WorkflowPostProcess@v2.1
-        with:
-          remove_current: ${{ needs.Initialization.outputs.environments == '' }}
-          settingsJson: ${{ env.Settings }}
-          secretsJson: ${{ env.RepoSecrets }}
