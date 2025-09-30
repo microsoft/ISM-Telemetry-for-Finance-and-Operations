@@ -43,7 +43,7 @@ internal final class ISMTelemetryEventHandler
                 ClassId childClassId = listEnumerator.current();
                 TreeNode childClassNode = TreeNode::findNode(#ClassesPath + #AOTDelimiter + classId2Name(childClassId));
 
-                ISMTelemetryParameters param = ISMTelemetryParameters::find(childClassNode.AOTname());
+                ISMTelemetryParameterSetup param = ISMTelemetryParameterSetup::find(childClassNode.AOTname());
 
                 if (!param)
                 {

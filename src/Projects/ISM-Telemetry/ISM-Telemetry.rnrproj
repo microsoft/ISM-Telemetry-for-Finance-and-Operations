@@ -208,6 +208,11 @@
       <Name>ISMTelemetryParameters</Name>
       <Link>Base objects\ISMTelemetryParameters</Link>
     </Content>
+    <Content Include="AxTable\ISMTelemetryParameterSetup">
+      <SubType>Content</SubType>
+      <Name>ISMTelemetryParameterSetup</Name>
+      <Link>Tables\ISMTelemetryParameterSetup</Link>
+    </Content>
     <Content Include="ISM.en-US.label.txt">
       <SubType>Content</SubType>
       <Name>ISM.en-US.label.txt</Name>
@@ -223,6 +228,7 @@
     <Folder Include="JsonSerializer" />
     <Folder Include="BusinessEvent" />
     <Folder Include="CostActivation" />
+    <Folder Include="Tables\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
   <Import Project="$(BuildTasksDirectory)\Microsoft.Dynamics.Framework.Tools.BuildTasks.17.0.targets" />

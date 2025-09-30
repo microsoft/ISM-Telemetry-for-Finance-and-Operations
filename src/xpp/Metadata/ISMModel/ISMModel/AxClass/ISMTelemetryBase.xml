@@ -17,7 +17,7 @@ abstract class ISMTelemetryBase
 
     System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
 
-    protected ISMTelemetryParameters logParams;
+    protected ISMTelemetryParameterSetup logParams;
 
     //you can fill this field or not, if you don't fill it, it will be set to 0
     protected str eventId;
@@ -33,7 +33,7 @@ abstract class ISMTelemetryBase
         stopWatch = new System.Diagnostics.Stopwatch();
         stopWatch.Start();
 
-        logParams = ISMTelemetryParameters::find(this.telemetryName());
+        logParams = ISMTelemetryParameterSetup::find(this.telemetryName());
 
         if (!logParams)
         {

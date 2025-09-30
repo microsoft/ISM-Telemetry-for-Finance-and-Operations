@@ -87,7 +87,7 @@
 									</AxFormControl>
 								</Controls>
 								<DataGroup>TelemetryFields</DataGroup>
-								<DataSource>ISMTelemetryParameters</DataSource>
+								<DataSource>ISMTelemetryParameterSetup</DataSource>
 							</AxFormControl>
 						</Controls>
 						<FrameType>None</FrameType>
@@ -103,12 +103,9 @@
 	<DataSourceReferences />
 	<DataSources>
 		<AxFormDataSource xmlns="">
-			<Name>ISMTelemetryParameters</Name>
-			<Table>ISMTelemetryParameters</Table>
+			<Name>ISMTelemetryParameterSetup</Name>
+			<Table>ISMTelemetryParameterSetup</Table>
 			<Fields>
-				<AxFormDataSourceField>
-					<DataField>DataAreaId</DataField>
-				</AxFormDataSourceField>
 				<AxFormDataSourceField>
 					<DataField>IsEnabled</DataField>
 				</AxFormDataSourceField>
