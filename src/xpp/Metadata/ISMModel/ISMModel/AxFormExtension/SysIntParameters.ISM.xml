@@ -63,17 +63,16 @@
 										<FormControlExtension
 											i:nil="true" />
 										<DataField>TelemetryClass</DataField>
-										<DataSource>ISMTelemetryParameters</DataSource>
+										<DataSource>ISMTelemetryParameterSetup</DataSource>
 									</AxFormControl>
 									<AxFormControl xmlns=""
-										i:type="AxFormComboBoxControl">
+										i:type="AxFormCheckBoxControl">
 										<Name>ISMTelemetryLogParam_IsEnabled</Name>
-										<Type>ComboBox</Type>
+										<Type>CheckBox</Type>
 										<FormControlExtension
 											i:nil="true" />
 										<DataField>IsEnabled</DataField>
-										<DataSource>ISMTelemetryParameters</DataSource>
-										<Items />
+										<DataSource>ISMTelemetryParameterSetup</DataSource>
 									</AxFormControl>
 									<AxFormControl xmlns=""
 										i:type="AxFormComboBoxControl">
@@ -82,7 +81,7 @@
 										<FormControlExtension
 											i:nil="true" />
 										<DataField>SeverityLevel</DataField>
-										<DataSource>ISMTelemetryParameters</DataSource>
+										<DataSource>ISMTelemetryParameterSetup</DataSource>
 										<Items />
 									</AxFormControl>
 								</Controls>
