@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AxTable xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-	<Name>ISMTelemetryParameters</Name>
+	<Name>ISMTelemetryParameterSetup</Name>
 	<SourceCode>
 		<Declaration><![CDATA[
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
-public class ISMTelemetryParameters extends common
+public class ISMTelemetryParameterSetup extends common
 {
 }
 ]]></Declaration>
@@ -19,11 +19,11 @@ public class ISMTelemetryParameters extends common
     /// <param name = "_class"> classname </param>
     /// <param name = "_forupdate">should update </param>
     /// <returns>Returns the record</returns>
-    public static ISMTelemetryParameters find(
+    public static ISMTelemetryParameterSetup find(
         ISMTelemetryClass _class,
         boolean   _forupdate = false)
     {
-        ISMTelemetryParameters    param;
+        ISMTelemetryParameterSetup    param;
 
         if (_class)
         {
@@ -43,8 +43,7 @@ public class ISMTelemetryParameters extends common
 	</SourceCode>
 	<DeveloperDocumentation>@ISM:ISMTelemetryParamDevDoc
 </DeveloperDocumentation>
-	<IsObsolete>Yes</IsObsolete>
-	<Label>@ISM:ISMTelemetryParameters
+	<Label>@ISM:ISMTelemetryParameterSetup
 </Label>
 	<SubscriberAccessLevel>
 		<Read>Allow</Read>
@@ -53,6 +52,7 @@ public class ISMTelemetryParameters extends common
 	<AllowRowVersionChangeTracking>Yes</AllowRowVersionChangeTracking>
 	<CacheLookup>FoundAndEmpty</CacheLookup>
 	<ReplacementKey>TelemetryClass</ReplacementKey>
+	<SaveDataPerCompany>No</SaveDataPerCompany>
 	<DeleteActions />
 	<FieldGroups>
 		<AxTableFieldGroup>
