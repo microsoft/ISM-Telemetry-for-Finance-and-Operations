@@ -28,13 +28,13 @@ public final class ISMDMFStagingLog_Extension
     /// <param name="_batchId">The batch ID associated with the process.</param>
     /// <param name="_defGroupName">The definition group name for the process.</param>
     /// <returns>The record ID of the inserted log entry.</returns>
-    public static client server RecId insertLogs(DMFExecutionId         _dMFExecutionId,
-                                                 DMFSourceTarget        _sourceOrTarget,
-                                                 int                    _infologStartIndex,
-                                                 RecId                  _stagingLogRecId,
-                                                 DMFEntityName          _entityName,
-                                                 RefRecId               _batchId,
-                                                 DMFDefinitionGroupName _defGroupName)
+    public static RecId insertLogs(DMFExecutionId         _dMFExecutionId,
+                                   DMFSourceTarget        _sourceOrTarget,
+                                   int                    _infologStartIndex,
+                                   RecId                  _stagingLogRecId,
+                                   DMFEntityName          _entityName,
+                                   RefRecId               _batchId,
+                                   DMFDefinitionGroupName _defGroupName)
     {
 
         ISMTelemetryDMF telemetry = ISMTelemetryDMF::construct();
