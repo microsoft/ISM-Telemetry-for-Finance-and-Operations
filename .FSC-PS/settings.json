@@ -1,7 +1,7 @@
 {
     "type":"FSCM",
     "packageName": "ISMModel",
-    "buildVersion": "10.0.43",
+    "buildVersion": "10.0.47",
     "ciBranches": "main,release",
     "useLocalNuGetStorage":true,
     "deploymentScheduler":false
